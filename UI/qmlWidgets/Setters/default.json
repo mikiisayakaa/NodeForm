@@ -1,0 +1,4 @@
+{
+  "default": ["IntSlider1.qml",
+                   "DoubleSlider1.qml"]
+}

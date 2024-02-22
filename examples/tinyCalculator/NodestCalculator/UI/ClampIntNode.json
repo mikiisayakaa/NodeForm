@@ -1,0 +1,13 @@
+{
+  "nodeID" : "ClampIntNode",
+  "nodeName" : "ClampInt",
+  "inputNames" : ["bound1", "bound2", "x"],
+  "outputNames": ["y"],
+  "baseFile": "VerticalNodeBase1.qml",
+  "baseTextFile": "",
+  "inputFiles" : [ ["", "TextLabel1.qml", "IntSlider1_int.qml"],
+	         ["", "TextLabel1.qml", "IntSlider1_int.qml"],
+                         ["", "TextLabel1.qml", "IntSlider1_int.qml"]
+                       ],
+  "outputFiles" : [ ["", "TextLabel1.qml", ""] ]
+}

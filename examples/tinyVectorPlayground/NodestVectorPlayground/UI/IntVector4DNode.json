@@ -1,0 +1,14 @@
+{
+  "nodeID" : "IntVector4DNode",
+  "nodeName" : "Vector4D",
+  "inputNames" : ["a", "b", "c", "d"],
+  "outputNames": ["vector"],
+  "baseFile": "VerticalNodeBase1.qml",
+  "baseTextFile": "TextLabel1.qml",
+  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""],
+	         ["CircleHandle1.qml", "TextLabel1.qml", ""],
+                         ["CircleHandle1.qml", "TextLabel1.qml", ""],
+                         ["CircleHandle1.qml", "TextLabel1.qml", ""]
+	       ],
+  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ]
+}

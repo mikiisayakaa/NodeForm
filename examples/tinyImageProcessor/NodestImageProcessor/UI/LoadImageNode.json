@@ -1,0 +1,10 @@
+{
+  "nodeID" : "LoadImageNode",
+  "nodeName" : "Load",
+  "inputNames" : [""],
+  "outputNames": ["image"],
+  "baseFile": "VerticalNodeBase1.qml",
+  "baseTextFile": "TextLabel1.qml",
+  "inputFiles" : [ ["dummy.qml", "dummy.qml", ""]] ,
+  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""] ]
+}

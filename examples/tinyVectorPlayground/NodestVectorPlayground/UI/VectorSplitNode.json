@@ -1,0 +1,11 @@
+{
+  "nodeID" : "VectorSplitNode",
+  "nodeName" : "VectorSplit",
+  "inputNames" : ["vector"],
+  "outputNames": ["vector1", "vector2"],
+  "baseFile": "VerticalNodeBase1.qml",
+  "baseTextFile": "TextLabel1.qml",
+  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ],
+  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"],
+	           ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"]  ]
+}

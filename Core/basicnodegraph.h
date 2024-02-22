@@ -43,6 +43,7 @@ private:
 
     void getDepth();
 
+    void tagChildren(AbstractNode* node);
 
     void addChildrenToQueue(AbstractNode* node);
 

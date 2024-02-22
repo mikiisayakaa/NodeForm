@@ -29,6 +29,9 @@ void Nodest::BasicNodeGraph::eval()
     std::vector<AbstractNode*> nodes;
     nodes.reserve(m_nodes.size());
 
+    //tag the node that should not be evaled because of invalid outputs
+    clearAllTags();
+
     for (auto iter = m_depthMap.begin(); iter != m_depthMap.end(); iter++){
         //double check dependency here, mainly for node deletion,
         //we need to calculate depth before deletion
@@ -44,7 +47,14 @@ void Nodest::BasicNodeGraph::eval()
     }
 
     for (size_t i = 0; i < nodes.size(); i++){
-        nodes[i]->eval();
+        if (!nodes[i]->tagged()){
+            //the node should set m_outValid according to the eval process
+            nodes[i]->eval();
+        }
+
+        if (!nodes[i]->isOutValid()){
+            tagChildren(nodes[i]);
+        }
     }
 }
 
@@ -272,7 +282,7 @@ void Nodest::BasicNodeGraph::clearDepth()
 
 void Nodest::BasicNodeGraph::getDepth()
 {
-    //DFS, maybe slower than topological sorting, but easy to implement at local graph
+    //DFS, maybe slower than topological sort, but easy to implement at local graph
     while(!m_nodeStack.empty()){
         AbstractNode* curNode = m_nodeStack.top();
         m_nodeStack.pop();
@@ -289,6 +299,22 @@ void Nodest::BasicNodeGraph::getDepth()
             }
         }
     }
+}
+
+void Nodest::BasicNodeGraph::tagChildren(Nodest::AbstractNode *node)
+{
+    node->setTag();
+
+
+    for (size_t i = 0; i < node->getNOutput(); i++){
+        OutputSlot* out = node->getOutput(i);
+        for (size_t j = 0; j < out->getNConnection(); j++){
+            AbstractNode* child = out->getConnection(j)->getSecond()->getParent();
+            child->setOutValid(false);
+            tagChildren(child);
+        }
+    }
+
 }
 
 

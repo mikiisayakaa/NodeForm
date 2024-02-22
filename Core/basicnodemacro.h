@@ -14,6 +14,7 @@
         nodeName(const nodeName& node) = delete; \
         explicit nodeName() : Nodest::AbstractEvalNode(), m_func(funcName){ \
             m_nodeNameID = QString(#nodeName); \
+            m_outValid = true; \
             constructImpl<FuncType>(); \
         } \
          \

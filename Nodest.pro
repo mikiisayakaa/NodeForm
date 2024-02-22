@@ -35,7 +35,6 @@ SOURCES += \
     Utils/debugutils.cpp \
     Utils/variant.cpp \
     Core/abstractslot.cpp \
-    NodeTypes/Numeric/numericoperations.cpp \
     Core/abstractevalnode.cpp \
     Wrapper/slotsetter.cpp \
     Global/globalqmlfiles.cpp \
@@ -71,8 +70,6 @@ HEADERS += \
     Utils/slottupleutils.h \
     Utils/variant.h \
     Core/basicnodemacro.h \
-    NodeTypes/Numeric/numericnodes.h \
-    NodeTypes/Numeric/numericoperations.h \
     Core/abstractevalnode.h \
     Wrapper/slotsettermacro.h \
     Wrapper/abstractslotsetter.h \
@@ -83,7 +80,6 @@ HEADERS += \
     Global/globalitems.h \
     Global/typenamemacro.h \
     Global/typenameregistry.h \
-    Wrapper/TypeConvertFuncs/typeconversions.h \
     Core/basicnodegraph.h \
     Core/abstractnodegraph.h \
     Interface/connectionobject.h \

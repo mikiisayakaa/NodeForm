@@ -117,7 +117,6 @@ Shape{
             var threshold = 15;
 
             //process horizontal and vertical conditions
-            console.log(cos);
             if (Math.abs(cos) < 0.01 || Math.abs(cos) > 0.999 || isNaN(cos)){
                 if (Math.abs(vpX) < threshold
                     && Math.max(aY, cY) > pY && Math.min(aY, cY) < pY){

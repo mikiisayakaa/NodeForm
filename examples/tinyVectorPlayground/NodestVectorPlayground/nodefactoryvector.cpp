@@ -36,6 +36,9 @@ void NodeFactoryVector::createNode(int index)
     case 5:
         node = new Nodest::VectorSplitNode();
         break;
+    case 6:
+        node = new Nodest::VectorPopbackNode();
+        break;
 
     default:
         break;

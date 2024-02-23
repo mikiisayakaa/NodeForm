@@ -43,7 +43,6 @@ SOURCES += \
     Utils/fileoperations.cpp \
     Global/globalinit.cpp \
     Global/globalitems.cpp \
-    Wrapper/TypeConvertFuncs/typeconversions.cpp \
     Core/basicnodegraph.cpp \
     Core/abstractnodegraph.cpp \
     Interface/connectionobject.cpp \
@@ -58,7 +57,8 @@ SOURCES += \
     Interface/slotobject.cpp \
     Wrapper/abstractslotgetter.cpp \
     Interface/abstractgraphobject.cpp \
-    Global/globalcleanup.cpp
+    Global/globalcleanup.cpp \
+    Core/abstractboolevalnode.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -95,10 +95,11 @@ HEADERS += \
     Interface/abstractgraphobject.h \
     Wrapper/abstractslotgetter.h \
     Wrapper/slotgettermacro.h \
-    Wrapper/slotgettersetter.h \
     Global/globalcleanup.h \
     Global/globalinit.h \
-    Utils/gstupleutils.h
+    Utils/gstupleutils.h \
+    Core/abstractboolevalnode.h \
+    Core/basicboolnodemacro.h
 
 
 FORMS +=

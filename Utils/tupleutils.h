@@ -36,6 +36,16 @@ struct FunctionTraits<void (*)(Args...)> {
     using functionType = void (*)(Args...);
 };
 
+template <typename... Args>
+struct FunctionTraits<bool (*)(Args...)> {
+    using argument_types = std::tuple<std::remove_const_t<
+        std::remove_reference_t<Args>>...>;
+
+    static constexpr size_t K = CountConst<std::tuple<std::remove_reference_t<Args>...>>::value;
+
+    using functionType = bool (*)(Args...);
+};
+
 //assistant function to split the first K elements to create a new tuple
 //needs a tuple instance and will return another tuple instance
 template <size_t K, typename Tuple, size_t... Index>

@@ -116,6 +116,8 @@ protected:
                 m_outputSlots[i]->getGetter()->sendValue();
             }
         }
+
+        m_outValid = true;
     }
 
     template<typename FunctionType>

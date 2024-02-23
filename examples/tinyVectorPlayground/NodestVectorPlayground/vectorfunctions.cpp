@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+#include <QDebug>
+
 void Nodest::intVector(const std::vector<int> &vec1, std::vector<int> &vec2)
 {
     vec2 = vec1;
@@ -43,3 +45,17 @@ void Nodest::vectorSplit(const std::vector<int> &vec, std::vector<int> &vecRst1,
     vecRst2.insert(vecRst2.end(), vec.begin() + vec.size() / 2, vec.end());
 }
 
+
+bool Nodest::vectorPopback(const std::vector<int> &vec, std::vector<int> &vecRst, int& value)
+{
+    if (vec.empty()){
+        qDebug() << "error happened";
+        return false;
+    }
+
+    vecRst = vec;
+    value = vecRst.back();
+    vecRst.pop_back();
+
+    return true;
+}

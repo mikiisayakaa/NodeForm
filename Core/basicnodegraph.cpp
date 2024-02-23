@@ -29,9 +29,6 @@ void Nodest::BasicNodeGraph::eval()
     std::vector<AbstractNode*> nodes;
     nodes.reserve(m_nodes.size());
 
-    //tag the node that should not be evaled because of invalid outputs
-    clearAllTags();
-
     for (auto iter = m_depthMap.begin(); iter != m_depthMap.end(); iter++){
         //double check dependency here, mainly for node deletion,
         //we need to calculate depth before deletion
@@ -47,13 +44,12 @@ void Nodest::BasicNodeGraph::eval()
     }
 
     for (size_t i = 0; i < nodes.size(); i++){
-        if (!nodes[i]->tagged()){
-            //the node should set m_outValid according to the eval process
+        if (checkUpstreamOutValid(nodes[i])){
             nodes[i]->eval();
+            qDebug() << "Evaled:" << nodes[i]->getNameID();
         }
-
-        if (!nodes[i]->isOutValid()){
-            tagChildren(nodes[i]);
+        else{
+            nodes[i]->setOutValid(false);
         }
     }
 }
@@ -301,21 +297,19 @@ void Nodest::BasicNodeGraph::getDepth()
     }
 }
 
-void Nodest::BasicNodeGraph::tagChildren(Nodest::AbstractNode *node)
+bool Nodest::BasicNodeGraph::checkUpstreamOutValid(Nodest::AbstractNode *node)
 {
-    node->setTag();
-
-
-    for (size_t i = 0; i < node->getNOutput(); i++){
-        OutputSlot* out = node->getOutput(i);
-        for (size_t j = 0; j < out->getNConnection(); j++){
-            AbstractNode* child = out->getConnection(j)->getSecond()->getParent();
-            child->setOutValid(false);
-            tagChildren(child);
+    bool rst = true;
+    for (size_t i = 0; i < node->getNInput(); i++){
+        InputSlot* slot = node->getInput(i);
+        if (slot->getConnection() != nullptr){
+            rst &= slot->getConnection()->getFirst()->getParent()->isOutValid();
         }
     }
 
+    return rst;
 }
+
 
 
 void Nodest::BasicNodeGraph::addChildrenToQueue(Nodest::AbstractNode *node)

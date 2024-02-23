@@ -15,7 +15,7 @@ Item {
         anchors.fill: parent
         spacing: 10
         model: ["VectorDisplay","IntVector4D","VectorConcat","VectorSort","VectorReverse",
-                "VectorSplit"]
+                "VectorSplit", "VectorPopback"]
 
         delegate: ButtonType1 {
             text: modelData

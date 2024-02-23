@@ -13,15 +13,11 @@ void Nodest::AbstractNode::setGetterValidTag(bool tag)
 void Nodest::AbstractNode::addDepend(int num)
 {
     m_dependencyCount += num;
-    if (independent()){
-        setGetterValidTag(true);
-    }
+    setGetterValidTag(independent());
 }
 
 void Nodest::AbstractNode::decDepend(int num)
 {
-    if (independent()){
-        setGetterValidTag(false);
-    }
     m_dependencyCount -= num;
+    setGetterValidTag(independent());
 }

@@ -19,5 +19,6 @@ void vectorReverse(const std::vector<int>& vec, std::vector<int>& vecRst);
 void vectorSplit(const std::vector<int>& vec, std::vector<int>& vecRst1,
                  std::vector<int>& vecRst2);
 
-
+bool vectorPopback(const std::vector<int>& vec, std::vector<int>& vecRst,
+                   int& value);
 }

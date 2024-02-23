@@ -32,7 +32,7 @@ public:
     int getNOutput() const {return m_outputSlots.size();}
 
     bool isOutValid() const {return m_outValid;}
-    void setOutValid(bool tag) {m_outValid = tag;}
+    void setOutValid(bool tag) {m_outValid = tag; setGetterValidTag(tag);}
 
     QString getNameID() const {return m_nodeNameID;}
 

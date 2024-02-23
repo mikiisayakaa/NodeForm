@@ -111,13 +111,14 @@ protected:
         //dereference pointers
         std::apply([&](auto&&... args) { func(*(args)...); }, argsTuple);
 
+        setOutValid(true);
+
         for (size_t i = 0; i < getNOutput(); i++){
             if (m_outputSlots[i]->getGetter()){
                 m_outputSlots[i]->getGetter()->sendValue();
             }
         }
 
-        m_outValid = true;
     }
 
     template<typename FunctionType>

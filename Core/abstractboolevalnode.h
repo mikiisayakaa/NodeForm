@@ -36,10 +36,10 @@ protected:
         bool rstTag = std::apply([&](auto&&... args) { bool rst = func(*(args)...); return rst; }, argsTuple);
 
         if (!rstTag){
-            m_outValid = false;
+            setOutValid(false);
         }
         else{
-            m_outValid = true;
+            setOutValid(true);
             for (size_t i = 0; i < getNOutput(); i++){
                 if (m_outputSlots[i]->getGetter()){
                     m_outputSlots[i]->getGetter()->sendValue();

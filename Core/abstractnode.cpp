@@ -12,12 +12,18 @@ void Nodest::AbstractNode::setGetterValidTag(bool tag)
 
 void Nodest::AbstractNode::addDepend(int num)
 {
+    bool preDependency = independent();
     m_dependencyCount += num;
-    setGetterValidTag(independent());
+    if (independent() != preDependency){
+        setGetterValidTag(independent());
+    }
 }
 
 void Nodest::AbstractNode::decDepend(int num)
 {
+    bool preDependency = independent();
     m_dependencyCount -= num;
-    setGetterValidTag(independent());
+    if (independent() != preDependency){
+        setGetterValidTag(independent());
+    }
 }

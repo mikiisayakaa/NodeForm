@@ -14,10 +14,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    NodestGlobal::setPath(NodestGlobal::nodeJsonPath,
+    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths,
                           "D:/C++/Nodest/Nodest/examples/tinyCalculator/NodestCalculator/UI/");
-    NodestGlobal::setPath(NodestGlobal::qmlMainPath,
-                          "D:/C++/Nodest/Nodest/examples/tinyCalculator/NodestCalculator/Controls/");
+    NodestGlobal::setQmlMain("D:/C++/Nodest/Nodest/examples/tinyCalculator/NodestCalculator/Controls/main.qml");
     qmlRegisterType<NodeFactory>("CppObjects", 1, 0, "NodeFactory");
     NodestGlobal::globalInit(&a);
 

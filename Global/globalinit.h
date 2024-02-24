@@ -33,6 +33,6 @@ void setQmlGSDefault(const QString& path, QSet<QString>& defaultFiles);
 
 void globalInit(QApplication* app);
 
-void setPath(QString& target, const QString& path);
+
 
 }

@@ -3,22 +3,30 @@
 namespace NodestGlobal{
 
 //folder contains all qml widgets to load
-QString uiPath = "D:/C++/Nodest/Nodest/UI/";
+QStringList nodeJsonPaths = {};
 
-QString qmlPath = uiPath + "qmlWidgets/";
+QStringList qmlHandlesPaths = {qmlPath + "Handles/"};
 
-QString nodeJsonPath = uiPath + "UIjsons/";
+QStringList qmlSettersPaths = {qmlPath + "Setters/"};
 
-QString qmlHandlesPath = qmlPath + "Handles/";
+QStringList qmlGettersPaths = {qmlPath + "Getters/"};
 
-QString qmlSettersPath = qmlPath + "Setters/";
+QStringList qmlTextLabelsPaths = {qmlPath + "TextLabels/"};
 
-QString qmlGettersPath = qmlPath + "Getters/";
+QStringList qmlNodeBasePaths = {qmlPath + "NodeBase/"};
 
-QString qmlTextLabelsPath = qmlPath + "TextLabels/";
+QString qmlMainPath = uiPath + "main.qml";
 
-QString qmlNodeBasePath = qmlPath + "NodeBase/";
+void setPath(QStringList &target, const QString &path)
+{
+    target.push_back(path);
+}
 
-QString qmlMainPath = uiPath;
+void setQmlMain(const QString &path)
+{
+    qmlMainPath = path;
+}
+
+
 }
 

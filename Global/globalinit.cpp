@@ -78,8 +78,6 @@ void NodestGlobal::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<
             //since setters have different types, we have to load all qmls
             //need better implementation
 
-            //user should assure that all setter files are ended with _xx, xx is integer of type
-
             QByteArray bytearray;
             Nodest::loadQmlByteArray(fileInfo.filePath(), bytearray);
             QQmlComponent* component = new QQmlComponent(engine);
@@ -127,7 +125,7 @@ void NodestGlobal::fillDummy(QQmlEngine* engine)
     dummy = new QQmlComponent(engine);
     dummy->setData(bytearray, QUrl("file:///" + path));
 
-    //put it in setter and getter map
+    //put it in all map lists
     slotSetterMap[dummyFile] = setGetInfo{dummy, ""};
     slotGetterMap[dummyFile] = setGetInfo{dummy, ""};
     slotHandleMap[dummyFile] = dummy;
@@ -158,26 +156,39 @@ void NodestGlobal::fillConnectionLine(QQmlEngine *engine)
 //called at init stage of the program
 void NodestGlobal::prepareUIWidgets(QQmlEngine *engine)
 {
-    fillUImap(nodeJsonPath);
+    for (auto& jsonPath : NodestGlobal::nodeJsonPaths){
+        fillUImap(jsonPath);
+    }
+
     fillDummy(engine);
     fillBackground(engine);
     fillConnectionLine(engine);
 
     //always set default first, we need to add the default file to qmlFileNames
-    setQmlDefault(qmlHandlesPath, slotHandleDefault);
-    fillQmlData(qmlHandlesPath, engine, slotHandleMap);
+    for (auto& handlePath : NodestGlobal::qmlHandlesPaths){
+        setQmlDefault(handlePath, slotHandleDefault);
+        fillQmlData(handlePath, engine, slotHandleMap);
+    }
 
-    setQmlDefault(qmlTextLabelsPath, textLabelDefault);
-    fillQmlData(qmlTextLabelsPath, engine, textLabelMap);
+    for (auto& textlabelPath : NodestGlobal::qmlTextLabelsPaths){
+        setQmlDefault(textlabelPath, textLabelDefault);
+        fillQmlData(textlabelPath, engine, textLabelMap);
+    }
 
-    setQmlDefault(qmlNodeBasePath, nodeBaseDefault);
-    fillQmlData(qmlNodeBasePath, engine, nodeBaseMap);
+    for (auto& nodeBasePath : NodestGlobal::qmlNodeBasePaths){
+        setQmlDefault(nodeBasePath, nodeBaseDefault);
+        fillQmlData(nodeBasePath, engine, nodeBaseMap);
+    }
 
-    setQmlGSDefault(qmlSettersPath, slotSetterDefault);
-    fillQmlGSData(qmlSettersPath, engine, slotSetterMap);
+    for (auto& setterPath : NodestGlobal::qmlSettersPaths){
+        setQmlGSDefault(setterPath, slotSetterDefault);
+        fillQmlGSData(setterPath, engine, slotSetterMap);
+    }
 
-    setQmlGSDefault(qmlGettersPath, slotGetterDefault);
-    fillQmlGSData(qmlGettersPath, engine, slotGetterMap);
+    for (auto& getterPath : NodestGlobal::qmlGettersPaths){
+        setQmlGSDefault(getterPath, slotGetterDefault);
+        fillQmlGSData(getterPath, engine, slotGetterMap);
+    }
 }
 
 
@@ -192,7 +203,7 @@ void NodestGlobal::globalInit(QApplication *app)
     NodestGlobal::engine = engine;
 
 
-    const QUrl url("file:///" + NodestGlobal::qmlMainPath + "main.qml");
+    const QUrl url("file:///" + NodestGlobal::qmlMainPath);
     QObject::connect(NodestGlobal::engine, &QQmlApplicationEngine::objectCreated,
                     app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
@@ -213,6 +224,3 @@ void NodestGlobal::globalInit(QApplication *app)
     QObject::connect(app, &QApplication::aboutToQuit, &NodestGlobal::cleanupGraph);
 }
 
-void NodestGlobal::setPath(QString& target, const QString& path){
-    target = path;
-}

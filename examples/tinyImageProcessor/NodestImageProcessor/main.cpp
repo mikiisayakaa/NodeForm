@@ -13,14 +13,13 @@ int main(int argc, char *argv[])
     //get rid of annoying warnings caused by QML FileDialog
     QCoreApplication::setOrganizationName("NoOrganization");
 
-    NodestGlobal::setPath(NodestGlobal::nodeJsonPath,
+    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths,
                           "D:/C++/Nodest/Nodest/examples/tinyImageProcessor/NodestImageProcessor/UI/");
-    NodestGlobal::setPath(NodestGlobal::qmlMainPath,
-                          "D:/C++/Nodest/Nodest/examples/tinyImageProcessor/NodestImageProcessor/Controls/");
-    NodestGlobal::setPath(NodestGlobal::qmlGettersPath,
+    NodestGlobal::setPath(NodestGlobal::qmlGettersPaths,
                           "D:/C++/Nodest/Nodest/examples/tinyImageProcessor/NodestImageProcessor/Controls/Getters/");
-    NodestGlobal::setPath(NodestGlobal::qmlSettersPath,
+    NodestGlobal::setPath(NodestGlobal::qmlSettersPaths,
                           "D:/C++/Nodest/Nodest/examples/tinyImageProcessor/NodestImageProcessor/Controls/Setters/");
+    NodestGlobal::setQmlMain("D:/C++/Nodest/Nodest/examples/tinyImageProcessor/NodestImageProcessor/Controls/main.qml");
     qmlRegisterType<NodeFactoryImage>("CppObjects", 1, 0, "NodeFactory");
     NodestGlobal::globalInit(&a);
 

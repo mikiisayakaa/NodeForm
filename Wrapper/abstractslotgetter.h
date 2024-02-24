@@ -11,7 +11,7 @@ class AbstractSlotGetter : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractSlotGetter(QObject *parent = nullptr): QObject(parent) {}
+    explicit AbstractSlotGetter(QObject *parent = nullptr): QObject(parent), m_item(nullptr) {}
 
     virtual ~AbstractSlotGetter() {}
 
@@ -19,7 +19,7 @@ public:
 
     void setItem(QQuickItem* item) {m_item = item;}
 
-    void setTag(bool flag) {m_item->setProperty("valid", flag);}
+    void setTag(bool flag) {if (m_item){m_item->setProperty("valid", flag);}}
 
     QString getTypeName() {return m_typeName;}
 

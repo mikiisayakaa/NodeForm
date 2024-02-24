@@ -86,6 +86,7 @@ void Nodest::createBase(const QString &fileName, QQuickItem *parentItem, QQuickI
 
 void Nodest::getValidSetterFileName(QString &queryName, InputSlot *slot)
 {
+
     if (slot->getSetter() == nullptr){
         queryName = NodestGlobal::dummyFile;
         return;

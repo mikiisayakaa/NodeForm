@@ -2,10 +2,11 @@
 
 #include <QString>
 #include <QStringList>
+#include <QDir>
 
 namespace NodestGlobal{
 
-static QString uiPath = "D:/C++/Nodest/Nodest/UI/";
+static QString uiPath = QDir::currentPath() + "/../Nodest/UI/";
 
 static QString qmlPath = uiPath + "qmlWidgets/";
 

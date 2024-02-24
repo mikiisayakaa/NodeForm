@@ -3,8 +3,7 @@
   "nodeName" : "VectorConcat",
   "inputNames" : ["vector1", "vector2"],
   "outputNames": ["vector"],
-  "baseFile": "VerticalNodeBase1.qml",
-  "baseTextFile": "TextLabel1.qml",
+  "baseFiles": ["",""],
   "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"],
 	         ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml" ]] ,
   "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ]

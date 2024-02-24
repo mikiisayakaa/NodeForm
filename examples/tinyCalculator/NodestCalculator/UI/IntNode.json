@@ -3,8 +3,7 @@
   "nodeName" : "Int",
   "inputNames" : [""],
   "outputNames": ["intValue"],
-  "baseFile": "VerticalNodeBase1.qml",
-  "baseTextFile": "",
+  "baseFiles": ["",""],
   "inputFiles" : [ ["dummy.qml", "TextLabel1.qml", "IntSlider1_int.qml"]
                        ],
   "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""] ]

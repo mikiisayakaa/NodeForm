@@ -33,10 +33,10 @@ void Nodest::VerticalNodeObject::createWidgets()
     else{
         nodeName = m_createParams->nodeName;
 
-        QString baseQuery = m_createParams->baseFile;
-        nodeBaseFile = NodestGlobal::slotHandleMap.contains(baseQuery) ? baseQuery :
+        QString baseQuery = m_createParams->baseFiles[0];
+        nodeBaseFile = NodestGlobal::nodeBaseMap.contains(baseQuery) ? baseQuery :
                                      NodestGlobal::nodeBaseDefault;
-        QString labelQuery = m_createParams->baseTextFile;
+        QString labelQuery = m_createParams->baseFiles[1];
         nameLabelFile = NodestGlobal::textLabelMap.contains(labelQuery) ? labelQuery :
                                         NodestGlobal::textLabelDefault;
     }

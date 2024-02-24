@@ -3,8 +3,7 @@
   "nodeName" : "Display",
   "inputNames" : ["vector"],
   "outputNames": [""],
-  "baseFile": "VerticalNodeBase1.qml",
-  "baseTextFile": "",
+  "baseFiles": ["",""],
   "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ],
   "outputFiles" : [ ["dummy.qml", "dummy.qml", "IntVectorGetter.qml"] ]
 }

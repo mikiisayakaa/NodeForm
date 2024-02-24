@@ -16,6 +16,13 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
 
     NodestGlobal::UIParameters* params = new NodestGlobal::UIParameters();
 
+    //Parse baseFiles
+    QJsonArray baseFilesArray = jsonObj["baseFiles"].toArray();
+    for (const QJsonValue& value : baseFilesArray){
+        NodestGlobal::qmlFileNames.insert(value.toString());
+        params->baseFiles.push_back(value.toString());
+    }
+
     // Parse inputFiles
     QJsonArray inputFilesArray = jsonObj["inputFiles"].toArray();
     for (const QJsonValue& inputFilesValue : inputFilesArray) {
@@ -55,10 +62,6 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
     // Parse nodeName
     params->nodeName = jsonObj["nodeName"].toString();
     params->nodeID = jsonObj["nodeID"].toString();
-    params->baseFile = jsonObj["baseFile"].toString();
-    params->baseTextFile = jsonObj["baseTextFile"].toString();
-    NodestGlobal::qmlFileNames.insert(jsonObj["baseFile"].toString());
-    NodestGlobal::qmlFileNames.insert(jsonObj["baseTextFile"].toString());
 
     return params;
 }

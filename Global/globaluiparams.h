@@ -10,8 +10,7 @@ namespace NodestGlobal{
 struct UIParameters{
     std::vector<std::vector<QString>> inputFiles;
     std::vector<std::vector<QString>> outputFiles;
-    QString baseFile;
-    QString baseTextFile;
+    std::vector<QString> baseFiles;
 
     std::vector<QString> inputNames;
     std::vector<QString> outputNames;

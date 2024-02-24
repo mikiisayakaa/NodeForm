@@ -58,6 +58,12 @@ else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt
 DISTFILES += \
     main.qml \
     Controls/IntVectorGetter.qml \
-    Controls/Getters/IntVectorGetter.qml \
     Controls/main.qml \
-    Controls/ButtonManager.qml
+    Controls/ButtonManager.qml \
+    Controls/Getters/NodestVECvectorGetLabels1.qml \
+    UI/IntVector4DNode.json \
+    UI/VectorConcatNode.json \
+    UI/VectorDisplayNode.json \
+    UI/VectorReverseNode.json \
+    UI/VectorSortNode.json \
+    UI/VectorSplitNode.json

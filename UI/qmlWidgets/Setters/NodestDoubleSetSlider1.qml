@@ -14,7 +14,7 @@ Item {
 
     signal dataSignal(double value)
 
-    SliderType1{
+    NodestSlider2 {
         id: slider1
         onValueChanged: {
             doubleSlider1.dataSignal(value)

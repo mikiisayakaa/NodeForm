@@ -4,8 +4,8 @@
   "inputNames" : ["x", "y"],
   "outputNames": ["z"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "IntSlider1_int.qml"],
-	         ["CircleHandle1.qml", "TextLabel1.qml", "IntSlider1_int.qml"]
+  "inputFiles" : [ ["", "", ""],
+             ["", "", ""]
                        ],
-  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""] ]
+  "outputFiles" : [ ["", "", ""] ]
 }

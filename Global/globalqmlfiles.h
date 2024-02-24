@@ -34,16 +34,18 @@ extern QHash<QString, QQmlComponent*> textLabelMap;
 extern QString nodeBaseDefault;
 extern QHash<QString, QQmlComponent*> nodeBaseMap;
 
-//used to take a place for missing getters and setters
+//used to take a place for missing components
 extern QString dummyFile;
 extern QQmlComponent* dummy;
 
 //global background Rectangle for the node editor
 extern QString backgroundFile;
 extern QQmlComponent* bgd;
+void setBackgroundFile(const QString& filePath);
 
 //only supports one kind of connection line for the whole graph
 extern QString lineFile;
 extern QQmlComponent* connectionLine;
+void setLineFile(const QString& filePath);
 
 }

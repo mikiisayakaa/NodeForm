@@ -2,7 +2,7 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
-import "../../BaseWidget"
+import "../../../../../UI/BaseWidget"
 
 Item {
     id: intSlider1
@@ -13,11 +13,11 @@ Item {
 
     signal dataSignal(int value)
 
-    ModernSliderType1{
+    NodestSlider2 {
         id: slider1
-        from: 0
+        from: -100
         to: 100
-        value: 50
+        value: 0
         onValueChanged: {
             intSlider1.dataSignal(Math.round(value))
         }

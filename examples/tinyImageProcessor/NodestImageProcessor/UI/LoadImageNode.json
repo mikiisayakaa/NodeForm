@@ -5,5 +5,5 @@
   "outputNames": ["image"],
   "baseFiles": ["",""],
   "inputFiles" : [ ["dummy.qml", "dummy.qml", ""]] ,
-  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""] ]
+  "outputFiles" : [ ["", "", ""] ]
 }

@@ -2,7 +2,7 @@ import QtQuick 2.2
 
 import "../../BaseWidget"
 
-SpinBoxType1{
+NodestSpinBox1 {
     value: 0
     validator: IntValidator{bottom: -1000; top: 1000}
 

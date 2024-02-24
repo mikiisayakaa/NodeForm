@@ -4,10 +4,10 @@
   "inputNames" : ["a", "b", "c", "d"],
   "outputNames": ["vector"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""],
-	         ["CircleHandle1.qml", "TextLabel1.qml", ""],
-                         ["CircleHandle1.qml", "TextLabel1.qml", ""],
-                         ["CircleHandle1.qml", "TextLabel1.qml", ""]
+  "inputFiles" : [ ["", "", ""],
+             ["", "", ""],
+             ["", "", ""],
+             ["", "", ""]
 	       ],
-  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ]
+  "outputFiles" : [ ["", "", "dummy.qml"] ]
 }

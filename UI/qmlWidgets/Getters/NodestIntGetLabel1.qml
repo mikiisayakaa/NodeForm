@@ -2,7 +2,7 @@ import QtQuick 2.2
 
 import "../../BaseWidget"
 
-TextType1 {
+NodestText1 {
     property int dataValue: 0
     property bool valid: false
     property string typeName: "int"

@@ -74,7 +74,10 @@ DISTFILES += \
     Controls/ButtonType1.qml \
     Controls/Button1.qml \
     Controls/ButtonManager.qml \
-    Controls/main.qml
+    Controls/main.qml \
+    UI/AddIntNode.json \
+    UI/ClampIntNode.json \
+    UI/IntNode.json
 
 unix|win32: LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/ -lNodest
 

@@ -2,6 +2,8 @@ import QtQuick 2.2
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Styles 1.4
 
+//adapted from Qt's help documents
+
 Slider {
     id: control
     padding: 4

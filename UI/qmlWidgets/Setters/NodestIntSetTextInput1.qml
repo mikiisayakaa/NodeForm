@@ -2,7 +2,7 @@ import QtQuick 2.2
 
 import "../../BaseWidget"
 
-TextInputType1 {
+NodestTextInput1 {
     text: "0"
     signal dataSignal(int value)
 

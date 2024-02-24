@@ -4,7 +4,7 @@
   "inputNames" : [""],
   "outputNames": ["intValue"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["dummy.qml", "TextLabel1.qml", "IntSlider1_int.qml"]
+  "inputFiles" : [ ["dummy.qml", "", ""]
                        ],
-  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", ""] ]
+  "outputFiles" : [ ["", "", ""] ]
 }

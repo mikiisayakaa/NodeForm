@@ -4,6 +4,6 @@
   "inputNames" : ["vector"],
   "outputNames": [""],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ],
-  "outputFiles" : [ ["dummy.qml", "dummy.qml", "IntVectorGetter.qml"] ]
+  "inputFiles" : [ ["", "", "dummy.qml"] ],
+  "outputFiles" : [ ["dummy.qml", "dummy.qml", ""] ]
 }

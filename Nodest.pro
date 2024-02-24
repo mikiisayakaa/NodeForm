@@ -111,34 +111,34 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     UI/main.qml \
-    UI/BaseWidget/SliderType1.qml \
     UI/SetterWidget/IntSetter/IntSlider_0.qml \
     UI/qmlWidgets/Setters/IntSlider1_0.qml \
-    UI/BaseWidget/CircleType1.qml \
-    UI/qmlWidgets/Handles/CircleHandle1.qml \
-    UI/BaseWidget/TextType1.qml \
-    UI/qmlWidgets/TextLabels/TextLabel1.qml \
-    UI/qmlWidgets/NodeBase/VerticalNodeBase1.qml \
     UI/DummyGS.qml \
     UI/qmlWidgets/Setters/DoubleSlider1_2.qml \
-    UI/BaseWidget/TriangleType1.qml \
-    UI/qmlWidgets/Handles/TriangleHandle1.qml \
-    UI/background.qml \
     UI/qmlWidgets/Lines/Line1.qml \
-    UI/Line1.qml \
-    UI/Line2.qml \
     UI/dummy.qml \
-    UI/Line3.qml \
     UI/qmlWidgets/Getters/IntLabel1_0.qml \
-    UI/BaseWidget/ModernSliderType1.qml \
-    UI/BaseWidget/TextInputType1.qml \
     UI/qmlWidgets/Setters/TextInput1_int.qml \
     UI/qmlWidgets/Setters/IntSlider1_int.qml \
-    UI/BaseWidget/SpinBoxType1.qml \
     UI/qmlWidgets/Setters/SpinBox1_int.qml \
     UI/qmlWidgets/Getters/IntLabel1_int.qml \
-    UI/qmlWidgets/Getters/IntLabel1.qml \
-    UI/qmlWidgets/Setters/DoubleSlider1.qml \
-    UI/qmlWidgets/Setters/IntSlider1.qml \
-    UI/qmlWidgets/Setters/IntSpinBox1.qml \
-    UI/qmlWidgets/Setters/IntTextInput1.qml
+    UI/BaseWidget/NodestCircle1.qml \
+    UI/BaseWidget/NodestSlider2.qml \
+    UI/BaseWidget/NodestSlider1.qml \
+    UI/BaseWidget/NodestSpinBox1.qml \
+    UI/BaseWidget/NodestTextInput1.qml \
+    UI/BaseWidget/NodestText1.qml \
+    UI/BaseWidget/NodestTriangle1.qml \
+    UI/NodestLine1.qml \
+    UI/NodestBezierCurve2.qml \
+    UI/NodestBezierCurve1.qml \
+    UI/NodestBackground1.qml \
+    UI/qmlWidgets/Getters/NodestIntGetLabel1.qml \
+    UI/qmlWidgets/Handles/NodestCircleHandle1.qml \
+    UI/qmlWidgets/Handles/NodestTriangleHandle1.qml \
+    UI/qmlWidgets/NodeBase/NodestVerticalBase1.qml \
+    UI/qmlWidgets/Setters/NodestDoubleSetSlider1.qml \
+    UI/qmlWidgets/Setters/NodestIntSetSlider1.qml \
+    UI/qmlWidgets/Setters/NodestIntSetTextInput1.qml \
+    UI/qmlWidgets/Setters/NodestIntSetSpinBox1.qml \
+    UI/qmlWidgets/TextLabels/NodestTextLabel1.qml

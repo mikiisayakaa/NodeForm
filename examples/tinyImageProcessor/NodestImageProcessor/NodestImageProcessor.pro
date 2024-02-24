@@ -55,7 +55,8 @@ DISTFILES += \
     Controls/Getters/ImageGetter.qml \
     Controls/FileButton.qml \
     Controls/Setters/FileButton.qml \
-    Controls/Setters/IntSlider1.qml
+    UI/LoadImageNode.json \
+    Controls/Setters/NodestIMIntSetSlider1.qml
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/release/ -lNodest
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/ -lNodest

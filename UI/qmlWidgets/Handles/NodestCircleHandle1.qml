@@ -3,7 +3,7 @@ import QtQuick 2.2
 import "../../BaseWidget"
 
 
-CircleType1{
+NodestCircle1 {
     id: handle
 
     color: mouseArea.pressed ? Qt.rgba(0.7, 1, 0.7, 1) : Qt.rgba(0.3, 1, 0.3, 1)

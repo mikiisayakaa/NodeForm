@@ -4,9 +4,9 @@
   "inputNames" : ["bound1", "bound2", "x"],
   "outputNames": ["y"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["", "TextLabel1.qml", "IntSlider1_int.qml"],
-	         ["", "TextLabel1.qml", "IntSlider1_int.qml"],
-                         ["", "TextLabel1.qml", "IntSlider1_int.qml"]
+  "inputFiles" : [ ["", "", ""],
+             ["", "", ""],
+                         ["", "", ""]
                        ],
-  "outputFiles" : [ ["", "TextLabel1.qml", ""] ]
+  "outputFiles" : [ ["", "", ""] ]
 }

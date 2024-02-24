@@ -2,7 +2,7 @@ import QtQuick 2.2
 
 import "../../BaseWidget"
 
-TriangleType1{
+NodestTriangle1 {
 
     property int flow: 0
     property int index: 0

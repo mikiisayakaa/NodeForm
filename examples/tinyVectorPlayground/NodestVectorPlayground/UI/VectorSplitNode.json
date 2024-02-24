@@ -4,7 +4,7 @@
   "inputNames" : ["vector"],
   "outputNames": ["vector1", "vector2"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"] ],
-  "outputFiles" : [ ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"],
-	           ["CircleHandle1.qml", "TextLabel1.qml", "dummy.qml"]  ]
+  "inputFiles" : [ ["", "", "dummy.qml"] ],
+  "outputFiles" : [ ["", "", "dummy.qml"],
+               ["", "", "dummy.qml"]  ]
 }

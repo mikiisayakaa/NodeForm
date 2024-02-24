@@ -1,7 +1,5 @@
 #pragma once
 
-#include <QDebug>
-
 #include <iostream>
 #include <algorithm>
 #include <functional>
@@ -10,14 +8,9 @@
 #include "abstractslot.h"
 #include "Utils/tupleutils.h"
 #include "Utils/slottupleutils.h"
-#include "Utils/variant.h"
-#include "Wrapper/abstractslotsetter.h"
 #include "Utils/gstupleutils.h"
+#include "Wrapper/abstractslotsetter.h"
 #include "Interface/abstractnodeobject.h"
-
-//AbstractNode is not pure virtual, but never instantiate it
-
-//WARNING: heavy use of C++ templates
 
 namespace Nodest{
 
@@ -145,12 +138,6 @@ protected:
                 std::tuple_size_v<OutArgsTypes> - 1>::destructSlots(m_outputSlots);
 
         delete m_nodeObject;
-    }
-
-    //print Output values
-    template<typename FunctionType, typename OutArgsTypes = typename TupleTypes<FunctionType>::OutputArgumentTypes>
-    void verboseOutput(){
-        RecursiveSlotPrinter<OutArgsTypes, OutputSlot, std::tuple_size_v<OutArgsTypes> - 1>::printSlots(m_outputSlots);
     }
 
     void setSlotParent(AbstractEvalNode* parent);

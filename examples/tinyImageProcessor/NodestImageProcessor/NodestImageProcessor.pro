@@ -58,15 +58,11 @@ DISTFILES += \
     UI/LoadImageNode.json \
     Controls/Setters/NodestIMIntSetSlider1.qml
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/release/ -lNodest
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/ -lNodest
-else:unix: LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/ -lNodest
+
+unix|win32: LIBS += -L$$PWD/../../../build/debug/ -lNodest
 
 INCLUDEPATH += $$PWD/../../../
 DEPENDPATH += $$PWD/../../../
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/release/libNodest.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/libNodest.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/release/Nodest.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/Nodest.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/libNodest.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../../build/debug/Nodest.lib
+else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../../build/debug/libNodest.a

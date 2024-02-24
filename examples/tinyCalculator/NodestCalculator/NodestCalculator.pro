@@ -79,10 +79,15 @@ DISTFILES += \
     UI/ClampIntNode.json \
     UI/IntNode.json
 
-unix|win32: LIBS += -L$$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/ -lNodest
+
+
+
+
+
+unix|win32: LIBS += -L$$PWD/../../../build/debug/ -lNodest
 
 INCLUDEPATH += $$PWD/../../../
 DEPENDPATH += $$PWD/../../../
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/Nodest.lib
-else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../../../build-Nodest-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/debug/libNodest.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../../build/debug/Nodest.lib
+else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../../build/debug/libNodest.a

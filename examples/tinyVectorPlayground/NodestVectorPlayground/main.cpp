@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QDir>
 
 #include "Global/globalinit.h"
 #include "Global/globalpaths.h"
@@ -11,11 +12,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths,
-                          "D:/C++/Nodest/Nodest/examples/tinyVectorPlayground/NodestVectorPlayground/UI/");
-    NodestGlobal::setQmlMain("D:/C++/Nodest/Nodest/examples/tinyVectorPlayground/NodestVectorPlayground/Controls/main.qml");
-    NodestGlobal::setPath(NodestGlobal::qmlGettersPaths,
-                          "D:/C++/Nodest/Nodest/examples/tinyVectorPlayground/NodestVectorPlayground/Controls/Getters/");
+    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths, QDir::currentPath() + "/../NodestVectorPlayground/UI/");
+    NodestGlobal::setPath(NodestGlobal::qmlGettersPaths, QDir::currentPath() + "/../NodestVectorPlayground/Controls/Getters/");
+    NodestGlobal::setQmlMain(QDir::currentPath() + "/../NodestVectorPlayground/Controls/main.qml");
     qmlRegisterType<NodeFactoryVector>("CppObjects", 1, 0, "NodeFactory");
     NodestGlobal::globalInit(&a);
 

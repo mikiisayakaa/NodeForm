@@ -1,6 +1,7 @@
 
 #include <QApplication>
 #include <QDebug>
+#include <QDir>
 
 #include "Global/globalinit.h"
 #include "Global/globalpaths.h"
@@ -14,9 +15,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths,
-                          "D:/C++/Nodest/Nodest/examples/tinyCalculator/NodestCalculator/UI/");
-    NodestGlobal::setQmlMain("D:/C++/Nodest/Nodest/examples/tinyCalculator/NodestCalculator/Controls/main.qml");
+    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths, QDir::currentPath() + "/..NodestCalculator/UI/");
+    NodestGlobal::setQmlMain(QDir::currentPath() + "/../NodestCalculator/Controls/main.qml");
     qmlRegisterType<NodeFactory>("CppObjects", 1, 0, "NodeFactory");
     NodestGlobal::globalInit(&a);
 

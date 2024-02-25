@@ -5,6 +5,7 @@
 #include "Utils/qmlcreationutils.h"
 #include "inputslotobject.h"
 #include "outputslotobject.h"
+#include "Extension/Node/nodeselectionextension.h"
 
 
 Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, NodestGlobal::UIParameters *params, QObject *parent)
@@ -17,6 +18,7 @@ Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, Nodes
     createWidgets();
     bindWidgets();
     setWidgetsLayout();
+    addExtensions();
 }
 
 void Nodest::VerticalNodeObject::createWidgets()
@@ -76,7 +78,12 @@ void Nodest::VerticalNodeObject::bindWidgets()
         }
     }
 
-    connect(m_nodeBase, SIGNAL(selected()), this, SLOT(onSelected()));
+}
+
+void Nodest::VerticalNodeObject::addExtensions()
+{
+    NodeSelectionExtension* ext1 = new NodeSelectionExtension(this);
+    addExtension(ext1);
 }
 
 void Nodest::VerticalNodeObject::setWidgetsLayout()
@@ -130,13 +137,4 @@ void Nodest::VerticalNodeObject::onInputChanged()
     }
 }
 
-void Nodest::VerticalNodeObject::onSelected()
-{
-    m_nodeBase->setProperty("colorValue", "yellow");
-    m_nodeBase->setProperty("select", true);
-    BasicGraphObject* graphObj = qobject_cast<BasicGraphObject*>(parent());
-    graphObj->clearNodeSelection();
-    graphObj->clearConnectionSelection();
-    graphObj->getSelectedNodes().push_back(this);
-}
 

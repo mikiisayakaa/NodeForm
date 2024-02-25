@@ -16,6 +16,8 @@ public:
 
     void bindWidgets();
 
+    void addExtensions();
+
     //methods about selections
     void clearNodeSelection();
 
@@ -26,8 +28,6 @@ public:
     auto& getSelectedConnects() {return m_selectedConnectObjects;}
 
 public slots:
-    void onBgdClicked();
-
     void onDeletePressed();
 
     void onPreCopy();

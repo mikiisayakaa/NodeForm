@@ -27,14 +27,13 @@ Rectangle {
 
     color: Qt.rgba(0.2,0.2,0.2,1.0)
 
-    property color colorValue: Qt.rgba(1, 1, 1, 1)
-    property bool select: false
+    property bool selected: false
 
     border.width: 1
-    border.color: colorValue
+    border.color: selected ? "yellow" : "white"
 
     signal position(real x, real y)
-    signal selected()
+    signal select()
 
 
     MouseArea{
@@ -54,10 +53,10 @@ Rectangle {
         }
 
         onPressed: {
-            if (!select){
-                select = true;
-                selected();
+            if (!selected){
+                select();
             }
+
             startMouseX = mouseX;
             startMouseY = mouseY;
         }

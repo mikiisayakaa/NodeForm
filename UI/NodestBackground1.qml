@@ -9,10 +9,10 @@ Rectangle {
     x: -50000
     y: -50000
 
-    signal bgdClicked()
     signal deletePressed()
     signal preCopy()
     signal copy()
+    signal deselect()
 
     property real scaleValue: 1
 
@@ -23,7 +23,7 @@ Rectangle {
         drag.target: bgd
 
         onClicked:{
-            bgdClicked();
+            deselect();
         }
 
         onWheel:{

@@ -1,6 +1,7 @@
 #include "nodeselectionextension.h"
 #include "Interface/abstractnodeobject.h"
 #include "Interface/abstractgraphobject.h"
+#include "Extension/Graph/graphnodeselectionextension.h"
 
 bool Nodest::NodeSelectionExtension::addExtension(QQuickItem *signalSource)
 {
@@ -15,9 +16,12 @@ bool Nodest::NodeSelectionExtension::addExtension(QQuickItem *signalSource)
 
 bool Nodest::NodeSelectionExtension::checkDependency()
 {
-    std::vector<AbstractExtension*> parentExtensions = ((AbstractGraphObject*)parent())->getExtensions();
+    AbstractNodeObject* nodeObj = dynamic_cast<AbstractNodeObject*>(parent());
+    AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(nodeObj->parent());
+    std::vector<AbstractExtension*> parentExtensions = graphObj->getExtensions();
     for (size_t i = 0; i < parentExtensions.size(); i++){
         if (parentExtensions[i]->getExtensionName() == "GraphNodeSelection"){
+            m_graphSelectionExtension = dynamic_cast<GraphNodeSelectionExtension*>(parentExtensions[i]);
             return true;
         }
     }
@@ -27,5 +31,6 @@ bool Nodest::NodeSelectionExtension::checkDependency()
 
 void Nodest::NodeSelectionExtension::onSelect()
 {
-    m_graphSelectionExtension->selectOne((AbstractNodeObject*)(parent()));
+    m_graphSelectionExtension->onDeselect();
+    m_graphSelectionExtension->selectOne(dynamic_cast<AbstractNodeObject*>(parent()));
 }

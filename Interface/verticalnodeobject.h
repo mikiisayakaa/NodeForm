@@ -44,6 +44,8 @@ public:
 
     void bindWidgets();
 
+    void addExtensions();
+
     void setWidgetsLayout();
 
     VerticalNodeObject* clone();
@@ -53,7 +55,6 @@ signals:
 public slots:
     void onInputChanged();
 
-    void onSelected();
 
 private:
 

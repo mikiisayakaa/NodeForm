@@ -2,12 +2,14 @@
 #include "Global/globalitems.h"
 #include "Global/globalqmlfiles.h"
 
+#include "Extension/Graph/graphnodeselectionextension.h"
 
 Nodest::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *parent)
     : AbstractGraphObject (graph, parent)
 {
     createWidgets();
     bindWidgets();
+    addExtensions();
 }
 
 void Nodest::BasicGraphObject::createWidgets()
@@ -28,11 +30,16 @@ void Nodest::BasicGraphObject::createWidgets()
 
 void Nodest::BasicGraphObject::bindWidgets()
 {
-    connect(m_background, SIGNAL(bgdClicked()), this, SLOT(onBgdClicked()));
     connect(m_background, SIGNAL(deletePressed()), this, SLOT(onDeletePressed()));
 
     connect(m_background, SIGNAL(preCopy()), this, SLOT(onPreCopy()));
     connect(m_background, SIGNAL(copy()), this, SLOT(onCopy()));
+}
+
+void Nodest::BasicGraphObject::addExtensions()
+{
+    GraphNodeSelectionExtension* ext1 = new GraphNodeSelectionExtension(this);
+    addExtension(ext1);
 }
 
 void Nodest::BasicGraphObject::clearNodeSelection()
@@ -53,11 +60,6 @@ void Nodest::BasicGraphObject::clearConnectionSelection()
     m_selectedConnectObjects.clear();
 }
 
-void Nodest::BasicGraphObject::onBgdClicked()
-{
-    clearNodeSelection();
-    clearConnectionSelection();
-}
 
 void Nodest::BasicGraphObject::onDeletePressed()
 {

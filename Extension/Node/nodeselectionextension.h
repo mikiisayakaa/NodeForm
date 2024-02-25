@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QDebug>
 
 #include "Extension/abstractextension.h"
 #include "Extension/Graph/graphnodeselectionextension.h"

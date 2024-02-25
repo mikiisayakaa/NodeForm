@@ -7,6 +7,7 @@
 #include "Core/connection.h"
 #include "abstractnodeobject.h"
 #include "Core/connection.h"
+#include "Extension/abstractextension.h"
 
 namespace Nodest{
 
@@ -44,6 +45,9 @@ public:
 
     void copyNodeObj(AbstractNodeObject* nodeObj);
 
+    void addExtension(AbstractExtension* extension);
+
+    const std::vector<AbstractExtension*>& getExtensions() const {return m_extensions;}
 signals:
 
 public slots:
@@ -58,6 +62,8 @@ protected:
     std::vector<AbstractNodeObject*> m_nodeObjects;
 
     QQuickItem* m_background;
+
+    std::vector<AbstractExtension*> m_extensions;
 };
 
 }

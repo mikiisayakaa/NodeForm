@@ -58,7 +58,10 @@ SOURCES += \
     Wrapper/abstractslotgetter.cpp \
     Interface/abstractgraphobject.cpp \
     Global/globalcleanup.cpp \
-    Core/abstractboolevalnode.cpp
+    Core/abstractboolevalnode.cpp \
+    Extension/abstractextension.cpp \
+    Extension/Node/nodeselectionextension.cpp \
+    Extension/Graph/graphnodeselectionextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -99,7 +102,10 @@ HEADERS += \
     Global/globalinit.h \
     Utils/gstupleutils.h \
     Core/abstractboolevalnode.h \
-    Core/basicboolnodemacro.h
+    Core/basicboolnodemacro.h \
+    Extension/abstractextension.h \
+    Extension/Node/nodeselectionextension.h \
+    Extension/Graph/graphnodeselectionextension.h
 
 
 FORMS +=

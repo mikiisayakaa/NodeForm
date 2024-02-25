@@ -3,6 +3,7 @@
 #include "Core/abstractnode.h"
 #include "Wrapper/abstractslotsetter.h"
 #include "abstractslotobject.h"
+#include "Extension/abstractextension.h"
 
 #include <QObject>
 #include <QQuickItem>
@@ -31,6 +32,8 @@ public:
 
     QQuickItem* getItem(int index) const {return m_items[index];}
 
+    void addExtension(AbstractExtension* extension);
+
 signals:
 
 public slots:
@@ -44,6 +47,8 @@ protected:
 
     std::vector<AbstractSlotObject*> m_inputObjects;
     std::vector<AbstractSlotObject*> m_outputObjects;
+
+    std::vector<AbstractExtension*> m_extensions;
 };
 
 }

@@ -51,6 +51,25 @@ void Nodest::AbstractGraphObject::copyNodeObj(Nodest::AbstractNodeObject *nodeOb
     addNodeObject(nodeObjCopy);
 }
 
+void Nodest::AbstractGraphObject::addExtension(Nodest::AbstractExtension *extension)
+{
+    for (size_t i = 0; i < m_extensions.size(); i++){
+        if (m_extensions[i]->getExtensionName() == extension->getExtensionName()){
+            return;
+        }
+    }
+
+
+    if (extension->addExtension(m_background)){
+        m_extensions.push_back(extension);
+    }
+    else{
+        delete extension;
+    }
+
+
+}
+
 
 void Nodest::AbstractGraphObject::removeObjectFromVector(Nodest::AbstractNodeObject *nodeObj)
 {

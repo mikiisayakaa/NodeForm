@@ -16,13 +16,13 @@ Shape{
     property var handle2: null
 
 
-    property color colorValue: "white"
-    property bool select: false
+    property color colorValue: selected ? "yellow" : "white"
+    property bool selected: false
     property real lineWidth: 2
 
     property real scaleValue: parent.scaleValue
 
-    signal selected()
+    signal select()
 
     transform: Scale{
         origin.x: shape.parent ? shape.parent.width / 2 - shape.x : 0
@@ -139,8 +139,8 @@ Shape{
 
 
             if (doSelect){
-                if (!select){
-                    selected();
+                if (!selected){
+                    select();
                 }
                 mouse.accepted = true;
             }

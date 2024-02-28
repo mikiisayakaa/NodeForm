@@ -18,25 +18,16 @@ public:
 
     void addExtensions();
 
-    //methods about selections
-    void clearNodeSelection();
 
-    void clearConnectionSelection();
-
-    auto& getSelectedNodes() {return m_selectedNodeObjects;}
-
-    auto& getSelectedConnects() {return m_selectedConnectObjects;}
 
 public slots:
-    void onDeletePressed();
+//    void onDeletePressed();
 
-    void onPreCopy();
+//    void onPreCopy();
 
-    void onCopy();
+//    void onCopy();
 
 private:
-    std::vector<ConnectionObject*> m_selectedConnectObjects;
-    std::vector<AbstractNodeObject*> m_selectedNodeObjects;
 
     std::vector<AbstractNodeObject*> m_nodeObjectsToCopy;
 };

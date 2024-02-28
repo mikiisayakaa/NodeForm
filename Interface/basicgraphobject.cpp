@@ -3,6 +3,7 @@
 #include "Global/globalqmlfiles.h"
 
 #include "Extension/Graph/graphnodeselectionextension.h"
+#include "Extension/Graph/graphconnectionselectionextension.h"
 
 Nodest::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *parent)
     : AbstractGraphObject (graph, parent)
@@ -30,68 +31,54 @@ void Nodest::BasicGraphObject::createWidgets()
 
 void Nodest::BasicGraphObject::bindWidgets()
 {
-    connect(m_background, SIGNAL(deletePressed()), this, SLOT(onDeletePressed()));
+//    connect(m_background, SIGNAL(deletePressed()), this, SLOT(onDeletePressed()));
 
-    connect(m_background, SIGNAL(preCopy()), this, SLOT(onPreCopy()));
-    connect(m_background, SIGNAL(copy()), this, SLOT(onCopy()));
+//    connect(m_background, SIGNAL(preCopy()), this, SLOT(onPreCopy()));
+//    connect(m_background, SIGNAL(copy()), this, SLOT(onCopy()));
 }
 
 void Nodest::BasicGraphObject::addExtensions()
 {
     GraphNodeSelectionExtension* ext1 = new GraphNodeSelectionExtension(this);
     addExtension(ext1);
-}
-
-void Nodest::BasicGraphObject::clearNodeSelection()
-{
-    for (auto obj : m_selectedNodeObjects){
-        obj->getNodeBase()->setProperty("colorValue", "white");
-        obj->getNodeBase()->setProperty("select", false);
-    }
-    m_selectedNodeObjects.clear();
-}
-
-void Nodest::BasicGraphObject::clearConnectionSelection()
-{
-    for (auto obj : m_selectedConnectObjects){
-        obj->getItem()->setProperty("colorValue", "white");
-        obj->getItem()->setProperty("select", false);
-    }
-    m_selectedConnectObjects.clear();
+    GraphConnectionSelectionExtension* ext2 = new GraphConnectionSelectionExtension(this);
+    addExtension(ext2);
 }
 
 
-void Nodest::BasicGraphObject::onDeletePressed()
-{
-    Q_ASSERT_X(m_selectedNodeObjects.empty() || m_selectedConnectObjects.empty(),
-               "abstractgraphobject.cpp", "Error: cannot select both nodes and connections!");
 
-    if (!m_selectedNodeObjects.empty()){
-        for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
-            removeNodeObject(m_selectedNodeObjects[i]);
-        }
-        m_selectedNodeObjects.clear();
-        return;
-    }
 
-    if (!m_selectedConnectObjects.empty()){
-        for (size_t i = 0; i < m_selectedConnectObjects.size(); i++){
-            m_graph->removeSingleConnection(m_selectedConnectObjects[i]->getConnection());
-        }
-        m_selectedConnectObjects.clear();
-        return;
-    }
-}
+//void Nodest::BasicGraphObject::onDeletePressed()
+//{
+//    Q_ASSERT_X(m_selectedNodeObjects.empty() || m_selectedConnectObjects.empty(),
+//               "abstractgraphobject.cpp", "Error: cannot select both nodes and connections!");
 
-void Nodest::BasicGraphObject::onPreCopy()
-{
-    m_nodeObjectsToCopy = m_selectedNodeObjects;
-}
+//    if (!m_selectedNodeObjects.empty()){
+//        for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
+//            removeNodeObject(m_selectedNodeObjects[i]);
+//        }
+//        m_selectedNodeObjects.clear();
+//        return;
+//    }
 
-void Nodest::BasicGraphObject::onCopy()
-{
-    for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
-        copyNodeObj(m_selectedNodeObjects[i]);
-    }
-}
+//    if (!m_selectedConnectObjects.empty()){
+//        for (size_t i = 0; i < m_selectedConnectObjects.size(); i++){
+//            m_graph->removeSingleConnection(m_selectedConnectObjects[i]->getConnection());
+//        }
+//        m_selectedConnectObjects.clear();
+//        return;
+//    }
+//}
+
+//void Nodest::BasicGraphObject::onPreCopy()
+//{
+//    m_nodeObjectsToCopy = m_selectedNodeObjects;
+//}
+
+//void Nodest::BasicGraphObject::onCopy()
+//{
+//    for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
+//        copyNodeObj(m_selectedNodeObjects[i]);
+//    }
+//}
 

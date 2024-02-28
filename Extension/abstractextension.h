@@ -25,7 +25,6 @@ public slots:
 
 protected:
     QString m_extensionName;
-    QStringList m_extensionDependencies;
 
     AbstractExtension* m_parentExtension;
 };

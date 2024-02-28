@@ -1,6 +1,7 @@
 #include "graphnodeselectionextension.h"
-
+#include "Extension/Graph/graphconnectionselectionextension.h"
 #include "Interface/abstractnodeobject.h"
+#include "Interface/abstractgraphobject.h"
 
 bool Nodest::GraphNodeSelectionExtension::addExtension(QQuickItem *signalSource)
 {
@@ -18,6 +19,19 @@ void Nodest::GraphNodeSelectionExtension::selectOne(Nodest::AbstractNodeObject *
 
     nodeObj->getNodeBase()->setProperty("selected", true);
     m_selectedNodes.push_back(nodeObj);
+
+    //interact with connection selection Extension
+
+    AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(parent());
+    std::vector<AbstractExtension*> siblingExtensions = graphObj->getExtensions();
+
+    for (size_t i = 0; i < siblingExtensions.size(); i++){
+        if (siblingExtensions[i]->getExtensionName() == "GraphConnectionSelection"){
+            GraphConnectionSelectionExtension* connectionSelectionExtension =
+                    dynamic_cast<GraphConnectionSelectionExtension*>(siblingExtensions[i]);
+            connectionSelectionExtension->onDeselect();
+        }
+    }
 }
 
 void Nodest::GraphNodeSelectionExtension::deselectOne(Nodest::AbstractNodeObject *nodeObj)

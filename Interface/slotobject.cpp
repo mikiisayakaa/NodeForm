@@ -75,8 +75,8 @@ void Nodest::SlotObject::onConnectionEnd(qreal x, qreal y)
 
             connection->setObj(m_tempConnection);
             m_tempConnection->setConnection(connection);
+            m_tempConnection->addExtensions();
 
-            connect(line, SIGNAL(selected()), m_tempConnection, SLOT(onSelected()));
         }
     }
 

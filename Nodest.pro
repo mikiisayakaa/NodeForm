@@ -61,7 +61,9 @@ SOURCES += \
     Core/abstractboolevalnode.cpp \
     Extension/abstractextension.cpp \
     Extension/Node/nodeselectionextension.cpp \
-    Extension/Graph/graphnodeselectionextension.cpp
+    Extension/Graph/graphnodeselectionextension.cpp \
+    Extension/Graph/graphconnectionselectionextension.cpp \
+    Extension/Connection/connectionselectionextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -105,7 +107,9 @@ HEADERS += \
     Core/basicboolnodemacro.h \
     Extension/abstractextension.h \
     Extension/Node/nodeselectionextension.h \
-    Extension/Graph/graphnodeselectionextension.h
+    Extension/Graph/graphnodeselectionextension.h \
+    Extension/Graph/graphconnectionselectionextension.h \
+    Extension/Connection/connectionselectionextension.h
 
 
 FORMS +=

@@ -4,6 +4,7 @@
 #include <QQuickItem>
 
 #include "Core/connection.h"
+#include "Extension/abstractextension.h"
 
 namespace Nodest{
 
@@ -24,16 +25,20 @@ public:
     void setConnection(Connection* connection) {m_connection = connection;}
     Connection* getConnection() const {return m_connection;}
 
+    void addExtension(AbstractExtension* extension);
+
+    void addExtensions();
+
 public slots:
 
-    //process selection
-    void onSelected();
 
 private:
 
     QQuickItem* m_connectionItem;
 
     Connection* m_connection;
+
+    std::vector<AbstractExtension*> m_extensions;
 };
 
 }

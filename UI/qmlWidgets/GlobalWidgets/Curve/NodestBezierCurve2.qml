@@ -31,6 +31,8 @@ Shape{
         yScale: shape.scaleValue
     }
 
+    property alias shapePath: path
+
     ShapePath {
         id: path
 

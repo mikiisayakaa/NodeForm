@@ -102,8 +102,6 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
     m_tempConnection->setItem(line);
     line->setParent(m_tempConnection);
 
-
-
 }
 
 

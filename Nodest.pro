@@ -157,4 +157,5 @@ DISTFILES += \
     UI/qmlWidgets/Setters/NodestIntSetTextInput1.qml \
     UI/qmlWidgets/Setters/NodestIntSetSpinBox1.qml \
     UI/qmlWidgets/TextLabels/NodestTextLabel1.qml \
-    UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurve2.qml
+    UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurve2.qml \
+    UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurveDashAnimate1.qml

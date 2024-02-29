@@ -38,14 +38,19 @@ extern QHash<QString, QQmlComponent*> nodeBaseMap;
 extern QString dummyFile;
 extern QQmlComponent* dummy;
 
-//global background Rectangle for the node editor
-extern QString backgroundFile;
-extern QQmlComponent* bgd;
-void setBackgroundFile(const QString& filePath);
 
-//only supports one kind of connection line for the whole graph
-extern QString lineFile;
-extern QQmlComponent* connectionLine;
-void setLineFile(const QString& filePath);
+extern QString backgroundDefault;
+extern QHash<QString, QQmlComponent*> backgroundMap;
+//global background Rectangle for the node editor
+//extern QString backgroundFile;
+//extern QQmlComponent* bgd;
+//void setBackgroundFile(const QString& filePath);
+
+extern QString curveDefault;
+extern QHash<QString, QQmlComponent*> curveMap;
+//extern QString lineFile;
+//extern QQmlComponent* connectionLine;
+//void setLineFile(const QString& filePath);
+
 
 }

@@ -22,4 +22,11 @@ struct UIParameters{
 //node id to UIparameters
 extern QHash<QString, UIParameters*> uiMap;
 
+struct GlobalUIParameters{
+    std::vector<QString> curveFiles;
+    QString backgroundFile;
+};
+
+extern GlobalUIParameters* globalUi;
+
 }

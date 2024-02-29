@@ -31,6 +31,7 @@ bool Nodest::ConnectionSelectionExtension::checkDependency()
 
 void Nodest::ConnectionSelectionExtension::onSelect()
 {
+    qDebug() << "inhere";
     m_graphSelectionExtension->onDeselect();
     m_graphSelectionExtension->selectOne(dynamic_cast<AbstractConnectionObject*>(parent()));
 }

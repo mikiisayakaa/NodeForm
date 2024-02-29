@@ -15,6 +15,8 @@ static QString qmlPath = uiPath + "qmlWidgets/";
 //specify qml file names every time you fill in a node's UI json file.
 extern QStringList nodeJsonPaths;
 
+extern QStringList globalJsonPaths;
+
 extern QStringList qmlHandlesPaths;
 
 extern QStringList qmlSettersPaths;
@@ -24,6 +26,10 @@ extern QStringList qmlGettersPaths;
 extern QStringList qmlTextLabelsPaths;
 
 extern QStringList qmlNodeBasePaths;
+
+extern QStringList qmlCurvePaths;
+
+extern QStringList qmlBackgroundPath;
 
 extern QString qmlMainPath;
 

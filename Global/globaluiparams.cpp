@@ -4,4 +4,6 @@ namespace NodestGlobal{
 
 QHash<QString, UIParameters*> uiMap;
 
+GlobalUIParameters* globalUi;
+
 }

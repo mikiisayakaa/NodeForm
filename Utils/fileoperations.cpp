@@ -66,6 +66,22 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
     return params;
 }
 
+void Nodest::loadGlobalUIJson(NodestGlobal::GlobalUIParameters *param, const QString &jsonPath)
+{
+    QString absDir = jsonPath;
+    QJsonObject jsonObj;
+    loadJson(absDir, jsonObj);
+
+    //parse curveFiles
+    QJsonArray baseFilesArray = jsonObj["curveFiles"].toArray();
+    for (const QJsonValue& value : baseFilesArray){
+        NodestGlobal::qmlFileNames.insert(value.toString());
+        param->curveFiles.push_back(value.toString());
+    }
+
+    param->backgroundFile = jsonObj["backgroundFile"].toString();
+}
+
 
 bool Nodest::loadQmlByteArray(const QString &qmlPath, QByteArray &bytearray)
 {
@@ -105,3 +121,5 @@ bool Nodest::loadJson(const QString &jsonPath, QJsonObject &jsonObj)
     jsonObj = jsonDoc.object();
     return true;
 }
+
+

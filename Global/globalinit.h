@@ -17,13 +17,13 @@ void prepareUIWidgets(QQmlEngine* engine);
 
 void fillDummy(QQmlEngine* engine);
 
-void fillBackground(QQmlEngine* engine);
+//void fillBackground(QQmlEngine* engine);
 
-void fillConnectionLine(QQmlEngine* engine);
+//void fillConnectionLine(QQmlEngine* engine);
 
 //recursively traverse a folder to load all json files
-void fillUImap(const QString& path);
-
+void fillNodeUImap(const QString& path);
+void fillGlobalUI(const QString& path);
 
 void fillQmlData(const QString& path, QQmlEngine* engine, QHash<QString, QQmlComponent*>& mp);
 void setQmlDefault(const QString& path, QString& defaultFile);

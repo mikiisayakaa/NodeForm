@@ -1,6 +1,7 @@
 #include "slotobject.h"
 #include "Global/globalitems.h"
 #include "Global/globalqmlfiles.h"
+
 #include "Utils/qmlcreationutils.h"
 #include "abstractgraphobject.h"
 
@@ -88,7 +89,7 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
 {
     QQuickItem* background = NodestGlobal::globalBackground;
 
-    QQmlComponent* component = NodestGlobal::connectionLine;
+    QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::curveDefault];
     QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
     QQuickItem* line = qobject_cast<QQuickItem*>(obj);
     line->setParentItem(background);

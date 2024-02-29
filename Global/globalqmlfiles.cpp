@@ -23,20 +23,26 @@ QHash<QString, QQmlComponent*> nodeBaseMap;
 QString dummyFile = "dummy.qml";
 QQmlComponent* dummy;
 
-QString backgroundFile = "NodestBackground1.qml";
-QQmlComponent* bgd;
+QString curveDefault;
+QHash<QString, QQmlComponent*> curveMap;
 
-QString lineFile = "NodestBezierCurve2.qml";
-QQmlComponent* connectionLine;
+QString backgroundDefault;
+QHash<QString, QQmlComponent*> backgroundMap;
 
-void setBackgroundFile(const QString &filePath)
-{
-    backgroundFile = filePath;
-}
+//QString backgroundFile = "NodestBackground1.qml";
+//QQmlComponent* bgd;
 
-void setLineFile(const QString &filePath)
-{
-    lineFile = filePath;
-}
+//QString lineFile = "NodestBezierCurve2.qml";
+//QQmlComponent* connectionLine;
+
+//void setBackgroundFile(const QString &filePath)
+//{
+//    backgroundFile = filePath;
+//}
+
+//void setLineFile(const QString &filePath)
+//{
+//    lineFile = filePath;
+//}
 
 }

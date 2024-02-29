@@ -16,7 +16,7 @@ void Nodest::BasicGraphObject::createWidgets()
 {
     QQuickItem* parentItem = NodestGlobal::globalRootObject;
 
-    QQmlComponent* component = NodestGlobal::bgd;
+    QQmlComponent* component = NodestGlobal::backgroundMap[NodestGlobal::backgroundDefault];
 
     QObject* bgdObject = component->beginCreate(NodestGlobal::engine->rootContext());
     m_background = qobject_cast<QQuickItem*>(bgdObject);

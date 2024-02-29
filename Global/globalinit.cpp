@@ -14,7 +14,7 @@
 #include <QSurfaceFormat>
 #include <QQuickItem>
 
-void NodestGlobal::fillUImap(const QString &path)
+void NodestGlobal::fillNodeUImap(const QString &path)
 {
     QDir directory(path);
 
@@ -22,11 +22,30 @@ void NodestGlobal::fillUImap(const QString &path)
 
     foreach (const QFileInfo& fileInfo, fileInfoList) {
         if (fileInfo.isDir() && fileInfo.fileName() != "." && fileInfo.fileName() != "..") {
-            fillUImap(fileInfo.filePath());
+            fillNodeUImap(fileInfo.filePath());
         }
         else if (fileInfo.isFile() && fileInfo.suffix().toLower() == "json") {
             UIParameters* params = Nodest::loadUIJson(fileInfo.filePath());
             uiMap[params->nodeID] = params;
+        }
+    }
+}
+
+void NodestGlobal::fillGlobalUI(const QString &path)
+{
+    QDir directory(path);
+
+    NodestGlobal::globalUi = new NodestGlobal::GlobalUIParameters;
+
+    QFileInfoList fileInfoList = directory.entryInfoList();
+
+    foreach (const QFileInfo& fileInfo, fileInfoList) {
+        if (fileInfo.isDir() && fileInfo.fileName() != "." && fileInfo.fileName() != "..") {
+            fillNodeUImap(fileInfo.filePath());
+        }
+        else if (fileInfo.isFile() && fileInfo.fileName() == "globalUI.json") {
+            //load global ui
+            Nodest::loadGlobalUIJson(NodestGlobal::globalUi, fileInfo.filePath());
         }
     }
 }
@@ -116,9 +135,10 @@ void NodestGlobal::setQmlGSDefault(const QString &path, QSet<QString> &defaultFi
     }
 }
 
+
 void NodestGlobal::fillDummy(QQmlEngine* engine)
 {
-    QString path = uiPath + dummyFile;
+    QString path = qmlPath + "GlobalWidgets/" + dummyFile;
 
     QByteArray bytearray;
     Nodest::loadQmlByteArray(path, bytearray);
@@ -133,36 +153,48 @@ void NodestGlobal::fillDummy(QQmlEngine* engine)
 
 }
 
-void NodestGlobal::fillBackground(QQmlEngine *engine)
-{
-    QString path = uiPath + backgroundFile;
+//void NodestGlobal::fillBackground(QQmlEngine *engine)
+//{
+//    QString path = uiPath + backgroundFile;
 
-    QByteArray bytearray;
-    Nodest::loadQmlByteArray(path, bytearray);
-    bgd = new QQmlComponent(engine);
-    bgd->setData(bytearray, QUrl("file:///" + path));
-}
+//    QByteArray bytearray;
+//    Nodest::loadQmlByteArray(path, bytearray);
+//    bgd = new QQmlComponent(engine);
+//    bgd->setData(bytearray, QUrl("file:///" + path));
+//}
 
-void NodestGlobal::fillConnectionLine(QQmlEngine *engine)
-{
-    QString path = uiPath + lineFile;
+//void NodestGlobal::fillConnectionLine(QQmlEngine *engine)
+//{
+//    QString path = uiPath + lineFile;
 
-    QByteArray bytearray;
-    Nodest::loadQmlByteArray(path, bytearray);
-    connectionLine = new QQmlComponent(engine);
-    connectionLine->setData(bytearray, QUrl("file:///" + path));
-}
+//    QByteArray bytearray;
+//    Nodest::loadQmlByteArray(path, bytearray);
+//    connectionLine = new QQmlComponent(engine);
+//    connectionLine->setData(bytearray, QUrl("file:///" + path));
+//}
 
 //called at init stage of the program
 void NodestGlobal::prepareUIWidgets(QQmlEngine *engine)
 {
     for (auto& jsonPath : NodestGlobal::nodeJsonPaths){
-        fillUImap(jsonPath);
+        fillNodeUImap(jsonPath);
+    }
+
+    for (auto& globaljsonPath : NodestGlobal::globalJsonPaths){
+        fillGlobalUI(globaljsonPath);
+    }
+
+    for (auto& bgdPath : NodestGlobal::qmlBackgroundPath){
+        setQmlDefault(bgdPath, backgroundDefault);
+        fillQmlData(bgdPath, engine, backgroundMap);
+    }
+
+    for (auto& curvePath : NodestGlobal::qmlCurvePaths){
+        setQmlDefault(curvePath, curveDefault);
+        fillQmlData(curvePath, engine, curveMap);
     }
 
     fillDummy(engine);
-    fillBackground(engine);
-    fillConnectionLine(engine);
 
     //always set default first, we need to add the default file to qmlFileNames
     for (auto& handlePath : NodestGlobal::qmlHandlesPaths){
@@ -223,4 +255,8 @@ void NodestGlobal::globalInit(QApplication *app)
     qDebug() << "----------------------";
     QObject::connect(app, &QApplication::aboutToQuit, &NodestGlobal::cleanupGraph);
 }
+
+
+
+
 

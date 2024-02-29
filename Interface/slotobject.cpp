@@ -1,7 +1,7 @@
 #include "slotobject.h"
 #include "Global/globalitems.h"
 #include "Global/globalqmlfiles.h"
-
+#include "connectionobject.h"
 #include "Utils/qmlcreationutils.h"
 #include "abstractgraphobject.h"
 
@@ -98,7 +98,7 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
     setLinePoint(line, handle);
 
 
-    m_tempConnection = new AbstractConnectionObject(background->parent());
+    m_tempConnection = new ConnectionObject(background->parent());
     m_tempConnection->setItem(line);
     line->setParent(m_tempConnection);
 

@@ -1,5 +1,5 @@
 #include "graphconnectionselectionextension.h"
-#include "Interface/connectionobject.h"
+#include "Interface/abstractconnectionobject.h"
 #include "Interface/abstractgraphobject.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
 
@@ -9,7 +9,7 @@ bool Nodest::GraphConnectionSelectionExtension::addExtension(QQuickItem *signalS
     return true;
 }
 
-void Nodest::GraphConnectionSelectionExtension::selectOne(Nodest::ConnectionObject *connectObj)
+void Nodest::GraphConnectionSelectionExtension::selectOne(Nodest::AbstractConnectionObject *connectObj)
 {
     for (auto selectedObj : m_selectedConnections){
         if (selectedObj == connectObj){
@@ -33,7 +33,7 @@ void Nodest::GraphConnectionSelectionExtension::selectOne(Nodest::ConnectionObje
     }
 }
 
-void Nodest::GraphConnectionSelectionExtension::deselectOne(Nodest::ConnectionObject *connectObj)
+void Nodest::GraphConnectionSelectionExtension::deselectOne(Nodest::AbstractConnectionObject *connectObj)
 {
     for (size_t i = 0; i < m_selectedConnections.size(); i++){
         if (m_selectedConnections[i] == connectObj){

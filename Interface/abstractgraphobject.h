@@ -6,12 +6,12 @@
 #include "Core/abstractnodegraph.h"
 #include "Core/connection.h"
 #include "abstractnodeobject.h"
-#include "Core/connection.h"
 
 namespace Nodest{
 
 class AbstractNodeGraph;
 class AbstractExtension;
+class AbstractConnectionObject;
 
 class AbstractGraphObject : public QObject
 {
@@ -37,7 +37,7 @@ public:
 
     void removeNodeObject(AbstractNodeObject* nodeObj);
 
-    void removeSingleConnection(ConnectionObject* connectionObject);
+    void removeSingleConnection(AbstractConnectionObject* connectionObject);
 
     QQuickItem* getBackground() const {return m_background;}
 

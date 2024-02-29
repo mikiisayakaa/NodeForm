@@ -1,12 +1,11 @@
 #pragma once
 
-#include "Interface/connectionobject.h"
+#include "Interface/abstractconnectionobject.h"
 
 namespace Nodest{
 
 class InputSlot;
 class OutputSlot;
-class ConnectionObject;
 
 class Connection
 {
@@ -20,8 +19,8 @@ public:
     OutputSlot* getFirst() {return m_first;}
     InputSlot* getSecond() {return m_second;}
 
-    void setObj(ConnectionObject* obj) {m_connectObj = obj;}
-    ConnectionObject* getObj() const {return m_connectObj;}
+    void setObj(AbstractConnectionObject* obj) {m_connectObj = obj;}
+    AbstractConnectionObject* getObj() const {return m_connectObj;}
 
 private:
     //a little confusing here: m_first is the start of the flow,
@@ -29,7 +28,7 @@ private:
     OutputSlot* m_first;
     InputSlot* m_second;
 
-    ConnectionObject* m_connectObj;
+    AbstractConnectionObject* m_connectObj;
 
 };
 

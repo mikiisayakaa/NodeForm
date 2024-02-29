@@ -7,6 +7,8 @@
 
 namespace Nodest{
 
+class AbstractConnectionObject;
+
 class SlotObject : public AbstractSlotObject
 {
     Q_OBJECT
@@ -26,7 +28,7 @@ protected:
 
 protected:
     TestConnection* m_testConnection;
-    ConnectionObject* m_tempConnection;
+    AbstractConnectionObject* m_tempConnection;
 };
 
 }

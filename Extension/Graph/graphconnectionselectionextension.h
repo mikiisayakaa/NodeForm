@@ -6,7 +6,7 @@
 
 namespace Nodest{
 
-class ConnectionObject;
+class AbstractConnectionObject;
 
 class GraphConnectionSelectionExtension : public AbstractExtension
 {
@@ -18,9 +18,9 @@ public:
 
     bool addExtension(QQuickItem* signalSource);
 
-    void selectOne(ConnectionObject* connectObj);
+    void selectOne(AbstractConnectionObject* connectObj);
 
-    void deselectOne(ConnectionObject* connectObj);
+    void deselectOne(AbstractConnectionObject* connectObj);
 
 
 signals:
@@ -30,7 +30,7 @@ public slots:
     void onDeselect();
 
 private:
-    std::vector<ConnectionObject*> m_selectedConnections;
+    std::vector<AbstractConnectionObject*> m_selectedConnections;
 };
 
 }

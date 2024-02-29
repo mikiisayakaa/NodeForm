@@ -7,11 +7,11 @@
 #include "Core/connection.h"
 #include "abstractnodeobject.h"
 #include "Core/connection.h"
-#include "Extension/abstractextension.h"
 
 namespace Nodest{
 
 class AbstractNodeGraph;
+class AbstractExtension;
 
 class AbstractGraphObject : public QObject
 {

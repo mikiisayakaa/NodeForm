@@ -3,7 +3,6 @@
 #include "Core/abstractnode.h"
 #include "Wrapper/abstractslotsetter.h"
 #include "abstractslotobject.h"
-#include "Extension/abstractextension.h"
 
 #include <QObject>
 #include <QQuickItem>
@@ -11,6 +10,8 @@
 #include <vector>
 
 namespace Nodest{
+
+class AbstractExtension;
 
 class AbstractNodeObject : public QObject
 {

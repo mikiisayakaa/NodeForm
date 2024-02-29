@@ -1,5 +1,5 @@
 #include "abstractgraphobject.h"
-
+#include "Extension/abstractextension.h"
 
 Nodest::AbstractGraphObject::AbstractGraphObject(Nodest::AbstractNodeGraph *graph, QObject *parent)
     :  QObject(parent), m_graph(graph)
@@ -54,7 +54,7 @@ void Nodest::AbstractGraphObject::copyNodeObj(Nodest::AbstractNodeObject *nodeOb
 void Nodest::AbstractGraphObject::addExtension(Nodest::AbstractExtension *extension)
 {
     for (size_t i = 0; i < m_extensions.size(); i++){
-        if (m_extensions[i]->getExtensionName() == extension->getExtensionName()){
+        if (m_extensions[i]->getExtensionType() == extension->getExtensionType()){
             return;
         }
     }

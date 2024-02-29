@@ -63,7 +63,8 @@ SOURCES += \
     Extension/Node/nodeselectionextension.cpp \
     Extension/Graph/graphnodeselectionextension.cpp \
     Extension/Graph/graphconnectionselectionextension.cpp \
-    Extension/Connection/connectionselectionextension.cpp
+    Extension/Connection/connectionselectionextension.cpp \
+    Extension/extensionfactory.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -109,7 +110,9 @@ HEADERS += \
     Extension/Node/nodeselectionextension.h \
     Extension/Graph/graphnodeselectionextension.h \
     Extension/Graph/graphconnectionselectionextension.h \
-    Extension/Connection/connectionselectionextension.h
+    Extension/Connection/connectionselectionextension.h \
+    Extension/extensionfactory.h \
+    Extension/extensiontypes.h
 
 
 FORMS +=

@@ -2,14 +2,14 @@
 #include "abstractgraphobject.h"
 #include "basicgraphobject.h"
 
-#include "Extension/Connection/connectionselectionextension.h"
+#include "Extension/extensionfactory.h"
 
 
 void Nodest::ConnectionObject::addExtension(AbstractExtension *extension)
 {
 
     for (size_t i = 0; i < m_extensions.size(); i++){
-        if (m_extensions[i]->getExtensionName() == extension->getExtensionName()){
+        if (m_extensions[i]->getExtensionType() == extension->getExtensionType()){
             return;
         }
     }
@@ -27,7 +27,7 @@ void Nodest::ConnectionObject::addExtension(AbstractExtension *extension)
 
 void Nodest::ConnectionObject::addExtensions()
 {
-    ConnectionSelectionExtension* ext1 = new ConnectionSelectionExtension(this);
+    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::ConnectionSelection, this);
     addExtension(ext1);
 }
 

@@ -13,7 +13,8 @@ class NodeSelectionExtension : public AbstractExtension
     Q_OBJECT
 public:
     explicit NodeSelectionExtension(QObject *parent = nullptr) :
-        AbstractExtension(parent) { m_extensionName = "NodeSelection";}
+        AbstractExtension(parent) { m_extensionName = "NodeSelection";
+                                    m_type = ExtensionType::NodeSelection;}
 
     bool addExtension(QQuickItem* signalSource);
 

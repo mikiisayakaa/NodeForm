@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QQuickItem>
 
+#include "extensiontypes.h"
+
 namespace Nodest{
 
 class AbstractExtension : public QObject
@@ -19,6 +21,8 @@ public:
 
     QString getExtensionName() {return m_extensionName;}
 
+    ExtensionType getExtensionType() {return m_type;}
+
 signals:
 
 public slots:
@@ -26,6 +30,7 @@ public slots:
 protected:
     QString m_extensionName;
 
+    ExtensionType m_type;
     AbstractExtension* m_parentExtension;
 };
 

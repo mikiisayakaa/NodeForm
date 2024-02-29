@@ -5,7 +5,8 @@
 #include "Utils/qmlcreationutils.h"
 #include "inputslotobject.h"
 #include "outputslotobject.h"
-#include "Extension/Node/nodeselectionextension.h"
+#include "Extension/extensionfactory.h"
+
 
 
 Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, NodestGlobal::UIParameters *params, QObject *parent)
@@ -82,7 +83,7 @@ void Nodest::VerticalNodeObject::bindWidgets()
 
 void Nodest::VerticalNodeObject::addExtensions()
 {
-    NodeSelectionExtension* ext1 = new NodeSelectionExtension(this);
+    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::NodeSelection, this);
     addExtension(ext1);
 }
 

@@ -5,6 +5,7 @@
 #include "Extension/abstractextension.h"
 #include "Extension/Graph/graphconnectionselectionextension.h"
 
+
 namespace Nodest{
 
 class ConnectionSelectionExtension : public AbstractExtension
@@ -12,7 +13,8 @@ class ConnectionSelectionExtension : public AbstractExtension
     Q_OBJECT
 public:
     explicit ConnectionSelectionExtension(QObject *parent = nullptr) :
-        AbstractExtension(parent) {m_extensionName = "ConnectionSelection";}
+        AbstractExtension(parent) {m_extensionName = "ConnectionSelection";
+                                   m_type = ExtensionType::ConnectionSelection;}
 
     bool addExtension(QQuickItem* signalSource);
 

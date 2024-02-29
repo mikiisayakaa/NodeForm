@@ -1,4 +1,5 @@
 #include "abstractnodeobject.h"
+#include "Extension/abstractextension.h"
 
 Nodest::AbstractNodeObject::AbstractNodeObject(Nodest::AbstractNode *node, QObject *parent)
     : QObject(parent), m_node(node)
@@ -9,7 +10,7 @@ Nodest::AbstractNodeObject::AbstractNodeObject(Nodest::AbstractNode *node, QObje
 void Nodest::AbstractNodeObject::addExtension(Nodest::AbstractExtension *extension)
 {
     for (size_t i = 0; i < m_extensions.size(); i++){
-        if (m_extensions[i]->getExtensionName() == extension->getExtensionName()){
+        if (m_extensions[i]->getExtensionType() == extension->getExtensionType()){
             return;
         }
     }

@@ -2,8 +2,7 @@
 #include "Global/globalitems.h"
 #include "Global/globalqmlfiles.h"
 
-#include "Extension/Graph/graphnodeselectionextension.h"
-#include "Extension/Graph/graphconnectionselectionextension.h"
+#include "Extension/extensionfactory.h"
 
 Nodest::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *parent)
     : AbstractGraphObject (graph, parent)
@@ -39,9 +38,9 @@ void Nodest::BasicGraphObject::bindWidgets()
 
 void Nodest::BasicGraphObject::addExtensions()
 {
-    GraphNodeSelectionExtension* ext1 = new GraphNodeSelectionExtension(this);
+    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::GraphNodeSelection, this);
     addExtension(ext1);
-    GraphConnectionSelectionExtension* ext2 = new GraphConnectionSelectionExtension(this);
+    AbstractExtension * ext2 = ExtensionFactory::createExtension(ExtensionType::GraphConnectionSelection, this);
     addExtension(ext2);
 }
 

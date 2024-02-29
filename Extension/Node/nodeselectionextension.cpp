@@ -20,7 +20,7 @@ bool Nodest::NodeSelectionExtension::checkDependency()
     AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(nodeObj->parent());
     std::vector<AbstractExtension*> parentExtensions = graphObj->getExtensions();
     for (size_t i = 0; i < parentExtensions.size(); i++){
-        if (parentExtensions[i]->getExtensionName() == "GraphNodeSelection"){
+        if (parentExtensions[i]->getExtensionType() == ExtensionType::GraphNodeSelection){
             m_graphSelectionExtension = dynamic_cast<GraphNodeSelectionExtension*>(parentExtensions[i]);
             return true;
         }

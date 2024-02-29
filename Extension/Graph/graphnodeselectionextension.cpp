@@ -26,7 +26,7 @@ void Nodest::GraphNodeSelectionExtension::selectOne(Nodest::AbstractNodeObject *
     std::vector<AbstractExtension*> siblingExtensions = graphObj->getExtensions();
 
     for (size_t i = 0; i < siblingExtensions.size(); i++){
-        if (siblingExtensions[i]->getExtensionName() == "GraphConnectionSelection"){
+        if (siblingExtensions[i]->getExtensionType() == ExtensionType::GraphConnectionSelection){
             GraphConnectionSelectionExtension* connectionSelectionExtension =
                     dynamic_cast<GraphConnectionSelectionExtension*>(siblingExtensions[i]);
             connectionSelectionExtension->onDeselect();

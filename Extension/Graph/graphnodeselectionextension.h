@@ -16,7 +16,8 @@ class GraphNodeSelectionExtension : public AbstractExtension
     Q_OBJECT
 public:
     GraphNodeSelectionExtension(QObject* parent) :
-        AbstractExtension(parent) { m_extensionName = "GraphNodeSelection"; }
+        AbstractExtension(parent) { m_extensionName = "GraphNodeSelection";
+                                    m_type = ExtensionType::GraphNodeSelection;}
 
     bool addExtension(QQuickItem* signalSource);
 

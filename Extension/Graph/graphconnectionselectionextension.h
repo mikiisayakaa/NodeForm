@@ -13,7 +13,8 @@ class GraphConnectionSelectionExtension : public AbstractExtension
     Q_OBJECT
 public:
     explicit GraphConnectionSelectionExtension(QObject *parent = nullptr) :
-        AbstractExtension(parent) {m_extensionName = "GraphConnectionSelection";}
+        AbstractExtension(parent) {m_extensionName = "GraphConnectionSelection";
+                                   m_type = ExtensionType::GraphConnectionSelection;}
 
     bool addExtension(QQuickItem* signalSource);
 

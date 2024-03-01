@@ -84,7 +84,8 @@ void Nodest::VerticalNodeObject::bindWidgets()
 void Nodest::VerticalNodeObject::addExtensions()
 {
     std::vector<ExtensionType> extensionList{
-        ExtensionType::NodeSelection
+        ExtensionType::NodeSelection,
+        ExtensionType::MoveNode
     };
 
     for (auto& type : extensionList){

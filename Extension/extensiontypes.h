@@ -12,6 +12,7 @@ enum class ExtensionType{
 
     //node level extensions
     NodeSelection,
+    MoveNode,
 
     //slot level extensions
 

@@ -30,6 +30,7 @@ Rectangle {
     color: Qt.rgba(0.2,0.2,0.2,1.0)
 
     property bool selected: false
+    property bool movable: false
 
     border.width: 1
     border.color: selected ? "yellow" : "white"
@@ -53,9 +54,10 @@ Rectangle {
             //drag does not work well with scale, after scaling,
             //the actual move distance of the mouse will not be the same as
             //move distance of the node on the screen
-            nodeBase.x += mouseX - startMouseX;
-            nodeBase.y += mouseY - startMouseY;
-            position(nodeBase.x, nodeBase.y);
+            if (movable){
+                nodeBase.x += mouseX - startMouseX;
+                nodeBase.y += mouseY - startMouseY;
+            }
         }
 
         onPressed: {
@@ -63,8 +65,10 @@ Rectangle {
                 select();
             }
 
-            startMouseX = mouseX;
-            startMouseY = mouseY;
+            if (movable){
+                startMouseX = mouseX;
+                startMouseY = mouseY;
+            }
         }
     }
 

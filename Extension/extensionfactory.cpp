@@ -7,6 +7,7 @@
 #include "Extension/Graph/movebackgroundextension.h"
 #include "Extension/Graph/scalebackgroundextension.h"
 #include "Extension/Node/nodeselectionextension.h"
+#include "Extension/Node/movenodeextension.h"
 #include "Extension/Connection/connectionselectionextension.h"
 
 Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::ExtensionType type, QObject *parent)
@@ -27,6 +28,9 @@ Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::Ext
 
     case ExtensionType::NodeSelection:
         return new NodeSelectionExtension(parent);
+
+    case ExtensionType::MoveNode:
+        return new MoveNodeExtension(parent);
 
     case ExtensionType::ConnectionSelection:
         return new ConnectionSelectionExtension(parent);

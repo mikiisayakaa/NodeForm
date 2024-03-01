@@ -31,8 +31,6 @@ SOURCES += \
     Core/connection.cpp \
     Core/inputslot.cpp \
     Core/outputslot.cpp \
-    main.cpp \
-    Utils/debugutils.cpp \
     Utils/variant.cpp \
     Core/abstractslot.cpp \
     Core/abstractevalnode.cpp \
@@ -78,7 +76,6 @@ HEADERS += \
     Core/inputslot.h \
     Core/abstractslot.h \
     Core/outputslot.h \
-    Utils/debugutils.h \
     Utils/tupleutils.h \
     Utils/slottupleutils.h \
     Utils/variant.h \

@@ -70,7 +70,8 @@ SOURCES += \
     Extension/Graph/movebackgroundextension.cpp \
     Extension/Graph/scalebackgroundextension.cpp \
     Extension/Node/movenodeextension.cpp \
-    Extension/Graph/deleteselectednodeextension.cpp
+    Extension/Graph/deleteselectednodeextension.cpp \
+    Extension/Graph/deleteselectedconnecitonextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -124,7 +125,8 @@ HEADERS += \
     Extension/Graph/movebackgroundextension.h \
     Extension/Graph/scalebackgroundextension.h \
     Extension/Node/movenodeextension.h \
-    Extension/Graph/deleteselectednodeextension.h
+    Extension/Graph/deleteselectednodeextension.h \
+    Extension/Graph/deleteselectedconnecitonextension.h
 
 
 FORMS +=

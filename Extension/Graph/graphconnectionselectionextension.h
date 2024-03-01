@@ -22,6 +22,7 @@ public:
 
     void deselectOne(AbstractConnectionObject* connectObj);
 
+    std::vector<AbstractConnectionObject*>& getSelectedConnections() {return m_selectedConnections;}
 
 signals:
 

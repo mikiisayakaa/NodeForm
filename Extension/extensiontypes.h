@@ -10,6 +10,7 @@ enum class ExtensionType{
     MoveBackground,
     ScaleBackground,
     DeleteSelectedNode,
+    DeleteSelectedConnection,
 
     //node level extensions
     NodeSelection,

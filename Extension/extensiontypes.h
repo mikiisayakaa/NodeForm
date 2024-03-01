@@ -8,6 +8,7 @@ enum class ExtensionType{
     GraphNodeSelection,
     GraphConnectionSelection,
     MoveBackground,
+    ScaleBackground,
 
     //node level extensions
     NodeSelection,

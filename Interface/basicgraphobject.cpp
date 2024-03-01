@@ -41,7 +41,8 @@ void Nodest::BasicGraphObject::addExtensions()
     std::vector<ExtensionType> extensionList{
         ExtensionType::GraphNodeSelection,
         ExtensionType::GraphConnectionSelection,
-        ExtensionType::MoveBackground
+        ExtensionType::MoveBackground,
+        ExtensionType::ScaleBackground
     };
 
     for (auto& type : extensionList){

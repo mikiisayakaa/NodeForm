@@ -67,7 +67,8 @@ SOURCES += \
     Extension/extensionfactory.cpp \
     Interface/abstractconnectionobject.cpp \
     Interface/tempconnectionobject.cpp \
-    Extension/Graph/movebackgroundextension.cpp
+    Extension/Graph/movebackgroundextension.cpp \
+    Extension/Graph/scalebackgroundextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -118,7 +119,8 @@ HEADERS += \
     Extension/extensiontypes.h \
     Interface/abstractconnectionobject.h \
     Interface/tempconnectionobject.h \
-    Extension/Graph/movebackgroundextension.h
+    Extension/Graph/movebackgroundextension.h \
+    Extension/Graph/scalebackgroundextension.h
 
 
 FORMS +=

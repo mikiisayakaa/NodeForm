@@ -12,12 +12,15 @@ Rectangle {
     signal deletePressed()
     signal preCopy()
     signal copy()
-    signal deselect()
 
+    signal deselect()
     signal move()
     signal stopMove()
+    signal rescale()
+    signal stopRescale()
 
     property bool movable: false
+    property bool scalable: false
     property real scaleValue: 1
 
     MouseArea{
@@ -41,12 +44,14 @@ Rectangle {
 
 
         onWheel:{
-            scaleValue += wheel.angleDelta.y / 1200;
-            if (scaleValue < 0.2){
-                scaleValue = 0.2;
-            }
-            else if (scaleValue > 3){
-                scaleValue = 3;
+            if (scalable){
+                scaleValue += wheel.angleDelta.y / 1200;
+                if (scaleValue < 0.2){
+                    scaleValue = 0.2;
+                }
+                else if (scaleValue > 3){
+                    scaleValue = 3;
+                }
             }
 
         }
@@ -61,6 +66,7 @@ Rectangle {
         }
         else if (event.key === Qt.Key_Space && !event.isAutoRepeat){
             move();
+            rescale();
             if (movable){
                 mouseArea.cursorShape = Qt.OpenHandCursor;
             }
@@ -80,6 +86,7 @@ Rectangle {
     Keys.onReleased: {
         if (event.key === Qt.Key_Space && !event.isAutoRepeat){
             stopMove();
+            stopRescale();
             mouseArea.cursorShape = Qt.ArrowCursor;
         }
     }

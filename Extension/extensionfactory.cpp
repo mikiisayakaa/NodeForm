@@ -4,6 +4,7 @@
 
 #include "Extension/Graph/graphconnectionselectionextension.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
+#include "Extension/Graph/movebackgroundextension.h"
 #include "Extension/Node/nodeselectionextension.h"
 #include "Extension/Connection/connectionselectionextension.h"
 
@@ -16,6 +17,9 @@ Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::Ext
 
     case ExtensionType::GraphNodeSelection:
         return new GraphNodeSelectionExtension(parent);
+
+    case ExtensionType::MoveBackground:
+        return new MoveBackgroundExtension(parent);
 
     case ExtensionType::NodeSelection:
         return new NodeSelectionExtension(parent);

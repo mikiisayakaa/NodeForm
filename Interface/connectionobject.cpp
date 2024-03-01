@@ -7,7 +7,13 @@
 
 void Nodest::ConnectionObject::addExtensions()
 {
-    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::ConnectionSelection, this);
-    addExtension(ext1);
+    std::vector<ExtensionType> extensionList{
+        ExtensionType::ConnectionSelection
+    };
+
+    for (auto& type : extensionList){
+        AbstractExtension* ext = ExtensionFactory::createExtension(type, this);
+        addExtension(ext);
+    }
 }
 

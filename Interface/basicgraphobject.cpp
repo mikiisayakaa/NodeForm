@@ -38,10 +38,16 @@ void Nodest::BasicGraphObject::bindWidgets()
 
 void Nodest::BasicGraphObject::addExtensions()
 {
-    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::GraphNodeSelection, this);
-    addExtension(ext1);
-    AbstractExtension * ext2 = ExtensionFactory::createExtension(ExtensionType::GraphConnectionSelection, this);
-    addExtension(ext2);
+    std::vector<ExtensionType> extensionList{
+        ExtensionType::GraphNodeSelection,
+        ExtensionType::GraphConnectionSelection,
+        ExtensionType::MoveBackground
+    };
+
+    for (auto& type : extensionList){
+        AbstractExtension* ext = ExtensionFactory::createExtension(type, this);
+        addExtension(ext);
+    }
 }
 
 

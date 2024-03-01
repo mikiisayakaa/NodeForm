@@ -66,7 +66,8 @@ SOURCES += \
     Extension/Connection/connectionselectionextension.cpp \
     Extension/extensionfactory.cpp \
     Interface/abstractconnectionobject.cpp \
-    Interface/tempconnectionobject.cpp
+    Interface/tempconnectionobject.cpp \
+    Extension/Graph/movebackgroundextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -116,7 +117,8 @@ HEADERS += \
     Extension/extensionfactory.h \
     Extension/extensiontypes.h \
     Interface/abstractconnectionobject.h \
-    Interface/tempconnectionobject.h
+    Interface/tempconnectionobject.h \
+    Extension/Graph/movebackgroundextension.h
 
 
 FORMS +=
@@ -160,4 +162,5 @@ DISTFILES += \
     UI/qmlWidgets/Setters/NodestIntSetSpinBox1.qml \
     UI/qmlWidgets/TextLabels/NodestTextLabel1.qml \
     UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurve2.qml \
-    UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurveDashAnimate1.qml
+    UI/qmlWidgets/GlobalWidgets/Curve/NodestBezierCurveDashAnimate1.qml \
+    UI/qmlWidgets/GlobalWidgets/Background/NodestBackground1.qml

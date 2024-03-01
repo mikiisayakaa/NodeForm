@@ -83,8 +83,14 @@ void Nodest::VerticalNodeObject::bindWidgets()
 
 void Nodest::VerticalNodeObject::addExtensions()
 {
-    AbstractExtension* ext1 = ExtensionFactory::createExtension(ExtensionType::NodeSelection, this);
-    addExtension(ext1);
+    std::vector<ExtensionType> extensionList{
+        ExtensionType::NodeSelection
+    };
+
+    for (auto& type : extensionList){
+        AbstractExtension* ext = ExtensionFactory::createExtension(type, this);
+        addExtension(ext);
+    }
 }
 
 void Nodest::VerticalNodeObject::setWidgetsLayout()

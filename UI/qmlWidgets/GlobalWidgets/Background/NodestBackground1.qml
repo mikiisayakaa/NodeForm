@@ -14,17 +14,31 @@ Rectangle {
     signal copy()
     signal deselect()
 
+    signal move()
+    signal stopMove()
+
+    property bool movable: false
     property real scaleValue: 1
 
     MouseArea{
-        objectName: "bgdMouseArea"
+        id: mouseArea
         anchors.fill: parent
 
-        drag.target: bgd
+        drag.target: movable ? bgd : null
 
         onClicked:{
             deselect();
         }
+
+        drag.onActiveChanged: {
+            if (drag.active){
+                cursorShape = Qt.ClosedHandCursor
+            }
+            else{
+                cursorShape = Qt.OpenHandCursor
+            }
+        }
+
 
         onWheel:{
             scaleValue += wheel.angleDelta.y / 1200;
@@ -34,6 +48,7 @@ Rectangle {
             else if (scaleValue > 3){
                 scaleValue = 3;
             }
+
         }
 
     }
@@ -44,6 +59,12 @@ Rectangle {
         if (event.key === Qt.Key_Delete){
             deletePressed();
         }
+        else if (event.key === Qt.Key_Space && !event.isAutoRepeat){
+            move();
+            if (movable){
+                mouseArea.cursorShape = Qt.OpenHandCursor;
+            }
+        }
         else if (event.modifiers & Qt.ControlModifier){
             if (event.key === Qt.Key_C){
                 preCopy();
@@ -51,6 +72,15 @@ Rectangle {
             else if (event.key === Qt.Key_V){
                 copy();
             }
+        }
+
+    }
+
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Space && !event.isAutoRepeat){
+            stopMove();
+            mouseArea.cursorShape = Qt.ArrowCursor;
         }
     }
 

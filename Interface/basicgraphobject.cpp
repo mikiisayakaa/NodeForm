@@ -42,7 +42,8 @@ void Nodest::BasicGraphObject::addExtensions()
         ExtensionType::GraphNodeSelection,
         ExtensionType::GraphConnectionSelection,
         ExtensionType::MoveBackground,
-        ExtensionType::ScaleBackground
+        ExtensionType::ScaleBackground,
+        ExtensionType::DeleteSelectedNode
     };
 
     for (auto& type : extensionList){

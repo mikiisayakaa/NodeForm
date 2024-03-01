@@ -6,6 +6,7 @@
 #include "Extension/Graph/graphnodeselectionextension.h"
 #include "Extension/Graph/movebackgroundextension.h"
 #include "Extension/Graph/scalebackgroundextension.h"
+#include "Extension/Graph/deleteselectednodeextension.h"
 #include "Extension/Node/nodeselectionextension.h"
 #include "Extension/Node/movenodeextension.h"
 #include "Extension/Connection/connectionselectionextension.h"
@@ -25,6 +26,9 @@ Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::Ext
 
     case ExtensionType::ScaleBackground:
         return new ScaleBackgroundExtension(parent);
+
+    case ExtensionType::DeleteSelectedNode:
+        return new DeleteSelectedNodeExtension(parent);
 
     case ExtensionType::NodeSelection:
         return new NodeSelectionExtension(parent);

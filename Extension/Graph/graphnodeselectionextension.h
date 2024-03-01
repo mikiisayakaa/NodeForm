@@ -25,7 +25,7 @@ public:
 
     void deselectOne(AbstractNodeObject* nodeObj);
 
-
+    std::vector<AbstractNodeObject*>& getSelectedNodes() {return m_selectedNodes;}
 
 public slots:
 

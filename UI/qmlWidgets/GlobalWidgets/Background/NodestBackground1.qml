@@ -9,15 +9,18 @@ Rectangle {
     x: -50000
     y: -50000
 
-    signal deletePressed()
     signal preCopy()
     signal copy()
 
     signal deselect()
+
     signal move()
     signal stopMove()
+
     signal rescale()
     signal stopRescale()
+
+    signal deleteSelected()
 
     property bool movable: false
     property bool scalable: false
@@ -62,7 +65,7 @@ Rectangle {
 
     Keys.onPressed:{
         if (event.key === Qt.Key_Delete){
-            deletePressed();
+            deleteSelected()
         }
         else if (event.key === Qt.Key_Space && !event.isAutoRepeat){
             move();

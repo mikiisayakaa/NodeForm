@@ -12,7 +12,10 @@ class AbstractConnectionObject : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractConnectionObject(QObject *parent = nullptr) : QObject(parent) {}
+    explicit AbstractConnectionObject(QObject *parent = nullptr) : QObject(parent),
+    m_connectionItem(nullptr), m_connection(nullptr) {}
+
+    virtual ~AbstractConnectionObject() {delete m_connectionItem;}
 
     void setItem(QQuickItem* connectionItem) {m_connectionItem = connectionItem;}
     QQuickItem* getItem() const {return m_connectionItem;}

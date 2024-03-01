@@ -17,8 +17,7 @@ class ConnectionObject : public AbstractConnectionObject
     Q_OBJECT
 public:
     ConnectionObject(QObject* parent = nullptr)
-        : AbstractConnectionObject(parent) {m_connection = nullptr;
-                                            m_connectionItem = nullptr;}
+        : AbstractConnectionObject(parent) {}
 
     ~ConnectionObject() {}
 

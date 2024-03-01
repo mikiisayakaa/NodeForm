@@ -87,6 +87,7 @@ void Nodest::InputSlotObject::onConnectionDrag(qreal x, qreal y)
 
             //create before removal, or user will see a flash in the ui
             handle = outSlot->getObj()->getItem(0);
+
             connectionStartHelper(handle);
 
             line = m_tempConnection->getItem();

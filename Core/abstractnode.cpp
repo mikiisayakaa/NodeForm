@@ -1,5 +1,5 @@
 #include "abstractnode.h"
-
+#include "Interface/abstractnodeobject.h"
 
 void Nodest::AbstractNode::setGetterValidTag(bool tag)
 {

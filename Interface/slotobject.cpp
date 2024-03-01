@@ -1,7 +1,9 @@
 #include "slotobject.h"
 #include "Global/globalitems.h"
 #include "Global/globalqmlfiles.h"
+#include "Global/globaluiparams.h"
 #include "connectionobject.h"
+#include "tempconnectionobject.h"
 #include "Utils/qmlcreationutils.h"
 #include "abstractgraphobject.h"
 
@@ -70,9 +72,24 @@ void Nodest::SlotObject::onConnectionEnd(qreal x, qreal y)
             delete m_tempConnection;
         }
         else{
+            QQuickItem* background = NodestGlobal::globalBackground;
+            QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::globalUi->curveFiles[0]];
+            QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
+            QQuickItem* newLine = qobject_cast<QQuickItem*>(obj);
             QQuickItem* line = m_tempConnection->getItem();
-
             setLinePoint(line, child);
+            newLine->setParentItem(background);
+
+            //qDebug() << qvariant_cast<QQuickItem*>(line->property("handle1")) << qvariant_cast<QQuickItem*>(line->property("handle2"));
+            component->completeCreate();
+
+            setLinePoint(newLine, qvariant_cast<QQuickItem*>(line->property("handle1")));
+            setLinePoint(newLine, qvariant_cast<QQuickItem*>(line->property("handle2")));
+
+            delete m_tempConnection;
+            m_tempConnection = new ConnectionObject(background->parent());
+            m_tempConnection->setItem(newLine);
+
 
             connection->setObj(m_tempConnection);
             m_tempConnection->setConnection(connection);
@@ -89,7 +106,7 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
 {
     QQuickItem* background = NodestGlobal::globalBackground;
 
-    QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::curveDefault];
+    QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::globalUi->curveFiles[1]];
     QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
     QQuickItem* line = qobject_cast<QQuickItem*>(obj);
     line->setParentItem(background);
@@ -98,7 +115,7 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
     setLinePoint(line, handle);
 
 
-    m_tempConnection = new ConnectionObject(background->parent());
+    m_tempConnection = new TempConnectionObject(background->parent());
     m_tempConnection->setItem(line);
     line->setParent(m_tempConnection);
 

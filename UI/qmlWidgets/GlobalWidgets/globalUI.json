@@ -1,4 +1,5 @@
 {
-  "curveFiles" : [],
+  "curveFiles" : ["NodestBezierCurve2.qml",
+	        "NodestBezierCurveDashAnimate1.qml"],
   "backgroundFile" : ""
 }

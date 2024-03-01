@@ -21,7 +21,6 @@ public:
 
 
 public slots:
-//    void onDeletePressed();
 
 //    void onPreCopy();
 

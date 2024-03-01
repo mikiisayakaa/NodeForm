@@ -30,7 +30,6 @@ void Nodest::BasicGraphObject::createWidgets()
 
 void Nodest::BasicGraphObject::bindWidgets()
 {
-//    connect(m_background, SIGNAL(deletePressed()), this, SLOT(onDeletePressed()));
 
 //    connect(m_background, SIGNAL(preCopy()), this, SLOT(onPreCopy()));
 //    connect(m_background, SIGNAL(copy()), this, SLOT(onCopy()));
@@ -54,29 +53,6 @@ void Nodest::BasicGraphObject::addExtensions()
 }
 
 
-
-
-//void Nodest::BasicGraphObject::onDeletePressed()
-//{
-//    Q_ASSERT_X(m_selectedNodeObjects.empty() || m_selectedConnectObjects.empty(),
-//               "abstractgraphobject.cpp", "Error: cannot select both nodes and connections!");
-
-//    if (!m_selectedNodeObjects.empty()){
-//        for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
-//            removeNodeObject(m_selectedNodeObjects[i]);
-//        }
-//        m_selectedNodeObjects.clear();
-//        return;
-//    }
-
-//    if (!m_selectedConnectObjects.empty()){
-//        for (size_t i = 0; i < m_selectedConnectObjects.size(); i++){
-//            m_graph->removeSingleConnection(m_selectedConnectObjects[i]->getConnection());
-//        }
-//        m_selectedConnectObjects.clear();
-//        return;
-//    }
-//}
 
 //void Nodest::BasicGraphObject::onPreCopy()
 //{

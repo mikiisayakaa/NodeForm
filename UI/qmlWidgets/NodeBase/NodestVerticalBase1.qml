@@ -16,6 +16,8 @@ Rectangle {
     property real scaleValue: parent.scaleValue
     property real minWidth: 0
 
+    //why not move scale to Background level?
+    //background level scale does not work well with making connections
     transform: Scale{
         origin.x: nodeBase.parent.width / 2 - nodeBase.x
         origin.y: nodeBase.parent.height / 2 - nodeBase.y
@@ -47,6 +49,10 @@ Rectangle {
         property real startMouseY: 0
 
         onPositionChanged: {
+            //why not using drag here?
+            //drag does not work well with scale, after scaling,
+            //the actual move distance of the mouse will not be the same as
+            //move distance of the node on the screen
             nodeBase.x += mouseX - startMouseX;
             nodeBase.y += mouseY - startMouseY;
             position(nodeBase.x, nodeBase.y);

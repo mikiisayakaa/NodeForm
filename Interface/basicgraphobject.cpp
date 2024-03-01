@@ -8,7 +8,6 @@ Nodest::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *pa
     : AbstractGraphObject (graph, parent)
 {
     createWidgets();
-    bindWidgets();
     addExtensions();
 }
 
@@ -28,12 +27,6 @@ void Nodest::BasicGraphObject::createWidgets()
     component->completeCreate();
 }
 
-void Nodest::BasicGraphObject::bindWidgets()
-{
-
-//    connect(m_background, SIGNAL(preCopy()), this, SLOT(onPreCopy()));
-//    connect(m_background, SIGNAL(copy()), this, SLOT(onCopy()));
-}
 
 void Nodest::BasicGraphObject::addExtensions()
 {

@@ -23,8 +23,6 @@ public:
 
     virtual void setWidgetsLayout() = 0;
 
-    virtual void bindWidgets() = 0;
-
     virtual AbstractNodeObject* clone() = 0;
 
     AbstractNode* getNode() const {return m_node;}

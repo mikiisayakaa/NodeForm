@@ -17,7 +17,6 @@ Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, Nodes
     m_outputObjects.resize(m_node->getNOutput());
 
     createWidgets();
-    bindWidgets();
     setWidgetsLayout();
     addExtensions();
 }
@@ -66,11 +65,6 @@ void Nodest::VerticalNodeObject::createWidgets()
         m_outputObjects[i] = slotObj;
     }
 
-
-}
-
-void Nodest::VerticalNodeObject::bindWidgets()
-{
     //bind setters to update function
     for (size_t i = 0; i < m_node->getNInput(); i++){
         InputSlot* inSlot = m_node->getInput(i);
@@ -78,8 +72,8 @@ void Nodest::VerticalNodeObject::bindWidgets()
             connect(inSlot->getSetter(), SIGNAL(updated()), this, SLOT(onInputChanged()));
         }
     }
-
 }
+
 
 void Nodest::VerticalNodeObject::addExtensions()
 {

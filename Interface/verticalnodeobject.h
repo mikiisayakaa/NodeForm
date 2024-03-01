@@ -42,8 +42,6 @@ public:
 
     void createWidgets();
 
-    void bindWidgets();
-
     void addExtensions();
 
     void setWidgetsLayout();

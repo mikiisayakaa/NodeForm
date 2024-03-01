@@ -25,8 +25,6 @@ public:
 
     virtual void createWidgets() = 0;
 
-    virtual void bindWidgets() = 0;
-
     int getNNodes() const {return m_nodeObjects.size();}
 
     AbstractNodeObject* getNodeObject(int index) const {return m_nodeObjects[index];}

@@ -77,14 +77,14 @@ void Nodest::SlotObject::onConnectionEnd(qreal x, qreal y)
             QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
             QQuickItem* newLine = qobject_cast<QQuickItem*>(obj);
             QQuickItem* line = m_tempConnection->getItem();
-            setLinePoint(line, child);
+            setLineHandle(line, child);
             newLine->setParentItem(background);
 
             //qDebug() << qvariant_cast<QQuickItem*>(line->property("handle1")) << qvariant_cast<QQuickItem*>(line->property("handle2"));
             component->completeCreate();
 
-            setLinePoint(newLine, qvariant_cast<QQuickItem*>(line->property("handle1")));
-            setLinePoint(newLine, qvariant_cast<QQuickItem*>(line->property("handle2")));
+            setLineHandle(newLine, qvariant_cast<QQuickItem*>(line->property("handle1")));
+            setLineHandle(newLine, qvariant_cast<QQuickItem*>(line->property("handle2")));
 
             delete m_tempConnection;
             m_tempConnection = new ConnectionObject(background->parent());
@@ -112,7 +112,7 @@ void Nodest::SlotObject::connectionStartHelper(QQuickItem *handle)
     line->setParentItem(background);
     component->completeCreate();
 
-    setLinePoint(line, handle);
+    setLineHandle(line, handle);
 
 
     m_tempConnection = new TempConnectionObject(background->parent());

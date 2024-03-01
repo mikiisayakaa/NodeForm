@@ -18,7 +18,9 @@ Item {
 
     Button{
         id: button
-        anchors.fill: parent;
+        anchors.fill: parent
+        focusPolicy: Qt.NoFocus
+        focus: false
         text: "File"
 
         contentItem: Text{

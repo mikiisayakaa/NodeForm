@@ -149,7 +149,7 @@ void Nodest::getValidGetterFileName(QString &queryName, Nodest::OutputSlot *slot
 }
 
 
-void Nodest::setLinePoint(QQuickItem *line, QQuickItem *handle)
+void Nodest::setLineHandle(QQuickItem *line, QQuickItem *handle)
 {
     QQuickItem* nodeBase = handle->parentItem();
     int flow = handle->property("flow").toInt();

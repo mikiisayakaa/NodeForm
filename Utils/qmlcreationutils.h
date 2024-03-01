@@ -18,7 +18,7 @@ void createTextLabel(const QString& fileName, QQuickItem* parentItem, QQuickItem
 void createHandle(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
                   AbstractSlot* slot);
 
-void setLinePoint(QQuickItem* line, QQuickItem* handle);
+void setLineHandle(QQuickItem* line, QQuickItem* handle);
 
 void createSetter(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
                   AbstractSlot* slot);

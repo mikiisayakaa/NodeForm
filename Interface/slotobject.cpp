@@ -9,7 +9,7 @@
 #include "Extension/extensionfactory.h"
 
 Nodest::SlotObject::SlotObject(Nodest::AbstractSlot *slot, NodestGlobal::UIParameters* params, QObject *parent)
-    :AbstractSlotObject (slot, parent), m_testConnection(nullptr), m_tempConnection(nullptr), m_createParams(params)
+    :AbstractSlotObject (slot, parent),m_createParams(params)
 {
     m_items.resize(3);
     slot->setObj(this);

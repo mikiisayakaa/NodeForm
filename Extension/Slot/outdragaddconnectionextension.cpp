@@ -44,9 +44,9 @@ void Nodest::OutDragAddConnectionExtension::onConnectionDrag(qreal x, qreal y)
         connectionStartHelper(m_handle);
     }
     else{
-        QQuickItem* line = m_tempConnection->getItem();
+        //QQuickItem* line = m_tempConnection->getItem();
 
-        line->setProperty("x2", x);
-        line->setProperty("y2", y);
+        m_line->setProperty("x2", x);
+        m_line->setProperty("y2", y);
     }
 }

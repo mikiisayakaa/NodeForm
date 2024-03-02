@@ -25,9 +25,13 @@ public:
 
     virtual void createWidgets() = 0;
 
-    int getNNodes() const {return m_nodeObjects.size();}
+    int getNNode() const {return m_nodeObjects.size();}
 
     AbstractNodeObject* getNodeObject(int index) const {return m_nodeObjects[index];}
+
+    int getNConnection() const {return m_connectionObjects.size();}
+
+    AbstractConnectionObject* getConnectionObject(int index) const {return m_connectionObjects[index];}
 
     void reEvalSingle(AbstractNodeObject* nodeObj);
 
@@ -58,6 +62,7 @@ protected:
     AbstractNodeGraph* m_graph;
 
     std::vector<AbstractNodeObject*> m_nodeObjects;
+    std::vector<AbstractConnectionObject*> m_connectionObjects;
 
     QQuickItem* m_background;
 

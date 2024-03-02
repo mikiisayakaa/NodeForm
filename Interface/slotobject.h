@@ -28,8 +28,6 @@ public slots:
 
 protected:
     NodestGlobal::UIParameters* m_createParams;
-    TestConnection* m_testConnection;
-    AbstractConnectionObject* m_tempConnection;
 };
 
 }

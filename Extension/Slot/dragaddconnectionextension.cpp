@@ -17,7 +17,7 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
 
     QQuickItem* child = nullptr;
     AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(parent()->parent()->parent());
-    for (int i = graphObj->getNNodes() - 1; i >= 0; i--){
+    for (int i = graphObj->getNNode() - 1; i >= 0; i--){
         AbstractNodeObject* nodeObj = graphObj->getNodeObject(i);
         QQuickItem* nodeBase = nodeObj->getNodeBase();
 
@@ -46,35 +46,38 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
 
 
     if (m_testConnection->secondNode == nullptr || m_testConnection->firstNode == nullptr){
-        delete m_tempConnection;
+        delete m_line;
+        m_line = nullptr;
     }
     else{
         Connection* connection = graphObj->addSingleConnection(m_testConnection);
         if (connection == nullptr){
-            delete m_tempConnection;
+            delete m_line;
+            m_line = nullptr;
         }
         else{
             QQuickItem* background = getBackground();
             QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::globalUI->curveFiles[0]];
             QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
             QQuickItem* newLine = qobject_cast<QQuickItem*>(obj);
-            QQuickItem* line = m_tempConnection->getItem();
-            setLineHandle(line, child);
+            setLineHandle(m_line, child);
             newLine->setParentItem(background);
 
             component->completeCreate();
 
-            setLineHandle(newLine, qvariant_cast<QQuickItem*>(line->property("handle1")));
-            setLineHandle(newLine, qvariant_cast<QQuickItem*>(line->property("handle2")));
+            setLineHandle(newLine, qvariant_cast<QQuickItem*>(m_line->property("handle1")));
+            setLineHandle(newLine, qvariant_cast<QQuickItem*>(m_line->property("handle2")));
 
-            delete m_tempConnection;
-            m_tempConnection = new ConnectionObject(background->parent());
-            m_tempConnection->setItem(newLine);
+            delete m_line;
+            m_line = nullptr;
+            ConnectionObject* connectObj = new ConnectionObject(background->parent());
+            connectObj->setItem(newLine);
+            newLine->setParent(connectObj);
 
 
-            connection->setObj(m_tempConnection);
-            m_tempConnection->setConnection(connection);
-            m_tempConnection->addExtensions();
+            connection->setObj(connectObj);
+            connectObj->setConnection(connection);
+            connectObj->addExtensions();
 
         }
     }
@@ -94,11 +97,7 @@ void Nodest::DragAddConnectionExtension::connectionStartHelper(QQuickItem *handl
     component->completeCreate();
 
     setLineHandle(line, handle);
-
-
-    m_tempConnection = new TempConnectionObject(background->parent());
-    m_tempConnection->setItem(line);
-    line->setParent(m_tempConnection);
+    m_line = line;
 }
 
 QQuickItem *Nodest::DragAddConnectionExtension::getBackground()

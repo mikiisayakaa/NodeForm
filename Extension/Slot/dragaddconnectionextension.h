@@ -14,7 +14,7 @@ class DragAddConnectionExtension : public AbstractExtension
     Q_OBJECT
 public:
     explicit DragAddConnectionExtension(QObject *parent = nullptr) :
-        AbstractExtension(parent), m_testConnection(nullptr), m_tempConnection(nullptr) {}
+        AbstractExtension(parent), m_testConnection(nullptr) {}
 
 signals:
 
@@ -28,8 +28,10 @@ protected:
 
 protected:
     QQuickItem* m_handle;
+
+    //store the temporal curve qml widget during creation of a connection
+    QQuickItem* m_line;
     TestConnection* m_testConnection;
-    AbstractConnectionObject* m_tempConnection;
 };
 
 }

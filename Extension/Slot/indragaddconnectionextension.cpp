@@ -55,10 +55,9 @@ void Nodest::InDragAddConnectionExtension::onConnectionDrag(qreal x, qreal y)
 
             connectionStartHelper(handle);
 
-            line = m_tempConnection->getItem();
-            line->setProperty("x2", m_handle->property("globalX").toReal() +
+            m_line->setProperty("x2", m_handle->property("globalX").toReal() +
                                     m_handle->property("width").toReal() / 2);
-            line->setProperty("y2", m_handle->property("globalY").toReal() +
+            m_line->setProperty("y2", m_handle->property("globalY").toReal() +
                                     m_handle->property("height").toReal() / 2);
 
             //remove the original connection
@@ -76,15 +75,13 @@ void Nodest::InDragAddConnectionExtension::onConnectionDrag(qreal x, qreal y)
         }
     }
     else{
-        QQuickItem* line = m_tempConnection->getItem();
-
         if (m_testConnection->firstNode == nullptr){
-            line->setProperty("x1", x);
-            line->setProperty("y1", y);
+            m_line->setProperty("x1", x);
+            m_line->setProperty("y1", y);
         }
         else{
-            line->setProperty("x2", x);
-            line->setProperty("y2", y);
+            m_line->setProperty("x2", x);
+            m_line->setProperty("y2", y);
         }
 
     }

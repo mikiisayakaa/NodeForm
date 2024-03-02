@@ -44,9 +44,7 @@ SOURCES += \
     Core/basicnodegraph.cpp \
     Core/abstractnodegraph.cpp \
     Interface/connectionobject.cpp \
-    Interface/inputslotobject.cpp \
     Utils/qmlcreationutils.cpp \
-    Interface/outputslotobject.cpp \
     Interface/abstractnodeobject.cpp \
     Core/abstractnode.cpp \
     Interface/verticalnodeobject.cpp \
@@ -96,9 +94,7 @@ HEADERS += \
     Core/basicnodegraph.h \
     Core/abstractnodegraph.h \
     Interface/connectionobject.h \
-    Interface/inputslotobject.h \
     Utils/qmlcreationutils.h \
-    Interface/outputslotobject.h \
     Interface/abstractnodeobject.h \
     Core/abstractnode.h \
     Interface/verticalnodeobject.h \

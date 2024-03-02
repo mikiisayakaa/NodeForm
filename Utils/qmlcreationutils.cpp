@@ -51,7 +51,7 @@ void Nodest::createSetter(const QString &fileName, QQuickItem *parentItem, QQuic
     component->completeCreate();
 }
 
-void Nodest::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, OutputSlot *slot)
+void Nodest::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot *slot)
 {
     QObject* obj = nullptr;
     QQmlComponent* component = NodestGlobal::slotGetterMap[fileName].data;
@@ -61,8 +61,8 @@ void Nodest::createGetter(const QString &fileName, QQuickItem *parentItem, QQuic
     target = qobject_cast<QQuickItem*>(obj);
     target->setParentItem(parentItem);
 
-    if (slot->getGetter() != nullptr){
-        slot->getGetter()->setItem(target);
+    if (((OutputSlot*)slot)->getGetter() != nullptr){
+        ((OutputSlot*)slot)->getGetter()->setItem(target);
     }
 
     component->completeCreate();

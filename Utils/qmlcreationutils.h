@@ -24,7 +24,7 @@ void createSetter(const QString& fileName, QQuickItem* parentItem, QQuickItem*& 
                   AbstractSlot* slot);
 
 void createGetter(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
-                  OutputSlot* slot);
+                  AbstractSlot* slot);
 
 void createBase(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target);
 

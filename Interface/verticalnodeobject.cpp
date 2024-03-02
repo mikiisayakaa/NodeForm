@@ -54,14 +54,14 @@ void Nodest::VerticalNodeObject::createWidgets()
     //create InputSlotObjects
     for (size_t i = 0; i < m_node->getNInput(); i++){
         InputSlot* inSlot = m_node->getInput(i);
-        AbstractSlotObject* slotObj = new InputSlotObject(inSlot, m_createParams, this);
+        AbstractSlotObject* slotObj = new SlotObject(inSlot, m_createParams, this);
         m_inputObjects[i] = slotObj;
     }
 
     //create OutputSlotObjects
     for (size_t i = 0; i < m_node->getNOutput(); i++){
         OutputSlot* outSlot = m_node->getOutput(i);
-        AbstractSlotObject* slotObj = new OutputSlotObject(outSlot, m_createParams, this);
+        AbstractSlotObject* slotObj = new SlotObject(outSlot, m_createParams, this);
         m_outputObjects[i] = slotObj;
     }
 

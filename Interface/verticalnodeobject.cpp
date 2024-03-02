@@ -3,8 +3,7 @@
 #include "abstractgraphobject.h"
 #include "basicgraphobject.h"
 #include "Utils/qmlcreationutils.h"
-#include "inputslotobject.h"
-#include "outputslotobject.h"
+#include "slotobject.h"
 #include "Extension/extensionfactory.h"
 
 

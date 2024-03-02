@@ -90,7 +90,6 @@ HEADERS += \
     Utils/fileoperations.h \
     Global/globalitems.h \
     Global/typenamemacro.h \
-    Global/typenameregistry.h \
     Core/basicnodegraph.h \
     Core/abstractnodegraph.h \
     Interface/connectionobject.h \

@@ -4,9 +4,9 @@
 
 namespace Nodest{
 
-DECLARE_TYPE(int, 0)
-DECLARE_TYPE(float, 1)
-DECLARE_TYPE(double, 2)
+DECLARE_TYPE(int)
+DECLARE_TYPE(float)
+DECLARE_TYPE(double)
 
 
 }

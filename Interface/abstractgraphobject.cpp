@@ -49,12 +49,33 @@ Nodest::AbstractConnectionObject *Nodest::AbstractGraphObject::addSingleConnecti
 
 void Nodest::AbstractGraphObject::removeNodeObject(Nodest::AbstractNodeObject *nodeObj)
 {
-    removeObjectFromVector(nodeObj);
+    for (size_t i = 0; i < m_nodeObjects.size(); i++){
+        if (m_nodeObjects[i] == nodeObj){
+            m_nodeObjects.erase(m_nodeObjects.begin() + i);
+            break;
+        }
+    }
+    for (size_t i = 0; i < m_connectionObjects.size(); ){
+        if (m_connectionObjects[i]->getConnection()->getFirst()->getParent()->getObj() == nodeObj ||
+                m_connectionObjects[i]->getConnection()->getSecond()->getParent()->getObj() == nodeObj){
+            m_connectionObjects.erase(m_connectionObjects.begin() + i);
+        }
+        else{
+            i++;
+        }
+    }
     m_graph->removeNode(nodeObj->getNode());
 }
 
 void Nodest::AbstractGraphObject::removeSingleConnection(AbstractConnectionObject *connectionObject)
 {
+    for (size_t i = 0; i < m_connectionObjects.size(); i++){
+        if (m_connectionObjects[i] == connectionObject){
+            m_connectionObjects.erase(m_connectionObjects.begin() + i);
+            break;
+        }
+    }
+
     m_graph->removeSingleConnection(connectionObject->getConnection());
 }
 
@@ -83,14 +104,4 @@ void Nodest::AbstractGraphObject::addExtension(Nodest::AbstractExtension *extens
 
 }
 
-
-void Nodest::AbstractGraphObject::removeObjectFromVector(Nodest::AbstractNodeObject *nodeObj)
-{
-    for (size_t i = 0; i < m_nodeObjects.size(); i++){
-        if (m_nodeObjects[i] == nodeObj){
-            m_nodeObjects.erase(m_nodeObjects.begin() + i);
-            break;
-        }
-    }
-}
 

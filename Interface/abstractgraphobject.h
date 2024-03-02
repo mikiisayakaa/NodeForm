@@ -56,7 +56,7 @@ public slots:
 
 
 protected:
-    void removeObjectFromVector(AbstractNodeObject* nodeObj);
+
 
 protected:
     AbstractNodeGraph* m_graph;

@@ -4,7 +4,6 @@
 #include "Global/globalqmlfiles.h"
 #include "Global/globaluiparams.h"
 #include "Global/globalitems.h"
-#include "Interface/tempconnectionobject.h"
 #include "Interface/connectionobject.h"
 #include "Utils/qmlcreationutils.h"
 
@@ -50,8 +49,8 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
         m_line = nullptr;
     }
     else{
-        Connection* connection = graphObj->addSingleConnection(m_testConnection);
-        if (connection == nullptr){
+        AbstractConnectionObject* connectObj = graphObj->addSingleConnection(m_testConnection);
+        if (connectObj == nullptr){
             delete m_line;
             m_line = nullptr;
         }
@@ -70,13 +69,10 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
 
             delete m_line;
             m_line = nullptr;
-            ConnectionObject* connectObj = new ConnectionObject(background->parent());
+
             connectObj->setItem(newLine);
             newLine->setParent(connectObj);
 
-
-            connection->setObj(connectObj);
-            connectObj->setConnection(connection);
             connectObj->addExtensions();
 
         }

@@ -4,7 +4,6 @@
 #include "Global/globalqmlfiles.h"
 #include "Global/globaluiparams.h"
 #include "Global/globalitems.h"
-#include "Interface/tempconnectionobject.h"
 #include "Interface/connectionobject.h"
 #include "Utils/qmlcreationutils.h"
 

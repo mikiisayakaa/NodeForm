@@ -1,6 +1,7 @@
 #include "abstractgraphobject.h"
 #include "Extension/abstractextension.h"
 #include "abstractconnectionobject.h"
+#include "connectionobject.h"
 
 Nodest::AbstractGraphObject::AbstractGraphObject(Nodest::AbstractNodeGraph *graph, QObject *parent)
     :  QObject(parent), m_graph(graph)
@@ -30,9 +31,20 @@ void Nodest::AbstractGraphObject::reEvalSingle(Nodest::AbstractNodeObject *nodeO
     m_graph->reEvalSingle(nodeObj->getNode());
 }
 
-Nodest::Connection *Nodest::AbstractGraphObject::addSingleConnection(Nodest::TestConnection *testConnection)
+Nodest::AbstractConnectionObject *Nodest::AbstractGraphObject::addSingleConnection(Nodest::TestConnection *testConnection)
 {
-    return m_graph->addSingleConnection(testConnection);
+    Connection* connection = m_graph->addSingleConnection(testConnection);
+    if (connection == nullptr){
+        return nullptr;
+    }
+
+    ConnectionObject* connectObj = new ConnectionObject(this);
+    connectObj->setConnection(connection);
+    connection->setObj(connectObj);
+
+    m_connectionObjects.push_back(connectObj);
+
+    return connectObj;
 }
 
 void Nodest::AbstractGraphObject::removeNodeObject(Nodest::AbstractNodeObject *nodeObj)

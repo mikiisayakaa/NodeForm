@@ -3,7 +3,6 @@
 #include "Global/globalqmlfiles.h"
 #include "Global/globaluiparams.h"
 #include "connectionobject.h"
-#include "tempconnectionobject.h"
 #include "Utils/qmlcreationutils.h"
 #include "abstractgraphobject.h"
 #include "Extension/extensionfactory.h"

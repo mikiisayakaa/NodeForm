@@ -35,7 +35,7 @@ public:
 
     void reEvalSingle(AbstractNodeObject* nodeObj);
 
-    Connection* addSingleConnection(TestConnection* testConnection);
+    AbstractConnectionObject* addSingleConnection(TestConnection* testConnection);
 
     void removeNodeObject(AbstractNodeObject* nodeObj);
 

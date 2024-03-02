@@ -1,0 +1,23 @@
+#pragma once
+
+#include <QObject>
+
+#include "Extension/abstractextension.h"
+
+namespace Nodest{
+
+class InDragAddConnection : public AbstractExtension
+{
+    Q_OBJECT
+public:
+    explicit InDragAddConnection(QObject *parent = nullptr) :
+
+
+signals:
+
+public slots:
+      
+private:
+};
+
+}

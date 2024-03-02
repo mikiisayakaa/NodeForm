@@ -18,7 +18,8 @@ Nodest::SlotObject::SlotObject(Nodest::AbstractSlot *slot, QObject *parent)
 void Nodest::SlotObject::addExtensions()
 {
     std::vector<ExtensionType> extensionList{
-        ExtensionType::DragAddConnection
+        ExtensionType::OutDragAddConnection,
+        ExtensionType::InDragAddConnection
     };
 
     for (auto& type : extensionList){

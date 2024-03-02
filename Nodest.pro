@@ -70,7 +70,9 @@ SOURCES += \
     Extension/Node/movenodeextension.cpp \
     Extension/Graph/deleteselectednodeextension.cpp \
     Extension/Graph/deleteselectedconnecitonextension.cpp \
-    Extension/Slot/dragaddconnection.cpp
+    Extension/Slot/indragaddconnectionextension.cpp \
+    Extension/Slot/outdragaddconnectionextension.cpp \
+    Extension/Slot/dragaddconnectionextension.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -125,7 +127,9 @@ HEADERS += \
     Extension/Node/movenodeextension.h \
     Extension/Graph/deleteselectednodeextension.h \
     Extension/Graph/deleteselectedconnecitonextension.h \
-    Extension/Slot/dragaddconnection.h
+    Extension/Slot/indragaddconnectionextension.h \
+    Extension/Slot/outdragaddconnectionextension.h \
+    Extension/Slot/dragaddconnectionextension.h
 
 
 FORMS +=

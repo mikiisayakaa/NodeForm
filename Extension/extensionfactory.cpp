@@ -11,7 +11,8 @@
 #include "Extension/Node/nodeselectionextension.h"
 #include "Extension/Node/movenodeextension.h"
 #include "Extension/Connection/connectionselectionextension.h"
-#include "Extension/Slot/dragaddconnection.h"
+#include "Extension/Slot/outdragaddconnectionextension.h"
+#include "Extension/Slot/indragaddconnectionextension.h"
 
 Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::ExtensionType type, QObject *parent)
 {
@@ -44,8 +45,11 @@ Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::Ext
     case ExtensionType::ConnectionSelection:
         return new ConnectionSelectionExtension(parent);
 
-    case ExtensionType::DragAddConnection:
-        return new DragAddExtension(parent);
+    case ExtensionType::OutDragAddConnection:
+        return new OutDragAddConnectionExtension(parent);
+
+    case ExtensionType::InDragAddConnection:
+        return new InDragAddConnectionExtension(parent);
 
     default:
         break;

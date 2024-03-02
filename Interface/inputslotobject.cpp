@@ -12,7 +12,6 @@ Nodest::InputSlotObject::InputSlotObject(Nodest::InputSlot *slot, NodestGlobal::
     m_items.resize(3);
     slot->setObj(this);
     createWidgets();
-    bindWidgets();
     addExtensions();
 }
 
@@ -64,67 +63,6 @@ void Nodest::InputSlotObject::setWidgetsLayout()
     setAnchors(m_items[1], m_items[0], "verticalCenter", "verticalCenter");
     setAnchors(m_items[2], m_items[1], "left", "left");
     setAnchors(m_items[2], m_items[1], "top", "bottom");
-}
-
-
-void Nodest::InputSlotObject::onConnectionDrag(qreal x, qreal y)
-{
-
-    if (m_testConnection == nullptr){
-        m_testConnection = new TestConnection();
-        QQuickItem* line = nullptr;
-        QQuickItem* handle = nullptr;
-
-        InputSlot* inSlot = (InputSlot*)m_slot;
-
-        //already have a connection, we'll cut off the existing one
-        if (inSlot->getConnection() != nullptr){
-            Connection* oldConnection = inSlot->getConnection();
-            OutputSlot* outSlot = oldConnection->getFirst();
-
-            m_testConnection->firstNode = outSlot->getParent();
-            m_testConnection->firstFlow = 1;
-            m_testConnection->firstIndex = outSlot->getIndex();
-
-            //create before removal, or user will see a flash in the ui
-            handle = outSlot->getObj()->getItem(0);
-
-            connectionStartHelper(handle);
-
-            line = m_tempConnection->getItem();
-            line->setProperty("x2", m_items[0]->property("globalX").toReal() +
-                                    m_items[0]->property("width").toReal() / 2);
-            line->setProperty("y2", m_items[0]->property("globalY").toReal() +
-                                    m_items[0]->property("height").toReal() / 2);
-
-            //remove the original connection
-            AbstractGraphObject* graphObj = qobject_cast<AbstractGraphObject*>(NodestGlobal::globalBackground->parent());
-            graphObj->removeSingleConnection(oldConnection->getObj());
-
-        }
-        else{
-            handle = m_items[0];
-            m_testConnection->secondNode = m_slot->getParent();
-            m_testConnection->secondFlow = 0;
-            m_testConnection->secondIndex = m_slot->getIndex();
-
-            connectionStartHelper(handle);
-        }
-    }
-    else{
-        QQuickItem* line = m_tempConnection->getItem();
-
-        if (m_testConnection->firstNode == nullptr){
-            line->setProperty("x1", x);
-            line->setProperty("y1", y);
-        }
-        else{
-            line->setProperty("x2", x);
-            line->setProperty("y2", y);
-        }
-
-    }
-
 }
 
 

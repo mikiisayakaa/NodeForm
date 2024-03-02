@@ -14,7 +14,6 @@ Nodest::OutputSlotObject::OutputSlotObject(Nodest::OutputSlot *slot, NodestGloba
     m_items.resize(3);
     slot->setObj(this);
     createWidgets();
-    bindWidgets();
     addExtensions();
 }
 
@@ -73,23 +72,4 @@ void Nodest::OutputSlotObject::setWidgetsLayout()
     setAnchors(m_items[2], m_items[1], "top", "bottom");
 }
 
-
-
-void Nodest::OutputSlotObject::onConnectionDrag(qreal x, qreal y)
-{
-    if (m_testConnection == nullptr){
-        m_testConnection = new TestConnection();
-        m_testConnection->firstNode = m_slot->getParent();
-        m_testConnection->firstFlow = 1;
-        m_testConnection->firstIndex = m_slot->getIndex();
-
-        connectionStartHelper(m_items[0]);
-    }
-    else{
-        QQuickItem* line = m_tempConnection->getItem();
-
-        line->setProperty("x2", x);
-        line->setProperty("y2", y);
-    }
-}
 

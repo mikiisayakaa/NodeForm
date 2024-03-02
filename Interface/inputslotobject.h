@@ -26,8 +26,6 @@ signals:
 
 public slots:
 
-    void onConnectionDrag(qreal x, qreal y);
-
 private:
     NodestGlobal::UIParameters* m_createParams;
 

@@ -19,8 +19,6 @@ public:
 
     virtual void createWidgets() = 0;
 
-    virtual void bindWidgets() = 0;
-
     virtual void setWidgetsLayout() = 0;
 
     void addExtension(AbstractExtension* extension);

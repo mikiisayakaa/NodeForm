@@ -28,13 +28,11 @@ CONFIG += c++17
 
 SOURCES += \
         main.cpp \
-    pixmapprovider.cpp \
     typeconversion.cpp \
     imagefunctions.cpp \
     nodefactoryimage.cpp
 
 HEADERS += \
-    pixmapprovider.h \
     typedefines.h \
     gsdefines.h \
     typeconversion.h \

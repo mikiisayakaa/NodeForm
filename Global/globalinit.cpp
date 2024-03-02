@@ -35,7 +35,7 @@ void NodestGlobal::fillGlobalUI(const QString &path)
 {
     QDir directory(path);
 
-    NodestGlobal::globalUi = new NodestGlobal::GlobalUIParameters;
+    NodestGlobal::globalUI = new NodestGlobal::GlobalUIParameters;
 
     QFileInfoList fileInfoList = directory.entryInfoList();
 
@@ -45,7 +45,7 @@ void NodestGlobal::fillGlobalUI(const QString &path)
         }
         else if (fileInfo.isFile() && fileInfo.fileName() == "globalUI.json") {
             //load global ui
-            Nodest::loadGlobalUIJson(NodestGlobal::globalUi, fileInfo.filePath());
+            Nodest::loadGlobalUIJson(NodestGlobal::globalUI, fileInfo.filePath());
         }
     }
 }

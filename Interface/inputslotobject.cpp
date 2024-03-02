@@ -13,6 +13,7 @@ Nodest::InputSlotObject::InputSlotObject(Nodest::InputSlot *slot, NodestGlobal::
     slot->setObj(this);
     createWidgets();
     bindWidgets();
+    addExtensions();
 }
 
 void Nodest::InputSlotObject::createWidgets()

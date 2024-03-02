@@ -17,7 +17,7 @@ enum class ExtensionType{
     MoveNode,
 
     //slot level extensions
-
+    DragAddConnection,
 
     //connection level extensions
     ConnectionSelection,

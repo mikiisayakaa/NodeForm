@@ -27,6 +27,6 @@ struct GlobalUIParameters{
     QString backgroundFile;
 };
 
-extern GlobalUIParameters* globalUi;
+extern GlobalUIParameters* globalUI;
 
 }

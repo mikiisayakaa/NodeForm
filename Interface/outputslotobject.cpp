@@ -15,7 +15,7 @@ Nodest::OutputSlotObject::OutputSlotObject(Nodest::OutputSlot *slot, NodestGloba
     slot->setObj(this);
     createWidgets();
     bindWidgets();
-    //setWidgetsLayout();
+    addExtensions();
 }
 
 Nodest::OutputSlotObject::~OutputSlotObject()

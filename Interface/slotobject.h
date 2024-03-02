@@ -16,6 +16,8 @@ public:
     explicit SlotObject(AbstractSlot* slot, QObject *parent = nullptr);
 
     void bindWidgets();
+
+    void addExtensions();
 signals:
 
 public slots:

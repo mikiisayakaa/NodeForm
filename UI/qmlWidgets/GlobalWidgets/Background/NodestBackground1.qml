@@ -6,6 +6,8 @@ Rectangle {
     height: 100000
     color: Qt.rgba(0.1, 0.1, 0.1, 1.0)
     focus: true
+
+
     x: -50000
     y: -50000
 
@@ -63,7 +65,6 @@ Rectangle {
 
     Keys.onPressed:{
         if (event.key === Qt.Key_Delete){
-            console.log("deletePressed")
             deleteSelected()
         }
         else if (event.key === Qt.Key_Space && !event.isAutoRepeat){

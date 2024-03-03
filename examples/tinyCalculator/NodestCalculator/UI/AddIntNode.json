@@ -4,7 +4,7 @@
   "inputNames" : ["x", "y"],
   "outputNames": ["z"],
   "baseFiles": ["",""],
-  "inputFiles" : [ ["", "", ""],
+  "inputFiles" : [ ["", "", "NodestIntSetTextInput1.qml"],
              ["", "", ""]
                        ],
   "outputFiles" : [ ["", "", ""] ]

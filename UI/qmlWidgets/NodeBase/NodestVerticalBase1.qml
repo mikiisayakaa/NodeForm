@@ -15,7 +15,6 @@ Rectangle {
 
     //simply set focus to false to prevent the nodeBase
     //from grabbing key focus accidentally
-    focus: false
 
     property real scaleValue: parent.scaleValue
     property real minWidth: 0
@@ -66,6 +65,8 @@ Rectangle {
 
         onPressed: {
             if (!selected){
+                //this key focus will pass keyboard input to background
+                focus = true;
                 select();
             }
 

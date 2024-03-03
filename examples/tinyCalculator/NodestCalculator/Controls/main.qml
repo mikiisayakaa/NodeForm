@@ -13,4 +13,5 @@ Window {
     ButtonManager{
         z: parent.z + 1000
     }
+
 }

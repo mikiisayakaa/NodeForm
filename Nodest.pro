@@ -31,7 +31,6 @@ SOURCES += \
     Core/connection.cpp \
     Core/inputslot.cpp \
     Core/outputslot.cpp \
-    Core/abstractslot.cpp \
     Core/abstractevalnode.cpp \
     Wrapper/slotsetter.cpp \
     Global/globalqmlfiles.cpp \

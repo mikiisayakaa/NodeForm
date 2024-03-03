@@ -4,9 +4,10 @@
 
 #include "Utils/variant.h"
 
-//a single slot
-//NOTE: once a slot is created, its QVariant's type is determined
-//      and cannot be changed during the slot's lifetime.
+/* a single slot
+ * NOTE: once a slot is created, its Variant's type is determined
+ *      and cannot be changed during the slot's lifetime.
+*/
 
 namespace Nodest{
 
@@ -39,26 +40,35 @@ public:
     virtual void removeConnection(Connection* connection) = 0;
 
     void setParent(AbstractNode* parent) {m_parent = parent;}
+    AbstractNode* getParent() const {return m_parent;}
+
     void setIndex(int index) {m_index = index;}
     int getIndex() const {return m_index;}
-    int getFlow() const {return m_flow;}
-    AbstractNode* getParent() const {return m_parent;}
+
+    int getFlow() const {return m_flow;} 
+
     int getTypeID() const {return m_var->getTypeId();}
-    QString getTypeName() const{return m_typename;}
+
+    QString getTypeName() const {return m_typename;}
+
     void setObj(AbstractSlotObject* slotObj) {m_slotObject = slotObj;}
     AbstractSlotObject* getObj() const {return m_slotObject;}
 
 protected:
     AbstractNode* m_parent;
 
-    //data here
+    // slot data here
     Variant* m_var;
 
-    //flow = 0 for inputslot, flow = 1 for outputslot
+    /* flow = 0 for inputslot, flow = 1 for outputslot.
+     * We don't use enum classes here, because it needs to communicate with qml.
+    */
     int m_flow;
+
+    // index of this slot in the node
     int m_index;
 
-    //
+    // we now use typeName for default slot names
     QString m_typename;
 
     AbstractSlotObject* m_slotObject;

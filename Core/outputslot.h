@@ -22,11 +22,6 @@ public:
     OutputSlot(const T& value) :AbstractSlot(value), m_getter(nullptr) {m_flow = 1;}
 
     template<typename T>
-    T& get(){
-        return m_var->get<T>();
-    }
-
-    template<typename T>
     T* getPointer(){
         return m_var->getPointer<T>();
     }

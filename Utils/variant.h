@@ -14,13 +14,6 @@ namespace Nodest{
 class Variant
 {
 public:
-
-    // Not used currently
-    template<typename T>
-    Variant* clone(const Variant& other){
-        return new Variant(other.get<T>());
-    }
-
     /* WARNING: we cannot have a templated destructor, so we must call this
      * function to manually free the pointer when the Variant's lifetime ends.
      *

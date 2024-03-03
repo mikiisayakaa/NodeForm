@@ -61,7 +61,7 @@ protected:
     Variant* m_var;
 
     /* flow = 0 for inputslot, flow = 1 for outputslot.
-     * We don't use enum classes here, because it needs to communicate with qml.
+     * We don't use enum classes here, because the need to communicate with qml.
     */
     int m_flow;
 

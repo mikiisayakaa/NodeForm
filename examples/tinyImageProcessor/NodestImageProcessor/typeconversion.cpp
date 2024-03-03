@@ -1,7 +1,5 @@
 #include "typeconversion.h"
 
-#include "pixmapprovider.h"
-
 #include <QBuffer>
 
 namespace Nodest{

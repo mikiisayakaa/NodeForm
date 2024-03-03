@@ -33,4 +33,5 @@
 
 # Qt utility files
 *.pro.user
+*.autosave
 

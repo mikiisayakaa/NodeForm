@@ -80,10 +80,6 @@ DISTFILES += \
     UI/IntNode.json
 
 
-
-
-
-
 unix|win32: LIBS += -L$$PWD/../../../build/debug/ -lNodest
 
 INCLUDEPATH += $$PWD/../../../

@@ -7,6 +7,8 @@ namespace Nodest{
 class InputSlot;
 class OutputSlot;
 
+class AbstractConnectionObject;
+
 class Connection
 {
 
@@ -14,7 +16,7 @@ public:
     explicit Connection(OutputSlot* first, InputSlot* second)
         : m_first(first), m_second(second)  {}
 
-    ~Connection() {delete m_connectObj;}
+    ~Connection() {}
 
     OutputSlot* getFirst() {return m_first;}
     InputSlot* getSecond() {return m_second;}

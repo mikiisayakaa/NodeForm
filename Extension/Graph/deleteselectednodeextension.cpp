@@ -35,5 +35,7 @@ void Nodest::DeleteSelectedNodeExtension::onDelete()
         graphObject->removeNodeObject(nodeObj);
     }
 
+    qDebug() << selectedNodes.size();
+
     selectedNodes.clear();
 }

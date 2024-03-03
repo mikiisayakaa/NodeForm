@@ -136,8 +136,6 @@ protected:
                 std::tuple_size_v<InArgsTypes> - 1>::destructSlots(m_inputSlots);
         RecursiveSlotDestructor<OutArgsTypes, OutputSlot,
                 std::tuple_size_v<OutArgsTypes> - 1>::destructSlots(m_outputSlots);
-
-        delete m_nodeObject;
     }
 
     void setSlotParent(AbstractEvalNode* parent);

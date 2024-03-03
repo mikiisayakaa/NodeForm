@@ -19,6 +19,8 @@ class AbstractNodeObject : public QObject
 public:
     explicit AbstractNodeObject(AbstractNode* node, QObject *parent = nullptr);
 
+    virtual ~AbstractNodeObject() {delete m_node;}
+
     virtual void createWidgets() = 0;
 
     virtual void setWidgetsLayout() = 0;
@@ -32,6 +34,8 @@ public:
     QQuickItem* getItem(int index) const {return m_items[index];}
 
     void addExtension(AbstractExtension* extension);
+
+    const std::vector<AbstractExtension*>& getExtensions() const {return m_extensions;}
 
 signals:
 

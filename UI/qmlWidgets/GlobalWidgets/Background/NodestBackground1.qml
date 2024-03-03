@@ -61,10 +61,9 @@ Rectangle {
 
     }
 
-
-
     Keys.onPressed:{
         if (event.key === Qt.Key_Delete){
+            console.log("deletePressed")
             deleteSelected()
         }
         else if (event.key === Qt.Key_Space && !event.isAutoRepeat){

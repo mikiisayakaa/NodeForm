@@ -170,7 +170,7 @@ void Nodest::BasicNodeGraph::removeConnection(Nodest::Connection *connection)
         }
     }
 
-    delete connection;
+    //delete connection;
 }
 
 Nodest::Connection* Nodest::BasicNodeGraph::addConnection(Nodest::OutputSlot *first, Nodest::InputSlot *second)
@@ -252,7 +252,9 @@ void Nodest::BasicNodeGraph::removeNode(Nodest::AbstractNode *node)
         }
     }
 
-    delete node;
+    //delete node;
+    //now it will not be evaled, since we are going to delete it
+    node->addDepend(1);
 
     getDepth();
     eval();

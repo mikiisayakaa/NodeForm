@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QQuickItem>
 
+#include "Core/connection.h"
+
 namespace Nodest{
 
 class Connection;
@@ -15,7 +17,7 @@ public:
     explicit AbstractConnectionObject(QObject *parent = nullptr) : QObject(parent),
     m_connectionItem(nullptr), m_connection(nullptr) {}
 
-    virtual ~AbstractConnectionObject() {delete m_connectionItem;}
+    virtual ~AbstractConnectionObject();
 
     void setItem(QQuickItem* connectionItem) {m_connectionItem = connectionItem;}
     QQuickItem* getItem() const {return m_connectionItem;}

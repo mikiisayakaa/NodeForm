@@ -1,0 +1,10 @@
+{
+  "nodeID" : "IntNode",
+  "nodeName" : "Int",
+  "inputNames" : [""],
+  "outputNames": ["intValue"],
+  "baseFiles": ["",""],
+  "inputFiles" : [ ["dummy.qml", "", ""]
+                       ],
+  "outputFiles" : [ ["", "", ""] ]
+}

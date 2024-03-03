@@ -13,6 +13,10 @@ Rectangle {
     radius: 10
     height: 0
 
+    //simply set focus to false to prevent the nodeBase
+    //from grabbing key focus accidentally
+    focus: false
+
     property real scaleValue: parent.scaleValue
     property real minWidth: 0
 

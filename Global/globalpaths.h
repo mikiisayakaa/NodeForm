@@ -6,7 +6,7 @@
 
 namespace NodestGlobal{
 
-static QString uiPath = QDir::currentPath() + "/../../../UI/";
+static QString uiPath = QDir::currentPath() + "/../../UI/";
 
 static QString qmlPath = uiPath + "qmlWidgets/";
 

@@ -11,8 +11,8 @@ Nodest::AbstractGraphObject::AbstractGraphObject(Nodest::AbstractNodeGraph *grap
 
 Nodest::AbstractGraphObject::~AbstractGraphObject()
 {
-    for (size_t i = 0; i < m_nodeObjects.size(); i++){
-        m_graph->removeNode(m_nodeObjects[i]->getNode());
+    while(m_nodeObjects.size() != 0){
+        removeNodeObject(m_nodeObjects.front());
     }
 
     delete m_graph;
@@ -55,9 +55,12 @@ void Nodest::AbstractGraphObject::removeNodeObject(Nodest::AbstractNodeObject *n
             break;
         }
     }
+
+    std::vector<AbstractConnectionObject*> deleteList;
     for (size_t i = 0; i < m_connectionObjects.size(); ){
         if (m_connectionObjects[i]->getConnection()->getFirst()->getParent()->getObj() == nodeObj ||
                 m_connectionObjects[i]->getConnection()->getSecond()->getParent()->getObj() == nodeObj){
+            deleteList.push_back(m_connectionObjects[i]);
             m_connectionObjects.erase(m_connectionObjects.begin() + i);
         }
         else{
@@ -65,6 +68,11 @@ void Nodest::AbstractGraphObject::removeNodeObject(Nodest::AbstractNodeObject *n
         }
     }
     m_graph->removeNode(nodeObj->getNode());
+
+    delete nodeObj;
+    for (size_t i = 0; i < deleteList.size(); i++){
+        delete deleteList[i];
+    }
 }
 
 void Nodest::AbstractGraphObject::removeSingleConnection(AbstractConnectionObject *connectionObject)
@@ -77,6 +85,8 @@ void Nodest::AbstractGraphObject::removeSingleConnection(AbstractConnectionObjec
     }
 
     m_graph->removeSingleConnection(connectionObject->getConnection());
+
+    delete connectionObject;
 }
 
 void Nodest::AbstractGraphObject::copyNodeObj(Nodest::AbstractNodeObject *nodeObj)

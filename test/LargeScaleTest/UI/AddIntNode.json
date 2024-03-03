@@ -1,0 +1,11 @@
+{
+  "nodeID" : "AddIntNode",
+  "nodeName" : "AddInt",
+  "inputNames" : ["x", "y"],
+  "outputNames": ["z"],
+  "baseFiles": ["",""],
+  "inputFiles" : [ ["", "", ""],
+             ["", "", ""]
+                       ],
+  "outputFiles" : [ ["", "", ""] ]
+}

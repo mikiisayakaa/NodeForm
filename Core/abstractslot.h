@@ -22,7 +22,7 @@ public:
 
     template<typename T>
     explicit AbstractSlot(const T& value)
-        : m_var(Variant::createVariant<T>(value)), m_typename(TYPENAME<T>::getName()) {}
+        : m_var(Variant::createVariant<T>(value)) {}
 
     virtual ~AbstractSlot() {}
 
@@ -49,7 +49,7 @@ public:
 
     int getTypeID() const {return m_var->getTypeId();}
 
-    QString getTypeName() const {return m_typename;}
+    QString getTypeName() const {return m_var->getTypeName();}
 
     void setObj(AbstractSlotObject* slotObj) {m_slotObject = slotObj;}
     AbstractSlotObject* getObj() const {return m_slotObject;}
@@ -67,9 +67,6 @@ protected:
 
     // index of this slot in the node
     int m_index;
-
-    // we now use typeName for default slot names
-    QString m_typename;
 
     AbstractSlotObject* m_slotObject;
 

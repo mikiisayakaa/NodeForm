@@ -2,6 +2,7 @@
 
 #include <QString>
 #include <QDebug>
+#include <cassert>
 
 namespace Nodest{
 
@@ -13,6 +14,7 @@ void assertion(bool judgement, const QString& file, const QString& func, int lin
     #define ND_ASSERT(judgement, info) \
       do { \
           assertion((judgement), __FILE__, __func__, __LINE__, (info)); \
+          assert(judgement); \
       } while(0)
   #else
     #define ND_ASSERT(judgement, info) \

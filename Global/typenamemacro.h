@@ -8,8 +8,10 @@
 //does not expose enough template functions to users
 
 #include <QString>
+#include <QHash>
 
 static int typeValue = 0;
+static QHash<int, QString> typenameMap;
 
 #ifndef DECLARE_TYPE
 #define DECLARE_TYPE(typeName) \

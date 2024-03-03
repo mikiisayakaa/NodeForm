@@ -11,6 +11,7 @@
 #include "outputslot.h"
 #include "Wrapper/abstractslotsetter.h"
 #include "Interface/abstractslotobject.h"
+#include "Utils/debugutils.h"
 
 namespace Nodest{
 
@@ -32,9 +33,10 @@ public:
         }
     }
 
-
     void setConnection(Connection* connection) {m_connection = connection;}
     void removeConnection(Connection* connection) {
+        ND_ASSERT(connection == m_connection,
+                  QString("Trying to Remove a Connection that does not exist!"));
         if (connection == m_connection){
             m_connection = nullptr;
         }

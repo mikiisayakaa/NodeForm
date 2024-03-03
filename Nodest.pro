@@ -31,7 +31,6 @@ SOURCES += \
     Core/connection.cpp \
     Core/inputslot.cpp \
     Core/outputslot.cpp \
-    Utils/variant.cpp \
     Core/abstractslot.cpp \
     Core/abstractevalnode.cpp \
     Wrapper/slotsetter.cpp \

@@ -2,7 +2,7 @@
 
 #include <utility>
 
-#include <QDebug>
+#include "debugutils.h"
 
 #include "Global/typenamemacro.h"
 
@@ -17,17 +17,14 @@ class Variant
 {
 public:
 
-    template<typename T>
-    Variant(){
-        m_data = new T();
-        m_typeid = TYPENAME<T>::getID();
-    }
-
-    template<typename T>
-    Variant(const T& value){
-        m_data = new T(value);
-        m_typeid = TYPENAME<T>::getID();
-    }
+//    template<typename T>
+//    Variant(){
+//        m_data = new T();
+//        m_typeid = TYPENAME<T>::getID();
+//        Q_ASSERT_X(m_typeid != -1, __func__,
+//                   QString("Nodest WARNING: Type: ") + typeid(T).name() +
+//                            " has not been registered, use DECLARE_TYPE() first");
+//    }
 
     template<typename T>
     Variant* clone(const Variant& other){
@@ -37,10 +34,9 @@ public:
     //WARNING: we cannot have a templated destructor, so user must call this
     //function to manually free the pointer when Variant's lifetime ends
 
-    //it's only used in the framework itself, DO NOT use Variant in user-defined node classes
+    //It's only used in the framework itself, DO NOT use Variant in user-defined node classes
     template<typename T>
     void destruct(){
-        // qDebug() << "destruct Variant: " << QString(TYPENAME<T>::getName()) << " " << *(static_cast<T*>(m_data));
         delete static_cast<T*>(m_data);
         m_data = nullptr;
     }
@@ -77,6 +73,32 @@ public:
         return m_typeid;
     }
 
+    template <typename T>
+    static Variant* createVariant(const T& value){
+        return new Variant(value);
+    }
+
+    // This function assumes the user has provided a correct default constructor
+    template <typename T>
+    static Variant* createVariant(){
+        return new Variant(T());
+    }
+
+private:
+    /* Variant assumes the user has provided a correct copy constructor
+     *
+     * This function is private to prevent assigning a different type
+     * for an already created Variant
+    */
+
+    template<typename T>
+    Variant(const T& value){
+        m_data = new T(value);
+        m_typeid = TYPENAME<T>::getID();
+
+        ND_ASSERT(m_typeid != -1, QString("Type: [") + typeid(T).name() +
+                  "] has not been registered, use DECLARE_TYPE() first");
+    }
 
 
 private:
@@ -84,15 +106,7 @@ private:
     int m_typeid;
 };
 
-template <typename T>
-Variant* createVariant(const T& value){
-    return new Variant(value);
-}
 
-template <typename T>
-Variant* createVariant(){
-    return  new Variant(T());
-}
 
 }
 

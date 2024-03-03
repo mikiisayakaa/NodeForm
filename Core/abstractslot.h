@@ -1,11 +1,8 @@
 ﻿#pragma once
 
-#include <QMetaType>
 #include <QString>
 
 #include "Utils/variant.h"
-
-#include <vector>
 
 //a single slot
 //NOTE: once a slot is created, its QVariant's type is determined
@@ -21,9 +18,10 @@ class AbstractSlot
 {
 
 public:
+
     template<typename T>
     explicit AbstractSlot(const T& value)
-        : m_var(createVariant<T>(value)), m_typename(TYPENAME<T>::getName()) {}
+        : m_var(Variant::createVariant<T>(value)), m_typename(TYPENAME<T>::getName()) {}
 
     virtual ~AbstractSlot() {}
 
@@ -60,6 +58,7 @@ protected:
     int m_flow;
     int m_index;
 
+    //
     QString m_typename;
 
     AbstractSlotObject* m_slotObject;

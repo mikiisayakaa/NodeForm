@@ -69,7 +69,8 @@ SOURCES += \
     Extension/Graph/deleteselectedconnecitonextension.cpp \
     Extension/Slot/indragaddconnectionextension.cpp \
     Extension/Slot/outdragaddconnectionextension.cpp \
-    Extension/Slot/dragaddconnectionextension.cpp
+    Extension/Slot/dragaddconnectionextension.cpp \
+    Utils/debugutils.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -122,7 +123,8 @@ HEADERS += \
     Extension/Graph/deleteselectedconnecitonextension.h \
     Extension/Slot/indragaddconnectionextension.h \
     Extension/Slot/outdragaddconnectionextension.h \
-    Extension/Slot/dragaddconnectionextension.h
+    Extension/Slot/dragaddconnectionextension.h \
+    Utils/debugutils.h
 
 
 FORMS +=

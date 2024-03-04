@@ -6,7 +6,7 @@
 #include "Core/connection.h"
 #include "Global/globaluiparams.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractConnectionObject;
 
@@ -14,7 +14,7 @@ class SlotObject : public AbstractSlotObject
 {
     Q_OBJECT
 public:
-    explicit SlotObject(AbstractSlot* slot,NodestGlobal::UIParameters* params, QObject *parent);
+    explicit SlotObject(AbstractSlot* slot,NF::UIParameters* params, QObject *parent);
 
     void createWidgets();
 
@@ -27,7 +27,7 @@ public slots:
 
 
 protected:
-    NodestGlobal::UIParameters* m_createParams;
+    NF::UIParameters* m_createParams;
 };
 
 }

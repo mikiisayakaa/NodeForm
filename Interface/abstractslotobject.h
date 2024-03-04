@@ -5,7 +5,7 @@
 
 #include "Core/abstractslot.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractExtension;
 

@@ -11,7 +11,7 @@
 
 #include <QQuickItem>
 
-namespace Nodest{
+namespace NF{
 
 
 //create setters for a slot vector

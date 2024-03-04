@@ -56,10 +56,10 @@ DISTFILES += \
     Controls/ButtonManager.qml \
     Controls/main.qml
 
-unix|win32: LIBS += -L$$PWD/../../build/debug/ -lNodest
+unix|win32: LIBS += -L$$PWD/../../build/debug/ -lNF
 
 INCLUDEPATH += $$PWD/../../
 DEPENDPATH += $$PWD/../../
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../build/debug/Nodest.lib
-else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../build/debug/libNodest.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../build/debug/NF.lib
+else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../../build/debug/libNF.a

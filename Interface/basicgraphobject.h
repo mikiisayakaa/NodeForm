@@ -4,7 +4,7 @@
 
 #include "abstractgraphobject.h"
 
-namespace Nodest{
+namespace NF{
 
 class BasicGraphObject : public AbstractGraphObject
 {

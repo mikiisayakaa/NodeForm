@@ -7,7 +7,7 @@
 #include <QQuickItem>
 //base class of all kinds of nodes
 
-namespace Nodest{
+namespace NF{
 
 class InputSlot;
 class OutputSlot;
@@ -18,7 +18,7 @@ class AbstractNode
 {
 public:
     explicit AbstractNode(): m_dependencyCount(0), m_tag(0) {}
-    virtual ~AbstractNode() {}
+    virtual ~AbstractNode();
     virtual AbstractNode* clone() const = 0;
 
     virtual void eval() = 0;

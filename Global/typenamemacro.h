@@ -25,7 +25,7 @@ static QHash<int, QString> typenameMap;
 #endif
 
 
-namespace Nodest{
+namespace NF{
 
 template<typename T>
 struct TYPENAME{

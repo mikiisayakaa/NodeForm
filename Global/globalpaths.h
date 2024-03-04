@@ -4,7 +4,7 @@
 #include <QStringList>
 #include <QDir>
 
-namespace NodestGlobal{
+namespace NF{
 
 static QString uiPath = QDir::currentPath() + "/../../../UI/";
 

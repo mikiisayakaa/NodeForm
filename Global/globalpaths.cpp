@@ -1,6 +1,6 @@
 #include "globalpaths.h"
 
-namespace NodestGlobal{
+namespace NF{
 
 //folder contains all qml widgets to load
 QStringList nodeJsonPaths = {};

@@ -4,31 +4,31 @@
 
 #include "Extension/extensionfactory.h"
 
-Nodest::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *parent)
+NF::BasicGraphObject::BasicGraphObject(AbstractNodeGraph *graph, QObject *parent)
     : AbstractGraphObject (graph, parent)
 {
     createWidgets();
     addExtensions();
 }
 
-void Nodest::BasicGraphObject::createWidgets()
+void NF::BasicGraphObject::createWidgets()
 {
-    QQuickItem* parentItem = NodestGlobal::globalRootObject;
+    QQuickItem* parentItem = NF::globalRootObject;
 
-    QQmlComponent* component = NodestGlobal::backgroundMap[NodestGlobal::backgroundDefault];
+    QQmlComponent* component = NF::backgroundMap[NF::backgroundDefault];
 
-    QObject* bgdObject = component->beginCreate(NodestGlobal::engine->rootContext());
+    QObject* bgdObject = component->beginCreate(NF::engine->rootContext());
     m_background = qobject_cast<QQuickItem*>(bgdObject);
     m_background->setParentItem(parentItem);
     m_background->setParent(this);
 
-    NodestGlobal::globalBackground = m_background;
+    NF::globalBackground = m_background;
 
     component->completeCreate();
 }
 
 
-void Nodest::BasicGraphObject::addExtensions()
+void NF::BasicGraphObject::addExtensions()
 {
     std::vector<ExtensionType> extensionList{
         ExtensionType::GraphNodeSelection,
@@ -47,12 +47,12 @@ void Nodest::BasicGraphObject::addExtensions()
 
 
 
-//void Nodest::BasicGraphObject::onPreCopy()
+//void NF::BasicGraphObject::onPreCopy()
 //{
 //    m_nodeObjectsToCopy = m_selectedNodeObjects;
 //}
 
-//void Nodest::BasicGraphObject::onCopy()
+//void NF::BasicGraphObject::onCopy()
 //{
 //    for (size_t i = 0; i < m_selectedNodeObjects.size(); i++){
 //        copyNodeObj(m_selectedNodeObjects[i]);

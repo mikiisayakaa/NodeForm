@@ -5,7 +5,7 @@
 #include <QString>
 #include <QHash>
 
-namespace NodestGlobal{
+namespace NF{
 
 struct UIParameters{
     std::vector<std::vector<QString>> inputFiles;

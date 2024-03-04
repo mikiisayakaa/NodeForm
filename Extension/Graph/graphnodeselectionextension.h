@@ -6,7 +6,7 @@
 
 #include "Extension/abstractextension.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractNodeObject;
 

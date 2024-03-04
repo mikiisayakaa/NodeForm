@@ -61,7 +61,7 @@
 
 #endif
 
-namespace Nodest{
+namespace NF{
 template<typename T>
 struct GetterTypeMapper {using Type = int;
                    using QMLType = float;

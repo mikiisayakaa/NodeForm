@@ -6,7 +6,7 @@
 #include "Extension/abstractextension.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
 
-namespace Nodest{
+namespace NF{
 
 class NodeSelectionExtension : public AbstractExtension
 {

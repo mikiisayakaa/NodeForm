@@ -2,7 +2,7 @@
 #include "Interface/abstractgraphobject.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
 
-bool Nodest::DeleteSelectedNodeExtension::addExtension(QQuickItem *signalSource)
+bool NF::DeleteSelectedNodeExtension::addExtension(QQuickItem *signalSource)
 {
     if (checkDependency()){
         connect(signalSource, SIGNAL(deleteSelected()), this, SLOT(onDelete()));
@@ -12,7 +12,7 @@ bool Nodest::DeleteSelectedNodeExtension::addExtension(QQuickItem *signalSource)
     return false;
 }
 
-bool Nodest::DeleteSelectedNodeExtension::checkDependency()
+bool NF::DeleteSelectedNodeExtension::checkDependency()
 {
     AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(parent());
     std::vector<AbstractExtension*> parentExtensions = graphObj->getExtensions();
@@ -26,7 +26,7 @@ bool Nodest::DeleteSelectedNodeExtension::checkDependency()
     return false;
 }
 
-void Nodest::DeleteSelectedNodeExtension::onDelete()
+void NF::DeleteSelectedNodeExtension::onDelete()
 {
     AbstractGraphObject* graphObject = dynamic_cast<AbstractGraphObject*>(parent());
     std::vector<AbstractNodeObject*>& selectedNodes = m_graphSelectionExtension->getSelectedNodes();

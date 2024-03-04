@@ -1,7 +1,7 @@
 #include "controlpaths.h"
 
-namespace Nodest{
+namespace NF{
 
-QString buttonPath = "D:/C++/Nodest/Nodest/test/LargeScaleTest/Controls/ButtonType1.qml";
+QString buttonPath = "D:/C++/NF/NF/test/LargeScaleTest/Controls/ButtonType1.qml";
 
 }

@@ -8,7 +8,7 @@
 
 
 
-Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, NodestGlobal::UIParameters *params, QObject *parent)
+NF::VerticalNodeObject::VerticalNodeObject(NF::AbstractNode *node, NF::UIParameters *params, QObject *parent)
     : AbstractNodeObject (node, parent), m_createParams(params)
 {
     m_items.resize(1);
@@ -20,7 +20,7 @@ Nodest::VerticalNodeObject::VerticalNodeObject(Nodest::AbstractNode *node, Nodes
     addExtensions();
 }
 
-void Nodest::VerticalNodeObject::createWidgets()
+void NF::VerticalNodeObject::createWidgets()
 {
     QString nodeName;
     QString nodeBaseFile;
@@ -28,18 +28,18 @@ void Nodest::VerticalNodeObject::createWidgets()
 
     if (m_createParams == nullptr){
         nodeName = m_node->getNameID();
-        nodeBaseFile = NodestGlobal::nodeBaseDefault;
-        nameLabelFile = NodestGlobal::textLabelDefault;
+        nodeBaseFile = NF::nodeBaseDefault;
+        nameLabelFile = NF::textLabelDefault;
     }
     else{
         nodeName = m_createParams->nodeName;
 
         QString baseQuery = m_createParams->baseFiles[0];
-        nodeBaseFile = NodestGlobal::nodeBaseMap.contains(baseQuery) ? baseQuery :
-                                     NodestGlobal::nodeBaseDefault;
+        nodeBaseFile = NF::nodeBaseMap.contains(baseQuery) ? baseQuery :
+                                     NF::nodeBaseDefault;
         QString labelQuery = m_createParams->baseFiles[1];
-        nameLabelFile = NodestGlobal::textLabelMap.contains(labelQuery) ? labelQuery :
-                                        NodestGlobal::textLabelDefault;
+        nameLabelFile = NF::textLabelMap.contains(labelQuery) ? labelQuery :
+                                        NF::textLabelDefault;
     }
 
     QQuickItem* parentItem = qobject_cast<AbstractGraphObject*>(parent())->getBackground();
@@ -74,7 +74,7 @@ void Nodest::VerticalNodeObject::createWidgets()
 }
 
 
-void Nodest::VerticalNodeObject::addExtensions()
+void NF::VerticalNodeObject::addExtensions()
 {
     std::vector<ExtensionType> extensionList{
         ExtensionType::NodeSelection,
@@ -87,7 +87,7 @@ void Nodest::VerticalNodeObject::addExtensions()
     }
 }
 
-void Nodest::VerticalNodeObject::setWidgetsLayout()
+void NF::VerticalNodeObject::setWidgetsLayout()
 {
     QQuickItem* lastItem;
     lastItem = m_nodeBase;
@@ -120,7 +120,7 @@ void Nodest::VerticalNodeObject::setWidgetsLayout()
     m_nodeBase->setProperty("height", m_nodeBase->childrenRect().height() + 10);
 }
 
-Nodest::VerticalNodeObject *Nodest::VerticalNodeObject::clone()
+NF::VerticalNodeObject *NF::VerticalNodeObject::clone()
 {
     AbstractNode* nodeCopy = m_node->clone();
     VerticalNodeObject* nodeObj = new VerticalNodeObject(nodeCopy, m_createParams, parent());
@@ -131,7 +131,7 @@ Nodest::VerticalNodeObject *Nodest::VerticalNodeObject::clone()
     return nodeObj;
 }
 
-void Nodest::VerticalNodeObject::onInputChanged()
+void NF::VerticalNodeObject::onInputChanged()
 {
     if (parent()){
         qobject_cast<AbstractGraphObject*>(parent())->reEvalSingle(this);

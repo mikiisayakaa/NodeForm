@@ -2,7 +2,7 @@
 
 #include "abstractevalnode.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractBoolEvalNode : public AbstractEvalNode
 {

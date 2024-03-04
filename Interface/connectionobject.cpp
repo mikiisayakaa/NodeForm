@@ -5,7 +5,7 @@
 #include "Extension/extensionfactory.h"
 
 
-void Nodest::ConnectionObject::addExtensions()
+void NF::ConnectionObject::addExtensions()
 {
     std::vector<ExtensionType> extensionList{
         ExtensionType::ConnectionSelection

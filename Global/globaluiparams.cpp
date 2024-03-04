@@ -1,6 +1,6 @@
 #include "globaluiparams.h"
 
-namespace NodestGlobal{
+namespace NF{
 
 QHash<QString, UIParameters*> uiMap;
 

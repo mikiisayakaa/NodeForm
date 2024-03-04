@@ -9,7 +9,7 @@
  *      and cannot be changed during the slot's lifetime.
 */
 
-namespace Nodest{
+namespace NF{
 
 class AbstractNode;
 class Connection;

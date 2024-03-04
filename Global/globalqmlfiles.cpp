@@ -1,6 +1,6 @@
 #include "globalqmlfiles.h"
 
-namespace NodestGlobal{
+namespace NF{
 
 QSet<QString> qmlFileNames;
 
@@ -29,10 +29,10 @@ QHash<QString, QQmlComponent*> curveMap;
 QString backgroundDefault;
 QHash<QString, QQmlComponent*> backgroundMap;
 
-//QString backgroundFile = "NodestBackground1.qml";
+//QString backgroundFile = "NFBackground1.qml";
 //QQmlComponent* bgd;
 
-//QString lineFile = "NodestBezierCurve2.qml";
+//QString lineFile = "NFBezierCurve2.qml";
 //QQmlComponent* connectionLine;
 
 //void setBackgroundFile(const QString &filePath)

@@ -3,13 +3,13 @@
 #include "Interface/abstractnodeobject.h"
 #include "Interface/abstractgraphobject.h"
 
-bool Nodest::GraphNodeSelectionExtension::addExtension(QQuickItem *signalSource)
+bool NF::GraphNodeSelectionExtension::addExtension(QQuickItem *signalSource)
 {
     connect(signalSource, SIGNAL(deselect()), this, SLOT(onDeselect()));
     return true;
 }
 
-void Nodest::GraphNodeSelectionExtension::selectOne(Nodest::AbstractNodeObject *nodeObj)
+void NF::GraphNodeSelectionExtension::selectOne(NF::AbstractNodeObject *nodeObj)
 {
     for (auto selectedObj : m_selectedNodes){
         if (selectedObj == nodeObj){
@@ -34,7 +34,7 @@ void Nodest::GraphNodeSelectionExtension::selectOne(Nodest::AbstractNodeObject *
     }
 }
 
-void Nodest::GraphNodeSelectionExtension::deselectOne(Nodest::AbstractNodeObject *nodeObj)
+void NF::GraphNodeSelectionExtension::deselectOne(NF::AbstractNodeObject *nodeObj)
 {
     for (size_t i = 0; i < m_selectedNodes.size(); i++){
         if (m_selectedNodes[i] == nodeObj){
@@ -46,7 +46,7 @@ void Nodest::GraphNodeSelectionExtension::deselectOne(Nodest::AbstractNodeObject
 
 }
 
-void Nodest::GraphNodeSelectionExtension::onDeselect()
+void NF::GraphNodeSelectionExtension::onDeselect()
 {
     for (auto nodeObj : m_selectedNodes){
         nodeObj->getNodeBase()->setProperty("selected", false);

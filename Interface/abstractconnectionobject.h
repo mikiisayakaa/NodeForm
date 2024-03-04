@@ -5,7 +5,7 @@
 
 #include "Core/connection.h"
 
-namespace Nodest{
+namespace NF{
 
 class Connection;
 class AbstractExtension;
@@ -17,7 +17,7 @@ public:
     explicit AbstractConnectionObject(QObject *parent = nullptr) : QObject(parent),
     m_connectionItem(nullptr), m_connection(nullptr) {}
 
-    virtual ~AbstractConnectionObject();
+    virtual ~AbstractConnectionObject() {}
 
     void setItem(QQuickItem* connectionItem) {m_connectionItem = connectionItem;}
     QQuickItem* getItem() const {return m_connectionItem;}

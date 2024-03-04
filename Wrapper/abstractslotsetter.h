@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QDebug>
 
-namespace Nodest{
+namespace NF{
 
 class InputSlot;
 

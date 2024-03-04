@@ -9,7 +9,7 @@
 #include <queue>
 #include <stack>
 
-namespace Nodest{
+namespace NF{
 
 class AbstractNode;
 
@@ -61,7 +61,7 @@ private:
 
     //assistant data structure for traverse
     std::queue<AbstractNode*> m_nodeQueue;
-    std::stack<AbstractNode*> m_nodeStack;
+    std::stack<AbstractNode*> m_NFack;
 
 };
 

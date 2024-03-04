@@ -1,6 +1,6 @@
 #include "globalitems.h"
 
-namespace NodestGlobal{
+namespace NF{
 
 QQmlApplicationEngine* engine;
 
@@ -8,6 +8,6 @@ QQuickItem* globalRootObject = nullptr;
 
 QQuickItem* globalBackground = nullptr;
 
-Nodest::AbstractGraphObject* globalGraphObject = nullptr;
+NF::AbstractGraphObject* globalGraphObject = nullptr;
 
 }

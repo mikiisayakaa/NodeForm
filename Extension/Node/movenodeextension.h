@@ -4,7 +4,7 @@
 
 #include "Extension/abstractextension.h"
 
-namespace Nodest{
+namespace NF{
 
 class MoveNodeExtension : public AbstractExtension
 {

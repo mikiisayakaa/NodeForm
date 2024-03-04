@@ -2,7 +2,7 @@
 
 #include "Interface/abstractconnectionobject.h"
 
-namespace Nodest{
+namespace NF{
 
 class InputSlot;
 class OutputSlot;
@@ -16,7 +16,7 @@ public:
     explicit Connection(OutputSlot* first, InputSlot* second)
         : m_first(first), m_second(second)  {}
 
-    ~Connection() {}
+    ~Connection();
 
     OutputSlot* getFirst() {return m_first;}
     InputSlot* getSecond() {return m_second;}

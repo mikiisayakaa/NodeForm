@@ -1,7 +1,7 @@
 #include "abstractevalnode.h"
 
 
-void Nodest::AbstractEvalNode::setSlotParent(Nodest::AbstractEvalNode* parent)
+void NF::AbstractEvalNode::setSlotParent(NF::AbstractEvalNode* parent)
 {
     for (auto slot : m_inputSlots){
         slot->setParent(parent);

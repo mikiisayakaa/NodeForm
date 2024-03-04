@@ -4,11 +4,11 @@
 #include "Core/inputslot.h"
 #include "Core/outputslot.h"
 
-void Nodest::createTextLabel(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, const QString &text)
+void NF::createTextLabel(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, const QString &text)
 {
     QObject* obj;
-    QQmlComponent* component = NodestGlobal::textLabelMap[fileName];
-    obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    QQmlComponent* component = NF::textLabelMap[fileName];
+    obj = component->beginCreate(NF::engine->rootContext());
 
     target = qobject_cast<QQuickItem*>(obj);
     target->setProperty("text", text);
@@ -18,11 +18,11 @@ void Nodest::createTextLabel(const QString &fileName, QQuickItem *parentItem, QQ
 }
 
 
-void Nodest::createHandle(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot* slot)
+void NF::createHandle(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot* slot)
 {
     QObject* obj;
-    QQmlComponent* component = NodestGlobal::slotHandleMap[fileName];
-    obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    QQmlComponent* component = NF::slotHandleMap[fileName];
+    obj = component->beginCreate(NF::engine->rootContext());
 
     target = qobject_cast<QQuickItem*>(obj);
     target->setParentItem(parentItem);
@@ -33,13 +33,13 @@ void Nodest::createHandle(const QString &fileName, QQuickItem *parentItem, QQuic
     component->completeCreate();
 }
 
-void Nodest::createSetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, Nodest::AbstractSlot *slot)
+void NF::createSetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, NF::AbstractSlot *slot)
 {
     QObject* obj = nullptr;
     QQmlComponent* component = nullptr;
 
-    component = NodestGlobal::slotSetterMap[fileName].data;
-    obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    component = NF::slotSetterMap[fileName].data;
+    obj = component->beginCreate(NF::engine->rootContext());
 
     target = qobject_cast<QQuickItem*>(obj);
     target->setParentItem(parentItem);
@@ -51,12 +51,12 @@ void Nodest::createSetter(const QString &fileName, QQuickItem *parentItem, QQuic
     component->completeCreate();
 }
 
-void Nodest::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot *slot)
+void NF::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot *slot)
 {
     QObject* obj = nullptr;
-    QQmlComponent* component = NodestGlobal::slotGetterMap[fileName].data;
+    QQmlComponent* component = NF::slotGetterMap[fileName].data;
 
-    obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    obj = component->beginCreate(NF::engine->rootContext());
 
     target = qobject_cast<QQuickItem*>(obj);
     target->setParentItem(parentItem);
@@ -68,88 +68,88 @@ void Nodest::createGetter(const QString &fileName, QQuickItem *parentItem, QQuic
     component->completeCreate();
 }
 
-void Nodest::createBase(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target)
+void NF::createBase(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target)
 {
     QObject* obj;
-    QQmlComponent* component = NodestGlobal::nodeBaseMap[fileName];
-    obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    QQmlComponent* component = NF::nodeBaseMap[fileName];
+    obj = component->beginCreate(NF::engine->rootContext());
 
     target = qobject_cast<QQuickItem*>(obj);
     target->setParentItem(parentItem);
 
     //place it at the center of the window
-    target->setProperty("x", parentItem->width() / 2 + NodestGlobal::globalRootObject->width() / 2);
-    target->setProperty("y", parentItem->height() / 2 + NodestGlobal::globalRootObject->height() / 2);    
+    target->setProperty("x", parentItem->width() / 2 + NF::globalRootObject->width() / 2);
+    target->setProperty("y", parentItem->height() / 2 + NF::globalRootObject->height() / 2);    
     component->completeCreate();
 
 }
 
-void Nodest::getValidSetterFileName(QString &queryName, InputSlot *slot)
+void NF::getValidSetterFileName(QString &queryName, InputSlot *slot)
 {
 
     if (slot->getSetter() == nullptr){
-        queryName = NodestGlobal::dummyFile;
+        queryName = NF::dummyFile;
         return;
     }
 
-    if (queryName == NodestGlobal::dummyFile){
+    if (queryName == NF::dummyFile){
         delete slot->getSetter();
         slot->setSetter(nullptr);
         slot->getParent()->addDepend(1);
         return;
     }
 
-    if (NodestGlobal::slotSetterMap.contains(queryName) &&
-            NodestGlobal::slotSetterMap[queryName].typeName == slot->getSetter()->getTypeName()){
+    if (NF::slotSetterMap.contains(queryName) &&
+            NF::slotSetterMap[queryName].typeName == slot->getSetter()->getTypeName()){
         return;
     }
 
-    for (auto& fileName: NodestGlobal::slotSetterDefault){
-        if (NodestGlobal::slotSetterMap[fileName].typeName == slot->getSetter()->getTypeName()){
+    for (auto& fileName: NF::slotSetterDefault){
+        if (NF::slotSetterMap[fileName].typeName == slot->getSetter()->getTypeName()){
             queryName = fileName;
             return;
         }
     }
 
-    queryName = NodestGlobal::dummyFile;
+    queryName = NF::dummyFile;
     delete slot->getSetter();
     slot->setSetter(nullptr);
     slot->getParent()->addDepend(1);
 
 }
 
-void Nodest::getValidGetterFileName(QString &queryName, Nodest::OutputSlot *slot)
+void NF::getValidGetterFileName(QString &queryName, NF::OutputSlot *slot)
 {
     if (slot->getGetter() == nullptr){
-        queryName = NodestGlobal::dummyFile;
+        queryName = NF::dummyFile;
         return;
     }
 
-    if (queryName == NodestGlobal::dummyFile){
+    if (queryName == NF::dummyFile){
         delete slot->getGetter();
         slot->setGetter(nullptr);
         return;
     }
 
-    if (NodestGlobal::slotGetterMap.contains(queryName) &&
-            NodestGlobal::slotGetterMap[queryName].typeName == slot->getGetter()->getTypeName()){
+    if (NF::slotGetterMap.contains(queryName) &&
+            NF::slotGetterMap[queryName].typeName == slot->getGetter()->getTypeName()){
         return;
     }
 
-    for (auto& fileName: NodestGlobal::slotGetterDefault){
-        if (NodestGlobal::slotGetterMap[fileName].typeName == slot->getGetter()->getTypeName()){
+    for (auto& fileName: NF::slotGetterDefault){
+        if (NF::slotGetterMap[fileName].typeName == slot->getGetter()->getTypeName()){
             queryName = fileName;
             return;
         }
     }
 
-    queryName = NodestGlobal::dummyFile;
+    queryName = NF::dummyFile;
     delete slot->getGetter();
     slot->setGetter(nullptr);
 }
 
 
-void Nodest::setLineHandle(QQuickItem *line, QQuickItem *handle)
+void NF::setLineHandle(QQuickItem *line, QQuickItem *handle)
 {
     int flow = handle->property("flow").toInt();
 
@@ -174,7 +174,7 @@ void Nodest::setLineHandle(QQuickItem *line, QQuickItem *handle)
 }
 
 
-void Nodest::setAnchors(QQuickItem *target, QQuickItem *source, const char *pos1, const char *pos2)
+void NF::setAnchors(QQuickItem *target, QQuickItem *source, const char *pos1, const char *pos2)
 {
     qvariant_cast<QObject*>(target->property("anchors"))->setProperty(pos1,
            source->property(pos2));

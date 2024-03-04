@@ -3,7 +3,7 @@
 #include "Interface/abstractconnectionobject.h"
 #include "Extension/Graph/graphconnectionselectionextension.h"
 
-bool Nodest::DeleteSelectedConnecitonExtension::addExtension(QQuickItem *signalSource)
+bool NF::DeleteSelectedConnecitonExtension::addExtension(QQuickItem *signalSource)
 {
     if (checkDependency()){
         connect(signalSource, SIGNAL(deleteSelected()), this, SLOT(onDelete()));
@@ -13,7 +13,7 @@ bool Nodest::DeleteSelectedConnecitonExtension::addExtension(QQuickItem *signalS
     return false;
 }
 
-bool Nodest::DeleteSelectedConnecitonExtension::checkDependency()
+bool NF::DeleteSelectedConnecitonExtension::checkDependency()
 {
     AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(parent());
     std::vector<AbstractExtension*> parentExtensions = graphObj->getExtensions();
@@ -27,7 +27,7 @@ bool Nodest::DeleteSelectedConnecitonExtension::checkDependency()
     return false;
 }
 
-void Nodest::DeleteSelectedConnecitonExtension::onDelete()
+void NF::DeleteSelectedConnecitonExtension::onDelete()
 {
     //important: there should never be selection of nodes and connections
     //at the same moment, if such functionality is needed, the sequence of deletion

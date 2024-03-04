@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QQuickItem>
 
-namespace Nodest{
+namespace NF{
 
 class OutputSlot;
 

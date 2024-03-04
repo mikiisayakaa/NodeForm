@@ -1,4 +1,4 @@
 {
-  "default": ["NodestIntSetSlider1.qml",
-                   "NodestDoubleSetSlider1.qml"]
+  "default": ["NFIntSetSlider1.qml",
+                   "NFDoubleSetSlider1.qml"]
 }

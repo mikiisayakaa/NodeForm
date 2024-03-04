@@ -4,11 +4,11 @@
 
 #include <QJsonObject>
 
-namespace Nodest{
+namespace NF{
 
-NodestGlobal::UIParameters* loadUIJson(const QString& jsonPath);
+NF::UIParameters* loadUIJson(const QString& jsonPath);
 
-void loadGlobalUIJson(NodestGlobal::GlobalUIParameters* param, const QString& jsonPath);
+void loadGlobalUIJson(NF::GlobalUIParameters* param, const QString& jsonPath);
 
 bool loadJson(const QString& jsonPath, QJsonObject& jsonObj);
 

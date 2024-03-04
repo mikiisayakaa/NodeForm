@@ -1,5 +1,5 @@
 {
-  "curveFiles" : ["NodestBezierCurve2.qml",
-	        "NodestBezierCurveDashAnimate1.qml"],
+  "curveFiles" : ["NFBezierCurve2.qml",
+	        "NFBezierCurveDashAnimate1.qml"],
   "backgroundFile" : ""
 }

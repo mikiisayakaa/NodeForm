@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace Nodest{
+namespace NF{
 
 class AbstractExtension;
 
@@ -19,7 +19,7 @@ class AbstractNodeObject : public QObject
 public:
     explicit AbstractNodeObject(AbstractNode* node, QObject *parent = nullptr);
 
-    virtual ~AbstractNodeObject() {delete m_node;}
+    virtual ~AbstractNodeObject() {}
 
     virtual void createWidgets() = 0;
 

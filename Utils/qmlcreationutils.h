@@ -4,7 +4,7 @@
 #include <QQmlComponent>
 
 
-namespace Nodest{
+namespace NF{
 
 class AbstractSlot;
 class InputSlot;

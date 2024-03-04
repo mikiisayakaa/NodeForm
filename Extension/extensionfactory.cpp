@@ -14,7 +14,7 @@
 #include "Extension/Slot/outdragaddconnectionextension.h"
 #include "Extension/Slot/indragaddconnectionextension.h"
 
-Nodest::AbstractExtension *Nodest::ExtensionFactory::createExtension(Nodest::ExtensionType type, QObject *parent)
+NF::AbstractExtension *NF::ExtensionFactory::createExtension(NF::ExtensionType type, QObject *parent)
 {
     switch(type){
 

@@ -19,16 +19,16 @@
 #include <iostream>
 #include <QRandomGenerator>
 
-using namespace Nodest;
+using namespace NF;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    NodestGlobal::setPath(NodestGlobal::nodeJsonPaths, QDir::currentPath() + "/../LargeScaleTest/UI/");
-    NodestGlobal::setQmlMain(QDir::currentPath() + "/../LargeScaleTest/Controls/main.qml");
+    NF::setPath(NF::nodeJsonPaths, QDir::currentPath() + "/../LargeScaleTest/UI/");
+    NF::setQmlMain(QDir::currentPath() + "/../LargeScaleTest/Controls/main.qml");
     qmlRegisterType<NodeFactory>("CppObjects", 1, 0, "NodeFactory");
-    NodestGlobal::globalInit(&a);
+    NF::globalInit(&a);
 
     NodeFactory fac;
     int num = 20;
@@ -40,10 +40,10 @@ int main(int argc, char *argv[])
     }
 
     for (int i = 0; i < num; i++){
-        nodes.push_back(NodestGlobal::globalGraphObject->getNodeObject(i));
+        nodes.push_back(NF::globalGraphObject->getNodeObject(i));
     }
 
-    std::vector<AbstractExtension*> exts = NodestGlobal::globalGraphObject->getExtensions();
+    std::vector<AbstractExtension*> exts = NF::globalGraphObject->getExtensions();
     DeleteSelectedNodeExtension* deleteNodeExt;
     NodeSelectionExtension* selectExt;
     for (int i = 0; i < exts.size(); i++){
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
         int ind2 = QRandomGenerator::global()->bounded(node2->getNInput());
 
         TestConnection* test = new TestConnection(node1, ind1, 1, node2, ind2, 0);
-        NodestGlobal::globalGraphObject->addSingleConnection(test);
+        NF::globalGraphObject->addSingleConnection(test);
     }
 
 

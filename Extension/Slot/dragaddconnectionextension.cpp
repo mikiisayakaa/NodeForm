@@ -8,7 +8,7 @@
 #include "Utils/qmlcreationutils.h"
 
 
-void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
+void NF::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
 {
     if (m_testConnection == nullptr){
         return;
@@ -56,8 +56,8 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
         }
         else{
             QQuickItem* background = getBackground();
-            QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::globalUI->curveFiles[0]];
-            QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
+            QQmlComponent* component = NF::curveMap[NF::globalUI->curveFiles[0]];
+            QObject* obj = component->beginCreate(NF::engine->rootContext());
             QQuickItem* newLine = qobject_cast<QQuickItem*>(obj);
             setLineHandle(m_line, child);
             newLine->setParentItem(background);
@@ -82,12 +82,12 @@ void Nodest::DragAddConnectionExtension::onConnectionEnd(qreal x, qreal y)
     m_testConnection = nullptr;
 }
 
-void Nodest::DragAddConnectionExtension::connectionStartHelper(QQuickItem *handle)
+void NF::DragAddConnectionExtension::connectionStartHelper(QQuickItem *handle)
 {
     QQuickItem* background = getBackground();
 
-    QQmlComponent* component = NodestGlobal::curveMap[NodestGlobal::globalUI->curveFiles[1]];
-    QObject* obj = component->beginCreate(NodestGlobal::engine->rootContext());
+    QQmlComponent* component = NF::curveMap[NF::globalUI->curveFiles[1]];
+    QObject* obj = component->beginCreate(NF::engine->rootContext());
     QQuickItem* line = qobject_cast<QQuickItem*>(obj);
     line->setParentItem(background);
     component->completeCreate();
@@ -96,7 +96,7 @@ void Nodest::DragAddConnectionExtension::connectionStartHelper(QQuickItem *handl
     m_line = line;
 }
 
-QQuickItem *Nodest::DragAddConnectionExtension::getBackground()
+QQuickItem *NF::DragAddConnectionExtension::getBackground()
 {
     //search along Qt's object tree
     QObject* obj = parent()->parent()->parent();

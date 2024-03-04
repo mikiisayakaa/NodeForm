@@ -5,7 +5,7 @@
 
 #include "Core/inputslot.h"
 
-namespace Nodest{
+namespace NF{
 
 //recursively parse a std::tuple to create slots (reverse sequence)
 template <typename ArgumentTuple, typename SlotType, int Index>

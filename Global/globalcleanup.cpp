@@ -5,8 +5,8 @@
 #include "Interface/abstractgraphobject.h"
 #include "Interface/abstractnodeobject.h"
 
-void NodestGlobal::cleanupGraph()
+void NF::cleanupGraph()
 {
-    delete NodestGlobal::globalGraphObject;
+    delete NF::globalGraphObject->getGraph();
 }
 

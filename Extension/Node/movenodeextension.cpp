@@ -1,7 +1,7 @@
 #include "movenodeextension.h"
 
 
-bool Nodest::MoveNodeExtension::addExtension(QQuickItem *signalSource)
+bool NF::MoveNodeExtension::addExtension(QQuickItem *signalSource)
 {
     signalSource->setProperty("movable", true);
     return true;

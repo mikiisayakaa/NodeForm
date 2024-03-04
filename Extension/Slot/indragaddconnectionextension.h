@@ -4,7 +4,7 @@
 
 #include "Extension/Slot/dragaddconnectionextension.h"
 
-namespace Nodest{
+namespace NF{
 
 class InDragAddConnectionExtension : public DragAddConnectionExtension
 {

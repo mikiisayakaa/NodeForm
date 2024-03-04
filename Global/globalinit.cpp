@@ -14,7 +14,7 @@
 #include <QSurfaceFormat>
 #include <QQuickItem>
 
-void NodestGlobal::fillNodeUImap(const QString &path)
+void NF::fillNodeUImap(const QString &path)
 {
     QDir directory(path);
 
@@ -25,17 +25,17 @@ void NodestGlobal::fillNodeUImap(const QString &path)
             fillNodeUImap(fileInfo.filePath());
         }
         else if (fileInfo.isFile() && fileInfo.suffix().toLower() == "json") {
-            UIParameters* params = Nodest::loadUIJson(fileInfo.filePath());
+            UIParameters* params = NF::loadUIJson(fileInfo.filePath());
             uiMap[params->nodeID] = params;
         }
     }
 }
 
-void NodestGlobal::fillGlobalUI(const QString &path)
+void NF::fillGlobalUI(const QString &path)
 {
     QDir directory(path);
 
-    NodestGlobal::globalUI = new NodestGlobal::GlobalUIParameters;
+    NF::globalUI = new NF::GlobalUIParameters;
 
     QFileInfoList fileInfoList = directory.entryInfoList();
 
@@ -45,12 +45,12 @@ void NodestGlobal::fillGlobalUI(const QString &path)
         }
         else if (fileInfo.isFile() && fileInfo.fileName() == "globalUI.json") {
             //load global ui
-            Nodest::loadGlobalUIJson(NodestGlobal::globalUI, fileInfo.filePath());
+            NF::loadGlobalUIJson(NF::globalUI, fileInfo.filePath());
         }
     }
 }
 
-void NodestGlobal::fillQmlData(const QString& path, QQmlEngine* engine, QHash<QString, QQmlComponent*>& mp)
+void NF::fillQmlData(const QString& path, QQmlEngine* engine, QHash<QString, QQmlComponent*>& mp)
 {
     QDir directory(path);
 
@@ -64,24 +64,24 @@ void NodestGlobal::fillQmlData(const QString& path, QQmlEngine* engine, QHash<QS
         else if (fileInfo.isFile() && fileInfo.suffix().toLower() == "qml") {
             QString filename = fileInfo.fileName();
             //check if the qml is used by the user, also ensure at least one handle is available
-            if (NodestGlobal::qmlFileNames.find(filename) == NodestGlobal::qmlFileNames.end()){
+            if (NF::qmlFileNames.find(filename) == NF::qmlFileNames.end()){
                 continue;
             }
 
             QByteArray bytearray;
-            Nodest::loadQmlByteArray(fileInfo.filePath(), bytearray);
+            NF::loadQmlByteArray(fileInfo.filePath(), bytearray);
             QQmlComponent* component = new QQmlComponent(engine);
             component->setData(bytearray, QUrl("file:///" + path));
             mp[fileInfo.fileName()] = component;
 
-            NodestGlobal::qmlFileNames.remove(filename);
+            NF::qmlFileNames.remove(filename);
         }
     }
 
 
 }
 
-void NodestGlobal::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<QString, setGetInfo>& mp)
+void NF::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<QString, setGetInfo>& mp)
 {
     QDir directory(path);
 
@@ -98,7 +98,7 @@ void NodestGlobal::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<
             //need better implementation
 
             QByteArray bytearray;
-            Nodest::loadQmlByteArray(fileInfo.filePath(), bytearray);
+            NF::loadQmlByteArray(fileInfo.filePath(), bytearray);
             QQmlComponent* component = new QQmlComponent(engine);
             component->setData(bytearray, QUrl("file:///" + path));
 
@@ -109,24 +109,24 @@ void NodestGlobal::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<
 
             mp[filename] = setGetInfo{component, typeName};
 
-            NodestGlobal::qmlFileNames.remove(filename);
+            NF::qmlFileNames.remove(filename);
         }
     }
 }
 
-void NodestGlobal::setQmlDefault(const QString &path, QString &defaultFile)
+void NF::setQmlDefault(const QString &path, QString &defaultFile)
 {
     //load default json
     QJsonObject jsonObj;
-    Nodest::loadJson(path + "default.json", jsonObj);
+    NF::loadJson(path + "default.json", jsonObj);
     defaultFile = jsonObj["default"].toArray()[0].toString();
     qmlFileNames.insert(defaultFile);
 }
 
-void NodestGlobal::setQmlGSDefault(const QString &path, QSet<QString> &defaultFiles)
+void NF::setQmlGSDefault(const QString &path, QSet<QString> &defaultFiles)
 {
     QJsonObject jsonObj;
-    Nodest::loadJson(path + "default.json", jsonObj);
+    NF::loadJson(path + "default.json", jsonObj);
 
     QJsonArray jsonArray = jsonObj["default"].toArray();
     for (const auto& filename: jsonArray){
@@ -136,12 +136,12 @@ void NodestGlobal::setQmlGSDefault(const QString &path, QSet<QString> &defaultFi
 }
 
 
-void NodestGlobal::fillDummy(QQmlEngine* engine)
+void NF::fillDummy(QQmlEngine* engine)
 {
     QString path = qmlPath + "GlobalWidgets/" + dummyFile;
 
     QByteArray bytearray;
-    Nodest::loadQmlByteArray(path, bytearray);
+    NF::loadQmlByteArray(path, bytearray);
     dummy = new QQmlComponent(engine);
     dummy->setData(bytearray, QUrl("file:///" + path));
 
@@ -153,43 +153,43 @@ void NodestGlobal::fillDummy(QQmlEngine* engine)
 
 }
 
-//void NodestGlobal::fillBackground(QQmlEngine *engine)
+//void NF::fillBackground(QQmlEngine *engine)
 //{
 //    QString path = uiPath + backgroundFile;
 
 //    QByteArray bytearray;
-//    Nodest::loadQmlByteArray(path, bytearray);
+//    NF::loadQmlByteArray(path, bytearray);
 //    bgd = new QQmlComponent(engine);
 //    bgd->setData(bytearray, QUrl("file:///" + path));
 //}
 
-//void NodestGlobal::fillConnectionLine(QQmlEngine *engine)
+//void NF::fillConnectionLine(QQmlEngine *engine)
 //{
 //    QString path = uiPath + lineFile;
 
 //    QByteArray bytearray;
-//    Nodest::loadQmlByteArray(path, bytearray);
+//    NF::loadQmlByteArray(path, bytearray);
 //    connectionLine = new QQmlComponent(engine);
 //    connectionLine->setData(bytearray, QUrl("file:///" + path));
 //}
 
 //called at init stage of the program
-void NodestGlobal::prepareUIWidgets(QQmlEngine *engine)
+void NF::prepareUIWidgets(QQmlEngine *engine)
 {
-    for (auto& jsonPath : NodestGlobal::nodeJsonPaths){
+    for (auto& jsonPath : NF::nodeJsonPaths){
         fillNodeUImap(jsonPath);
     }
 
-    for (auto& globaljsonPath : NodestGlobal::globalJsonPaths){
+    for (auto& globaljsonPath : NF::globalJsonPaths){
         fillGlobalUI(globaljsonPath);
     }
 
-    for (auto& bgdPath : NodestGlobal::qmlBackgroundPath){
+    for (auto& bgdPath : NF::qmlBackgroundPath){
         setQmlDefault(bgdPath, backgroundDefault);
         fillQmlData(bgdPath, engine, backgroundMap);
     }
 
-    for (auto& curvePath : NodestGlobal::qmlCurvePaths){
+    for (auto& curvePath : NF::qmlCurvePaths){
         setQmlDefault(curvePath, curveDefault);
         fillQmlData(curvePath, engine, curveMap);
     }
@@ -197,34 +197,34 @@ void NodestGlobal::prepareUIWidgets(QQmlEngine *engine)
     fillDummy(engine);
 
     //always set default first, we need to add the default file to qmlFileNames
-    for (auto& handlePath : NodestGlobal::qmlHandlesPaths){
+    for (auto& handlePath : NF::qmlHandlesPaths){
         setQmlDefault(handlePath, slotHandleDefault);
         fillQmlData(handlePath, engine, slotHandleMap);
     }
 
-    for (auto& textlabelPath : NodestGlobal::qmlTextLabelsPaths){
+    for (auto& textlabelPath : NF::qmlTextLabelsPaths){
         setQmlDefault(textlabelPath, textLabelDefault);
         fillQmlData(textlabelPath, engine, textLabelMap);
     }
 
-    for (auto& nodeBasePath : NodestGlobal::qmlNodeBasePaths){
+    for (auto& nodeBasePath : NF::qmlNodeBasePaths){
         setQmlDefault(nodeBasePath, nodeBaseDefault);
         fillQmlData(nodeBasePath, engine, nodeBaseMap);
     }
 
-    for (auto& setterPath : NodestGlobal::qmlSettersPaths){
+    for (auto& setterPath : NF::qmlSettersPaths){
         setQmlGSDefault(setterPath, slotSetterDefault);
         fillQmlGSData(setterPath, engine, slotSetterMap);
     }
 
-    for (auto& getterPath : NodestGlobal::qmlGettersPaths){
+    for (auto& getterPath : NF::qmlGettersPaths){
         setQmlGSDefault(getterPath, slotGetterDefault);
         fillQmlGSData(getterPath, engine, slotGetterMap);
     }
 }
 
 
-void NodestGlobal::globalInit(QApplication *app)
+void NF::globalInit(QApplication *app)
 {
     //enable multisampling
     QSurfaceFormat format;
@@ -232,28 +232,28 @@ void NodestGlobal::globalInit(QApplication *app)
     QSurfaceFormat::setDefaultFormat(format);
 
     QQmlApplicationEngine* engine = new QQmlApplicationEngine;
-    NodestGlobal::engine = engine;
+    NF::engine = engine;
 
 
-    const QUrl url("file:///" + NodestGlobal::qmlMainPath);
-    QObject::connect(NodestGlobal::engine, &QQmlApplicationEngine::objectCreated,
+    const QUrl url("file:///" + NF::qmlMainPath);
+    QObject::connect(NF::engine, &QQmlApplicationEngine::objectCreated,
                     app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-    NodestGlobal::engine->load(url);
+    NF::engine->load(url);
 
-    NodestGlobal::prepareUIWidgets(NodestGlobal::engine);
+    NF::prepareUIWidgets(NF::engine);
 
-    QObject* root = NodestGlobal::engine->rootObjects()[0]->children().at(0);
-    NodestGlobal::globalRootObject = qobject_cast<QQuickItem*>(root);
+    QObject* root = NF::engine->rootObjects()[0]->children().at(0);
+    NF::globalRootObject = qobject_cast<QQuickItem*>(root);
 
-    Nodest::AbstractNodeGraph* graph = new Nodest::BasicNodeGraph();
-    Nodest::AbstractGraphObject* graphObj = new Nodest::BasicGraphObject(graph, nullptr);
+    NF::AbstractNodeGraph* graph = new NF::BasicNodeGraph();
+    NF::AbstractGraphObject* graphObj = new NF::BasicGraphObject(graph, nullptr);
 
-    NodestGlobal::globalGraphObject = graphObj;
+    NF::globalGraphObject = graphObj;
     qDebug() << "----------------------";
-    QObject::connect(app, &QApplication::aboutToQuit, &NodestGlobal::cleanupGraph);
+    QObject::connect(app, &QApplication::aboutToQuit, &NF::cleanupGraph);
 }
 
 

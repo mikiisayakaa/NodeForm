@@ -4,14 +4,14 @@
 
 #ifndef BOOLNODE
 #define BOOLNODE(nodeName, funcName) \
-    class nodeName : public Nodest::AbstractBoolEvalNode{ \
+    class nodeName : public NF::AbstractBoolEvalNode{ \
     public: \
         using FuncType = decltype (&funcName); \
-        using TP = Nodest::TupleTypes<FuncType>; \
+        using TP = NF::TupleTypes<FuncType>; \
         using InArgsType = TP::InputArgumentTypes; \
          \
         nodeName(const nodeName& node) = delete; \
-        explicit nodeName() : Nodest::AbstractBoolEvalNode(), m_func(funcName){ \
+        explicit nodeName() : NF::AbstractBoolEvalNode(), m_func(funcName){ \
             m_nodeNameID = QString(#nodeName); \
             m_outValid = false; \
             constructImpl<FuncType>(); \

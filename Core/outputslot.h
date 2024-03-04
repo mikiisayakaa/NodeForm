@@ -9,7 +9,7 @@
 #include "Wrapper/abstractslotgetter.h"
 #include "Interface/abstractslotobject.h"
 
-namespace Nodest{
+namespace NF{
 
 class Connection;
 class AbstractSlotGetter;

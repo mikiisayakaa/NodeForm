@@ -3,13 +3,13 @@
 #include "Interface/abstractgraphobject.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
 
-bool Nodest::GraphConnectionSelectionExtension::addExtension(QQuickItem *signalSource)
+bool NF::GraphConnectionSelectionExtension::addExtension(QQuickItem *signalSource)
 {
     connect(signalSource, SIGNAL(deselect()), this, SLOT(onDeselect()));
     return true;
 }
 
-void Nodest::GraphConnectionSelectionExtension::selectOne(Nodest::AbstractConnectionObject *connectObj)
+void NF::GraphConnectionSelectionExtension::selectOne(NF::AbstractConnectionObject *connectObj)
 {
     for (auto selectedObj : m_selectedConnections){
         if (selectedObj == connectObj){
@@ -33,7 +33,7 @@ void Nodest::GraphConnectionSelectionExtension::selectOne(Nodest::AbstractConnec
     }
 }
 
-void Nodest::GraphConnectionSelectionExtension::deselectOne(Nodest::AbstractConnectionObject *connectObj)
+void NF::GraphConnectionSelectionExtension::deselectOne(NF::AbstractConnectionObject *connectObj)
 {
     for (size_t i = 0; i < m_selectedConnections.size(); i++){
         if (m_selectedConnections[i] == connectObj){
@@ -44,7 +44,7 @@ void Nodest::GraphConnectionSelectionExtension::deselectOne(Nodest::AbstractConn
     }
 }
 
-void Nodest::GraphConnectionSelectionExtension::onDeselect()
+void NF::GraphConnectionSelectionExtension::onDeselect()
 {
     for (auto connectObj : m_selectedConnections){
         connectObj->getItem()->setProperty("selected", false);

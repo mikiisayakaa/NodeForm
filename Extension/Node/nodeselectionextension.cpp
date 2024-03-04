@@ -3,7 +3,7 @@
 #include "Interface/abstractgraphobject.h"
 #include "Extension/Graph/graphnodeselectionextension.h"
 
-bool Nodest::NodeSelectionExtension::addExtension(QQuickItem *signalSource)
+bool NF::NodeSelectionExtension::addExtension(QQuickItem *signalSource)
 {
     if (checkDependency()){
         connect(signalSource, SIGNAL(select()), this, SLOT(onSelect()));
@@ -14,7 +14,7 @@ bool Nodest::NodeSelectionExtension::addExtension(QQuickItem *signalSource)
     }
 }
 
-bool Nodest::NodeSelectionExtension::checkDependency()
+bool NF::NodeSelectionExtension::checkDependency()
 {
     AbstractNodeObject* nodeObj = dynamic_cast<AbstractNodeObject*>(parent());
     AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(nodeObj->parent());
@@ -29,7 +29,7 @@ bool Nodest::NodeSelectionExtension::checkDependency()
     return false;
 }
 
-void Nodest::NodeSelectionExtension::onSelect()
+void NF::NodeSelectionExtension::onSelect()
 {
     m_graphSelectionExtension->onDeselect();
     m_graphSelectionExtension->selectOne(dynamic_cast<AbstractNodeObject*>(parent()));

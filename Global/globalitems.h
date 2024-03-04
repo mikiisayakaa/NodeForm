@@ -7,7 +7,7 @@
 #include "Interface/abstractgraphobject.h"
 
 
-namespace NodestGlobal{
+namespace NF{
 
 extern QQmlApplicationEngine* engine;
 
@@ -15,5 +15,5 @@ extern QQuickItem* globalRootObject;
 
 extern QQuickItem* globalBackground;
 
-extern Nodest::AbstractGraphObject* globalGraphObject;
+extern NF::AbstractGraphObject* globalGraphObject;
 }

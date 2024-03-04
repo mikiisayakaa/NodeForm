@@ -9,7 +9,7 @@
 #include <QSet>
 #include <QApplication>
 
-namespace NodestGlobal{
+namespace NF{
 
 //init functions
 

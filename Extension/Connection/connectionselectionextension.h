@@ -6,7 +6,7 @@
 #include "Extension/Graph/graphconnectionselectionextension.h"
 
 
-namespace Nodest{
+namespace NF{
 
 class ConnectionSelectionExtension : public AbstractExtension
 {

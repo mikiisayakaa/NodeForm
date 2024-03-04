@@ -7,7 +7,7 @@
 #include "abstractgraphobject.h"
 #include "Extension/extensionfactory.h"
 
-Nodest::SlotObject::SlotObject(Nodest::AbstractSlot *slot, NodestGlobal::UIParameters* params, QObject *parent)
+NF::SlotObject::SlotObject(NF::AbstractSlot *slot, NF::UIParameters* params, QObject *parent)
     :AbstractSlotObject (slot, parent),m_createParams(params)
 {
     m_items.resize(3);
@@ -17,7 +17,7 @@ Nodest::SlotObject::SlotObject(Nodest::AbstractSlot *slot, NodestGlobal::UIParam
     addExtensions();
 }
 
-void Nodest::SlotObject::createWidgets()
+void NF::SlotObject::createWidgets()
 {
     int index = m_slot->getIndex();
     int flow = m_slot->getFlow();
@@ -28,8 +28,8 @@ void Nodest::SlotObject::createWidgets()
 
     if (m_createParams == nullptr){
         slotName = m_slot->getTypeName();
-        handleFile = NodestGlobal::slotHandleDefault;
-        nameLabelFile = NodestGlobal::textLabelDefault;
+        handleFile = NF::slotHandleDefault;
+        nameLabelFile = NF::textLabelDefault;
 
         if (flow == 0){
             getValidSetterFileName(gsFile, (InputSlot*)m_slot);
@@ -44,11 +44,11 @@ void Nodest::SlotObject::createWidgets()
         std::vector<std::vector<QString>>& files = flow == 0 ? m_createParams->inputFiles : m_createParams->outputFiles;
 
         QString handleQuery = files[index][0];
-        handleFile = NodestGlobal::slotHandleMap.contains(handleQuery) ? handleQuery :
-                                     NodestGlobal::slotHandleDefault;
+        handleFile = NF::slotHandleMap.contains(handleQuery) ? handleQuery :
+                                     NF::slotHandleDefault;
         QString labelQuery = files[index][1];
-        nameLabelFile = NodestGlobal::textLabelMap.contains(labelQuery) ? labelQuery :
-                                        NodestGlobal::textLabelDefault;
+        nameLabelFile = NF::textLabelMap.contains(labelQuery) ? labelQuery :
+                                        NF::textLabelDefault;
         QString gsQuery = files[index][2];
 
         if (flow == 0){
@@ -77,7 +77,7 @@ void Nodest::SlotObject::createWidgets()
     m_items[2]->setParent(this);
 }
 
-void Nodest::SlotObject::setWidgetsLayout()
+void NF::SlotObject::setWidgetsLayout()
 {
     //0-handle, 1-text, 2-setter/getter
     QQuickItem* nodeBase = qobject_cast<AbstractNodeObject*>(parent())->getNodeBase();
@@ -100,7 +100,7 @@ void Nodest::SlotObject::setWidgetsLayout()
 }
 
 
-void Nodest::SlotObject::addExtensions()
+void NF::SlotObject::addExtensions()
 {
     int flow = m_slot->getFlow();
 

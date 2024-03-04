@@ -67,7 +67,7 @@
 
 #endif
 
-namespace Nodest{
+namespace NF{
 //raw TyepMapper should not be called,
 //no AbstractSlotSetter type will be "int",
 //no QMLType is "float" (QML does not support float)

@@ -5,7 +5,7 @@
 
 #include "extensiontypes.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractExtension : public QObject
 {

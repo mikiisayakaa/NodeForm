@@ -12,7 +12,7 @@
 #include "Wrapper/abstractslotsetter.h"
 #include "Interface/abstractnodeobject.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractSlotSetter;
 
@@ -136,6 +136,7 @@ protected:
                 std::tuple_size_v<InArgsTypes> - 1>::destructSlots(m_inputSlots);
         RecursiveSlotDestructor<OutArgsTypes, OutputSlot,
                 std::tuple_size_v<OutArgsTypes> - 1>::destructSlots(m_outputSlots);
+
     }
 
     void setSlotParent(AbstractEvalNode* parent);

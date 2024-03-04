@@ -1,6 +1,6 @@
 #pragma once
 
-namespace NodestGlobal{
+namespace NF{
 
 void cleanupGraph();
 }

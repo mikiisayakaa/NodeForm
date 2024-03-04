@@ -4,9 +4,10 @@
 #include "outputslot.h"
 
 
-void Nodest::BasicNodeGraph::addNode(Nodest::AbstractNode *node)
+void NF::BasicNodeGraph::addNode(NF::AbstractNode *node)
 {
     m_nodes.push_back(node);
+    addNodeToList(node);
     m_depthMap[node] = 0;
 
     if(node->independent()){
@@ -15,7 +16,7 @@ void Nodest::BasicNodeGraph::addNode(Nodest::AbstractNode *node)
     }
 }
 
-void Nodest::BasicNodeGraph::clearAllTags()
+void NF::BasicNodeGraph::clearAllTags()
 {
     for (auto node: m_nodes){
         node->clearTag();
@@ -23,7 +24,7 @@ void Nodest::BasicNodeGraph::clearAllTags()
 }
 
 
-void Nodest::BasicNodeGraph::eval()
+void NF::BasicNodeGraph::eval()
 {
     //use depth data, should be calculated before
     std::vector<AbstractNode*> nodes;
@@ -54,7 +55,7 @@ void Nodest::BasicNodeGraph::eval()
     }
 }
 
-bool Nodest::BasicNodeGraph::checkCyclic(Nodest::TestConnection* testConnection)
+bool NF::BasicNodeGraph::checkCyclic(NF::TestConnection* testConnection)
 {
     //simply check if connection's second has an existing path to first
     AbstractNode* start = testConnection->secondNode;
@@ -86,7 +87,7 @@ bool Nodest::BasicNodeGraph::checkCyclic(Nodest::TestConnection* testConnection)
     return false;
 }
 
-bool Nodest::BasicNodeGraph::checkConnection(Nodest::TestConnection* testConnection)
+bool NF::BasicNodeGraph::checkConnection(NF::TestConnection* testConnection)
 {
     //cannot connect input to input / output to output
     if (testConnection->firstFlow == testConnection->secondFlow){
@@ -115,7 +116,7 @@ bool Nodest::BasicNodeGraph::checkConnection(Nodest::TestConnection* testConnect
     return true;
 }
 
-Nodest::Connection* Nodest::BasicNodeGraph::addSingleConnection(Nodest::TestConnection* testConnection)
+NF::Connection* NF::BasicNodeGraph::addSingleConnection(NF::TestConnection* testConnection)
 {
     if (!checkConnection(testConnection)){
         return nullptr;
@@ -137,12 +138,14 @@ Nodest::Connection* Nodest::BasicNodeGraph::addSingleConnection(Nodest::TestConn
     return connection;
 }
 
-void Nodest::BasicNodeGraph::removeConnection(Nodest::Connection *connection)
+void NF::BasicNodeGraph::removeConnection(NF::Connection *connection)
 {
     OutputSlot* first = connection->getFirst();
     InputSlot* second = connection->getSecond();
     first->removeConnection(connection);
     second->removeConnection(connection);
+
+    removeConnectionFromList(connection);
 
     int depCount = first->getParent()->getDependency();
     if (second->getSetter() == nullptr){
@@ -170,10 +173,10 @@ void Nodest::BasicNodeGraph::removeConnection(Nodest::Connection *connection)
         }
     }
 
-    //delete connection;
+    delete connection;
 }
 
-Nodest::Connection* Nodest::BasicNodeGraph::addConnection(Nodest::OutputSlot *first, Nodest::InputSlot *second)
+NF::Connection* NF::BasicNodeGraph::addConnection(NF::OutputSlot *first, NF::InputSlot *second)
 {
     Connection* connection = new Connection(first, second);
     first->setConnection(connection);
@@ -205,11 +208,13 @@ Nodest::Connection* Nodest::BasicNodeGraph::addConnection(Nodest::OutputSlot *fi
         }
     }
 
+    addConnectionToList(connection);
+
     return connection;
 }
 
 
-void Nodest::BasicNodeGraph::removeSingleConnection(Nodest::Connection *connection)
+void NF::BasicNodeGraph::removeSingleConnection(NF::Connection *connection)
 {
     AbstractNode* node = connection->getSecond()->getParent();
     removeConnection(connection);
@@ -218,9 +223,11 @@ void Nodest::BasicNodeGraph::removeSingleConnection(Nodest::Connection *connecti
 
 }
 
-void Nodest::BasicNodeGraph::removeNode(Nodest::AbstractNode *node)
+void NF::BasicNodeGraph::removeNode(NF::AbstractNode *node)
 {
     clearDepth();
+
+    removeNodeFromList(node);
 
     for (size_t i = 0; i < m_nodes.size(); i++){
         if (node == m_nodes[i]){
@@ -240,7 +247,7 @@ void Nodest::BasicNodeGraph::removeNode(Nodest::AbstractNode *node)
             AbstractNode* node = connection->getSecond()->getParent();
             removeConnection(connection);
             m_depthMap[node] = 1;
-            m_nodeStack.push(node);
+            m_NFack.push(node);
         }
     }
 
@@ -252,38 +259,36 @@ void Nodest::BasicNodeGraph::removeNode(Nodest::AbstractNode *node)
         }
     }
 
-    //delete node;
-    //now it will not be evaled, since we are going to delete it
-    node->addDepend(1);
+    delete node;
 
     getDepth();
     eval();
 }
 
-void Nodest::BasicNodeGraph::reEvalSingle(Nodest::AbstractNode *node)
+void NF::BasicNodeGraph::reEvalSingle(NF::AbstractNode *node)
 {
     if (node->independent()){
         clearDepth();
         m_depthMap[node] = 1;
-        m_nodeStack.push(node);
+        m_NFack.push(node);
         getDepth();
         eval();
     }
 }
 
-void Nodest::BasicNodeGraph::clearDepth()
+void NF::BasicNodeGraph::clearDepth()
 {
     for (auto iter = m_depthMap.begin(); iter != m_depthMap.end(); iter++){
         iter.value() = 0;
     }
 }
 
-void Nodest::BasicNodeGraph::getDepth()
+void NF::BasicNodeGraph::getDepth()
 {
     //DFS, maybe slower than topological sort, but easy to implement at local graph
-    while(!m_nodeStack.empty()){
-        AbstractNode* curNode = m_nodeStack.top();
-        m_nodeStack.pop();
+    while(!m_NFack.empty()){
+        AbstractNode* curNode = m_NFack.top();
+        m_NFack.pop();
 
         for (size_t i = 0; i < curNode->getNOutput(); i++){
             OutputSlot* out = curNode->getOutput(i);
@@ -292,14 +297,14 @@ void Nodest::BasicNodeGraph::getDepth()
 
                 if (child->independent() && m_depthMap[child] < m_depthMap[curNode] + 1){
                     m_depthMap[child] = m_depthMap[curNode] + 1;
-                    m_nodeStack.push(child);
+                    m_NFack.push(child);
                 }
             }
         }
     }
 }
 
-bool Nodest::BasicNodeGraph::checkUpstreamOutValid(Nodest::AbstractNode *node)
+bool NF::BasicNodeGraph::checkUpstreamOutValid(NF::AbstractNode *node)
 {
     bool rst = true;
     for (size_t i = 0; i < node->getNInput(); i++){
@@ -314,7 +319,7 @@ bool Nodest::BasicNodeGraph::checkUpstreamOutValid(Nodest::AbstractNode *node)
 
 
 
-void Nodest::BasicNodeGraph::addChildrenToQueue(Nodest::AbstractNode *node)
+void NF::BasicNodeGraph::addChildrenToQueue(NF::AbstractNode *node)
 {
     for (size_t i = 0; i < node->getNOutput(); i++){
         OutputSlot* out = node->getOutput(i);

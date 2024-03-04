@@ -9,7 +9,7 @@
  * Provide type check by a simple Type registry.
 */
 
-namespace Nodest{
+namespace NF{
 
 class Variant
 {
@@ -21,7 +21,7 @@ public:
     */
     template<typename T>
     void destruct(){
-        ND_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Destructing wrong type [") + TYPENAME<T>::getName() +
+        NF_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Destructing wrong type [") + TYPENAME<T>::getName() +
                   "]'s value, correct type is [" + getTypeName() + "]");
         delete static_cast<T*>(m_data);
         m_data = nullptr;
@@ -29,14 +29,14 @@ public:
 
     template<typename T>
     T& get(){
-        ND_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Getting wrong type [") + TYPENAME<T>::getName() +
+        NF_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Getting wrong type [") + TYPENAME<T>::getName() +
                   "]'s value from Variant with type [" + getTypeName() + "]");
         return *(static_cast<T*>(m_data));
     }
 
     template<typename T>
     void set(const T& value){
-        ND_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Setting wrong type [") + TYPENAME<T>::getName() +
+        NF_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Setting wrong type [") + TYPENAME<T>::getName() +
                   "]'s value to Variant with type [" + getTypeName() + "]");
 
         if (m_data){
@@ -47,7 +47,7 @@ public:
 
     template<typename T>
     T* getPointer(){
-        ND_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Getting wrong type [") + TYPENAME<T>::getName() +
+        NF_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Getting wrong type [") + TYPENAME<T>::getName() +
                   "]'s pointer from Variant with type [" + getTypeName() + "]");
         return static_cast<T*>(m_data);
     }
@@ -57,7 +57,7 @@ public:
     */
     template<typename T>
     void setPointer(void* pointer){
-        ND_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Filling wrong type [") + TYPENAME<T>::getName() +
+        NF_ASSERT(m_typeid == TYPENAME<T>::getID(), QString("Filling wrong type [") + TYPENAME<T>::getName() +
                   "]'s pointer to Variant with type [" + getTypeName() + "]");
         if (m_data){
             destruct<T>();
@@ -94,7 +94,7 @@ private:
             typenameMap.insert(m_typeid, TYPENAME<T>::getName());
         }
 
-        ND_ASSERT(m_typeid != -1, QString("Type: [") + typeid(T).name() +
+        NF_ASSERT(m_typeid != -1, QString("Type: [") + typeid(T).name() +
                   "] has not been registered, use DECLARE_TYPE() first");
 
     }

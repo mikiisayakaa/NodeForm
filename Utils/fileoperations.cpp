@@ -8,18 +8,18 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
+NF::UIParameters* NF::loadUIJson(const QString &jsonPath)
 {
     QString absDir = jsonPath;
     QJsonObject jsonObj;
     loadJson(absDir, jsonObj);
 
-    NodestGlobal::UIParameters* params = new NodestGlobal::UIParameters();
+    NF::UIParameters* params = new NF::UIParameters();
 
     //Parse baseFiles
     QJsonArray baseFilesArray = jsonObj["baseFiles"].toArray();
     for (const QJsonValue& value : baseFilesArray){
-        NodestGlobal::qmlFileNames.insert(value.toString());
+        NF::qmlFileNames.insert(value.toString());
         params->baseFiles.push_back(value.toString());
     }
 
@@ -30,7 +30,7 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
         std::vector<QString> innerVector;
         for (const QJsonValue& innerValue : inputFilesInnerArray) {
             innerVector.push_back(innerValue.toString());
-            NodestGlobal::qmlFileNames.insert(innerValue.toString());
+            NF::qmlFileNames.insert(innerValue.toString());
         }
         params->inputFiles.push_back(innerVector);
     }
@@ -42,7 +42,7 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
         std::vector<QString> innerVector;
         for (const QJsonValue& innerValue : outputFilesInnerArray) {
             innerVector.push_back(innerValue.toString());
-            NodestGlobal::qmlFileNames.insert(innerValue.toString());
+            NF::qmlFileNames.insert(innerValue.toString());
         }
         params->outputFiles.push_back(innerVector);
     }
@@ -66,7 +66,7 @@ NodestGlobal::UIParameters* Nodest::loadUIJson(const QString &jsonPath)
     return params;
 }
 
-void Nodest::loadGlobalUIJson(NodestGlobal::GlobalUIParameters *param, const QString &jsonPath)
+void NF::loadGlobalUIJson(NF::GlobalUIParameters *param, const QString &jsonPath)
 {
     QString absDir = jsonPath;
     QJsonObject jsonObj;
@@ -75,7 +75,7 @@ void Nodest::loadGlobalUIJson(NodestGlobal::GlobalUIParameters *param, const QSt
     //parse curveFiles
     QJsonArray baseFilesArray = jsonObj["curveFiles"].toArray();
     for (const QJsonValue& value : baseFilesArray){
-        NodestGlobal::qmlFileNames.insert(value.toString());
+        NF::qmlFileNames.insert(value.toString());
         param->curveFiles.push_back(value.toString());
     }
 
@@ -83,7 +83,7 @@ void Nodest::loadGlobalUIJson(NodestGlobal::GlobalUIParameters *param, const QSt
 }
 
 
-bool Nodest::loadQmlByteArray(const QString &qmlPath, QByteArray &bytearray)
+bool NF::loadQmlByteArray(const QString &qmlPath, QByteArray &bytearray)
 {
     QFile file(qmlPath);
 
@@ -100,7 +100,7 @@ bool Nodest::loadQmlByteArray(const QString &qmlPath, QByteArray &bytearray)
     return true;
 }
 
-bool Nodest::loadJson(const QString &jsonPath, QJsonObject &jsonObj)
+bool NF::loadJson(const QString &jsonPath, QJsonObject &jsonObj)
 {
     QFile file(jsonPath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {

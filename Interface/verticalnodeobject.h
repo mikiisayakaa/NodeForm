@@ -30,14 +30,14 @@
 
 #include <QObject>
 
-namespace Nodest{
+namespace NF{
 
 
 class VerticalNodeObject : public AbstractNodeObject
 {
     Q_OBJECT
 public:
-    explicit VerticalNodeObject(AbstractNode* node,NodestGlobal::UIParameters* params,
+    explicit VerticalNodeObject(AbstractNode* node,NF::UIParameters* params,
                                 QObject *parent = nullptr);
 
     void createWidgets();
@@ -58,7 +58,7 @@ private:
 
 
 private:
-    NodestGlobal::UIParameters* m_createParams;
+    NF::UIParameters* m_createParams;
 };
 
 }

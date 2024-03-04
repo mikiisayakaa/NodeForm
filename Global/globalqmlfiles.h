@@ -9,7 +9,7 @@
 #include <vector>
 #include <utility>
 
-namespace NodestGlobal{
+namespace NF{
 
 struct setGetInfo{
     QQmlComponent* data;

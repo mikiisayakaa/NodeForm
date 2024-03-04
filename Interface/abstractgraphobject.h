@@ -7,7 +7,7 @@
 #include "Core/connection.h"
 #include "abstractnodeobject.h"
 
-namespace Nodest{
+namespace NF{
 
 class AbstractNodeGraph;
 class AbstractExtension;
@@ -19,19 +19,19 @@ class AbstractGraphObject : public QObject
 public:
     explicit AbstractGraphObject(AbstractNodeGraph* graph, QObject *parent = nullptr);
 
-    virtual ~AbstractGraphObject();
+    virtual ~AbstractGraphObject() {};
 
     void addNodeObject(AbstractNodeObject* nodeObj);
 
     virtual void createWidgets() = 0;
 
-    int getNNode() const {return m_nodeObjects.size();}
+    int getNNode() const {return m_graph->getNodes().size();}
 
-    AbstractNodeObject* getNodeObject(int index) const {return m_nodeObjects[index];}
+    AbstractNodeObject* getNodeObject(int index) const {return m_graph->getNodes()[index]->getObj();}
 
-    int getNConnection() const {return m_connectionObjects.size();}
+    int getNConnection() const {return m_graph->getConnections().size();}
 
-    AbstractConnectionObject* getConnectionObject(int index) const {return m_connectionObjects[index];}
+    AbstractConnectionObject* getConnectionObject(int index) const {return m_graph->getConnections()[index]->getObj();}
 
     void reEvalSingle(AbstractNodeObject* nodeObj);
 
@@ -60,9 +60,6 @@ protected:
 
 protected:
     AbstractNodeGraph* m_graph;
-
-    std::vector<AbstractNodeObject*> m_nodeObjects;
-    std::vector<AbstractConnectionObject*> m_connectionObjects;
 
     QQuickItem* m_background;
 

@@ -7,14 +7,14 @@
 #include "Interface/connectionobject.h"
 #include "Utils/qmlcreationutils.h"
 
-Nodest::InDragAddConnectionExtension::InDragAddConnectionExtension(QObject *parent) :
+NF::InDragAddConnectionExtension::InDragAddConnectionExtension(QObject *parent) :
     DragAddConnectionExtension(parent)
 {
     m_extensionName = "InDragAddConnection";
     m_type = ExtensionType::InDragAddConnection;
 }
 
-bool Nodest::InDragAddConnectionExtension::addExtension(QQuickItem *signalSource)
+bool NF::InDragAddConnectionExtension::addExtension(QQuickItem *signalSource)
 {
     if (signalSource->property("dummy").isValid()){
         return false;
@@ -29,7 +29,7 @@ bool Nodest::InDragAddConnectionExtension::addExtension(QQuickItem *signalSource
     return true;
 }
 
-void Nodest::InDragAddConnectionExtension::onConnectionDrag(qreal x, qreal y)
+void NF::InDragAddConnectionExtension::onConnectionDrag(qreal x, qreal y)
 {
     AbstractSlot* slot = dynamic_cast<AbstractSlotObject*>(parent())->getSlot();
 

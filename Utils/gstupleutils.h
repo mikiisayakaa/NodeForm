@@ -13,7 +13,6 @@
 
 namespace NF{
 
-
 //create setters for a slot vector
 template <typename ArgumentTuple, int Index>
 struct RecursiveSetterCreator {

@@ -68,7 +68,8 @@ SOURCES += \
     Extension/Slot/outdragaddconnectionextension.cpp \
     Extension/Slot/dragaddconnectionextension.cpp \
     Utils/debugutils.cpp \
-    Core/abstractnodegraph.cpp
+    Core/abstractnodegraph.cpp \
+    Interface/abstractdatabridge.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -122,7 +123,9 @@ HEADERS += \
     Extension/Slot/indragaddconnectionextension.h \
     Extension/Slot/outdragaddconnectionextension.h \
     Extension/Slot/dragaddconnectionextension.h \
-    Utils/debugutils.h
+    Utils/debugutils.h \
+    Interface/abstractdatabridge.h \
+    Interface/databridgemacro.h
 
 
 FORMS +=

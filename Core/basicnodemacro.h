@@ -2,6 +2,11 @@
 
 #include "Core/abstractevalnode.h"
 
+#include <QHash>
+
+namespace NF{
+
+inline static QHash<QString, int> nodeMap;
 
 #ifndef BASICNODE
 #define BASICNODE(nodeName, funcName) \
@@ -40,6 +45,9 @@
     private: \
         FuncType m_func; \
     }; \
+    \
 
 #endif
+
+}
 

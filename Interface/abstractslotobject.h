@@ -8,6 +8,7 @@
 namespace NF{
 
 class AbstractExtension;
+class AbstractDataBridge;
 
 class AbstractSlotObject : public QObject
 {
@@ -25,6 +26,8 @@ public:
 
     virtual void addExtensions() {}
 
+    void setBridge(AbstractDataBridge* bridge) {m_bridge = bridge;}
+
     AbstractSlot* getSlot() const {return m_slot;}
 
     QQuickItem* getItem(int index) const {return m_items[index];}
@@ -35,6 +38,8 @@ public slots:
 
 protected:
     AbstractSlot* m_slot;
+
+    AbstractDataBridge* m_bridge;
 
     std::vector<QQuickItem*> m_items;
 

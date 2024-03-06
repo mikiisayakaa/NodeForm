@@ -16,29 +16,7 @@ void NodeFactory::createNode(int index)
 {
     NF::AbstractNode* node = nullptr;
 
-    switch(index){
-
-    case 0:
-        node = new NF::IntNode();
-        break;
-    case 1:
-        node = new NF::AddIntNode();
-        break;
-    case 2:
-        node = new NF::MultiplyIntNode();
-        break;
-    case 3:
-        node = new NF::MaxIntNode();
-        break;
-    case 4:
-        node = new NF::NegativeIntNode();
-        break;
-    case 5:
-        node = new NF::ClampIntNode();
-        break;
-    default:
-        break;
-    }
+    node = NF::GlobalNodeFactory::createNode(index);
 
     if (node == nullptr){
         return;
@@ -49,4 +27,14 @@ void NodeFactory::createNode(int index)
     NF::globalGraphObject->addNodeObject(nodeObj);
 
 
+}
+
+QString NodeFactory::getNodeName(int index)
+{
+    return NF::GlobalNodeFactory::getNodeNameFromID(index);
+}
+
+int NodeFactory::getNodeNum()
+{
+    return NF::GlobalNodeFactory::getNodeNum();
 }

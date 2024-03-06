@@ -14,12 +14,21 @@ Item {
     ListView {
         anchors.fill: parent
         spacing: 10
-        model: ["IntNode", "AddIntNode", "MultiplyIntNode", "MaxIntNode", "NegativeIntNode",
-                "ClampIntNode"]
+        model: ListModel{
+            id: lmodel
+            Component.onCompleted: {
+                var num = nodeFactory.getNodeNum();
+
+                for (var i = 0; i < num; i++){
+                    lmodel.append({"nodeName" : nodeFactory.getNodeName(i),
+                                  "nodeIndex" : i});
+                }
+            }
+        }
 
         delegate: NFButtonType1 {
-            text: modelData
-            onClicked: nodeFactory.createNode(index)
+            text: model.nodeName
+            onClicked: nodeFactory.createNode(model.nodeIndex)
         }
     }
 }

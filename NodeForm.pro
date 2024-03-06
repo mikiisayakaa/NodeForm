@@ -69,7 +69,8 @@ SOURCES += \
     Extension/Slot/dragaddconnectionextension.cpp \
     Utils/debugutils.cpp \
     Core/abstractnodegraph.cpp \
-    Interface/abstractdatabridge.cpp
+    Interface/abstractdatabridge.cpp \
+    Core/basicnodemacro.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -79,7 +80,6 @@ HEADERS += \
     Utils/tupleutils.h \
     Utils/slottupleutils.h \
     Utils/variant.h \
-    Core/basicnodemacro.h \
     Core/abstractevalnode.h \
     Wrapper/slotsettermacro.h \
     Wrapper/abstractslotsetter.h \
@@ -125,7 +125,8 @@ HEADERS += \
     Extension/Slot/dragaddconnectionextension.h \
     Utils/debugutils.h \
     Interface/abstractdatabridge.h \
-    Interface/databridgemacro.h
+    Interface/databridgemacro.h \
+    Core/basicnodemacro.h
 
 
 FORMS +=

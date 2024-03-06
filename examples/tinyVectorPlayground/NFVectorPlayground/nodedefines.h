@@ -6,12 +6,12 @@
 
 namespace NF{
 
-BASICNODE(IntVector4DNode, intVector4D)
-BASICNODE(VectorDisplayNode, intVector)
-BASICNODE(VectorConcatNode, vectorConcat)
-BASICNODE(VectorSortNode, vectorSort)
-BASICNODE(VectorReverseNode, vectorReverse)
-BASICNODE(VectorSplitNode, vectorSplit)
+BASICNODE(IntVector4DNode, intVector4D, 0)
+BASICNODE(VectorDisplayNode, intVector, 1)
+BASICNODE(VectorConcatNode, vectorConcat, 2)
+BASICNODE(VectorSortNode, vectorSort, 3)
+BASICNODE(VectorReverseNode, vectorReverse, 4)
+BASICNODE(VectorSplitNode, vectorSplit, 5)
 
 BOOLNODE(VectorPopbackNode, vectorPopback)
 

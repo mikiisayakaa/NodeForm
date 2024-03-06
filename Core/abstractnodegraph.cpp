@@ -12,7 +12,6 @@ NF::AbstractNodeGraph::~AbstractNodeGraph()
         delete m_nodes[i];
     }
 
-    delete m_graphObject;
 }
 
 void NF::AbstractNodeGraph::addNodeToList(NF::AbstractNode *node)

@@ -17,4 +17,8 @@ signals:
 public slots:
     Q_INVOKABLE void createNode(int index);
 
+    Q_INVOKABLE QString getNodeName(int index);
+
+    Q_INVOKABLE int getNodeNum();
+
 };

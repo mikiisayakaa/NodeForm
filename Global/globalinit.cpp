@@ -114,6 +114,39 @@ void NF::fillQmlGSData(const QString& path, QQmlEngine* engine, QHash<QString, s
     }
 }
 
+void NF::fillQmlDataBridgeData(const QString &path, QQmlEngine *engine, QHash<QString, NF::DataBridgeInfo> &mp)
+{
+    QDir directory(path);
+
+    QFileInfoList fileInfoList = directory.entryInfoList();
+
+    foreach (const QFileInfo& fileInfo, fileInfoList) {
+        if (fileInfo.isDir() && fileInfo.fileName() != "." && fileInfo.fileName() != "..") {
+            fillQmlDataBridgeData(fileInfo.absoluteFilePath(), engine, mp);
+        }
+        else if (fileInfo.isFile() && fileInfo.suffix().toLower() == "qml") {
+            QString filename = fileInfo.fileName();
+
+
+            QByteArray bytearray;
+            NF::loadQmlByteArray(fileInfo.filePath(), bytearray);
+            QQmlComponent* component = new QQmlComponent(engine);
+            component->setData(bytearray, QUrl("file:///" + path));
+
+            QString cppType, qmlType;
+            QObject* tempObj = component->create();
+            cppType = tempObj->property("cppType").toString();
+            qmlType = tempObj->property("qmlType").toString();
+            delete tempObj;
+
+            DataBridgeInfo dbinfo{component, cppType, qmlType};
+            mp[filename] = dbinfo;
+
+            NF::qmlFileNames.remove(filename);
+        }
+    }
+}
+
 void NF::setQmlDefault(const QString &path, QString &defaultFile)
 {
     //load default json
@@ -135,6 +168,21 @@ void NF::setQmlGSDefault(const QString &path, QSet<QString> &defaultFiles)
     }
 }
 
+void NF::setQmlDataBridgeDefault(const QString &path, QSet<QString> &defaultFiles)
+{
+    QJsonObject jsonObj;
+    NF::loadJson(path + "default.json", jsonObj);
+
+    QJsonArray jsonArray = jsonObj["default"].toArray();
+    for (const auto& filename: jsonArray){
+        defaultFiles.insert(filename.toString());
+        qmlFileNames.insert(filename.toString());
+    }
+}
+
+
+
+
 
 void NF::fillDummy(QQmlEngine* engine)
 {
@@ -152,26 +200,6 @@ void NF::fillDummy(QQmlEngine* engine)
     textLabelMap[dummyFile] = dummy;
 
 }
-
-//void NF::fillBackground(QQmlEngine *engine)
-//{
-//    QString path = uiPath + backgroundFile;
-
-//    QByteArray bytearray;
-//    NF::loadQmlByteArray(path, bytearray);
-//    bgd = new QQmlComponent(engine);
-//    bgd->setData(bytearray, QUrl("file:///" + path));
-//}
-
-//void NF::fillConnectionLine(QQmlEngine *engine)
-//{
-//    QString path = uiPath + lineFile;
-
-//    QByteArray bytearray;
-//    NF::loadQmlByteArray(path, bytearray);
-//    connectionLine = new QQmlComponent(engine);
-//    connectionLine->setData(bytearray, QUrl("file:///" + path));
-//}
 
 //called at init stage of the program
 void NF::prepareUIWidgets(QQmlEngine *engine)
@@ -221,6 +249,11 @@ void NF::prepareUIWidgets(QQmlEngine *engine)
         setQmlGSDefault(getterPath, slotGetterDefault);
         fillQmlGSData(getterPath, engine, slotGetterMap);
     }
+
+    for (auto& dataBridgePath : NF::qmlDataBridgePaths){
+        setQmlDataBridgeDefault(dataBridgePath, dataBridgeDefault);
+        fillQmlDataBridgeData(dataBridgePath, engine, dataBridgeMap);
+    }
 }
 
 
@@ -255,8 +288,4 @@ void NF::globalInit(QApplication *app)
     qDebug() << "----------------------";
     QObject::connect(app, &QApplication::aboutToQuit, &NF::cleanupGraph);
 }
-
-
-
-
 

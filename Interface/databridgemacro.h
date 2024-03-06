@@ -9,7 +9,7 @@
     {\
         qobj \
     public: \
-        explicit setterName(QObject* parent = nullptr) : AbstractDataBridge(parent) { \
+        explicit bridgeName(QObject* parent = nullptr) : AbstractDataBridge(parent) { \
             \
         } \
         \
@@ -31,9 +31,9 @@
       \
     template <> \
     struct BridgeTypeMapper<typeName, typeName> { \
-        using Type = setterName; \
+        using Type = bridgeName; \
         using QMLType = typeName; \
-        using CppType = typeName;
+        using CppType = typeName; \
         static Type* createInstance() { \
             return new Type(nullptr); \
         } \

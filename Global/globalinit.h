@@ -31,6 +31,9 @@ void setQmlDefault(const QString& path, QString& defaultFile);
 void fillQmlGSData(const QString&, QQmlEngine* engine, QHash<QString, setGetInfo>& mp);
 void setQmlGSDefault(const QString& path, QSet<QString>& defaultFiles);
 
+void fillQmlDataBridgeData(const QString& path, QQmlEngine* engine, QHash<QString, DataBridgeInfo>& mp);
+void setQmlDataBridgeDefault(const QString& path, QSet<QString>& defaultFiles);
+
 void globalInit(QApplication* app);
 
 

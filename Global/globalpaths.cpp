@@ -13,6 +13,8 @@ QStringList qmlSettersPaths = {qmlPath + "Setters/"};
 
 QStringList qmlGettersPaths = {qmlPath + "Getters/"};
 
+QStringList qmlDataBridgePaths = {};
+
 QStringList qmlTextLabelsPaths = {qmlPath + "TextLabels/"};
 
 QStringList qmlNodeBasePaths = {qmlPath + "NodeBase/"};

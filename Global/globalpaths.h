@@ -23,6 +23,8 @@ extern QStringList qmlSettersPaths;
 
 extern QStringList qmlGettersPaths;
 
+extern QStringList qmlDataBridgePaths;
+
 extern QStringList qmlTextLabelsPaths;
 
 extern QStringList qmlNodeBasePaths;

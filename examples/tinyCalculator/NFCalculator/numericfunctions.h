@@ -14,4 +14,6 @@ void maxInt(const int& a, const int& b, int& c);
 
 void clampInt(const int& bound1, const int& bound2, const int& a, int &b);
 
+void randomInt(const int& bound, int& a);
+
 }

@@ -1,6 +1,7 @@
 #include "numericfunctions.h"
 
 #include <algorithm>
+#include <QRandomGenerator>
 
 void NF::addInt(const int &a, const int &b, int &c)
 {
@@ -44,5 +45,19 @@ void NF::clampInt(const int &bound1, const int &bound2, const int &a, int &b)
     }
     else{
         b = a;
+    }
+}
+
+
+void NF::randomInt(const int &bound, int &a)
+{
+    if (bound == 0){
+        a = 0;
+        return;
+    }
+
+    a = QRandomGenerator::global()->bounded(qAbs(bound));
+    if (bound < 0){
+        a = -a;
     }
 }

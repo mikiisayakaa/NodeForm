@@ -67,7 +67,7 @@ public:
 
 
 #ifndef BASICNODE
-#define BASICNODE(nodeName, funcName, id) \
+#define BASICNODE(nodeName, funcName) \
     class nodeName : public EvalNodeImpl<nodeName>{ \
     public: \
         using FuncType = decltype (&funcName); \

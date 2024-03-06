@@ -6,11 +6,12 @@
 
 namespace NF{
 
-BASICNODE(IntNode, intValue, 0)
-BASICNODE(AddIntNode, addInt, 1)
-BASICNODE(MultiplyIntNode, multiplyInt, 2)
-BASICNODE(MaxIntNode, maxInt, 3)
-BASICNODE(NegativeIntNode, negativeInt, 4)
-BASICNODE(ClampIntNode, clampInt, 5)
+BASICNODE(IntNode, intValue)
+BASICNODE(AddIntNode, addInt)
+BASICNODE(MultiplyIntNode, multiplyInt)
+BASICNODE(MaxIntNode, maxInt)
+BASICNODE(NegativeIntNode, negativeInt)
+BASICNODE(ClampIntNode, clampInt)
+BASICNODE(RandomIntNode, randomInt)
 
 }

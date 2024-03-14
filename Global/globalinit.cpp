@@ -127,7 +127,6 @@ void NF::fillQmlDataBridgeData(const QString &path, QQmlEngine *engine, QHash<QS
         else if (fileInfo.isFile() && fileInfo.suffix().toLower() == "qml") {
             QString filename = fileInfo.fileName();
 
-
             QByteArray bytearray;
             NF::loadQmlByteArray(fileInfo.filePath(), bytearray);
             QQmlComponent* component = new QQmlComponent(engine);
@@ -199,6 +198,8 @@ void NF::fillDummy(QQmlEngine* engine)
     slotHandleMap[dummyFile] = dummy;
     textLabelMap[dummyFile] = dummy;
 
+    dataBridgeGetterMap[dummyFile] = DataBridgeInfo{dummy, "", ""};
+    dataBridgeSetterMap[dummyFile] = DataBridgeInfo{dummy, "", ""};
 }
 
 //called at init stage of the program
@@ -250,10 +251,16 @@ void NF::prepareUIWidgets(QQmlEngine *engine)
         fillQmlGSData(getterPath, engine, slotGetterMap);
     }
 
-    for (auto& dataBridgePath : NF::qmlDataBridgePaths){
-        setQmlDataBridgeDefault(dataBridgePath, dataBridgeDefault);
-        fillQmlDataBridgeData(dataBridgePath, engine, dataBridgeMap);
+    for (auto& getterPath : NF::qmlDataBridgeGetterPaths){
+        setQmlDataBridgeDefault(getterPath, dataBridgeGetterDefault);
+        fillQmlDataBridgeData(getterPath, engine, dataBridgeGetterMap);
     }
+
+    for (auto& setterPath : NF::qmlDataBridgeSetterPaths){
+        setQmlDataBridgeDefault(setterPath, dataBridgeSetterDefault);
+        fillQmlDataBridgeData(setterPath, engine, dataBridgeSetterMap);
+    }
+
 }
 
 

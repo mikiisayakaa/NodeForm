@@ -50,13 +50,6 @@ void NF::VerticalNodeObject::createWidgets()
     m_nodeBase->setParent(this);
     m_items[0]->setParent(this);
 
-    //create InputSlotObjects
-    for (size_t i = 0; i < m_node->getNInput(); i++){
-        InputSlot* inSlot = m_node->getInput(i);
-        AbstractSlotObject* slotObj = new SlotObject(inSlot, m_createParams, this);
-        m_inputObjects[i] = slotObj;
-    }
-
     //create OutputSlotObjects
     for (size_t i = 0; i < m_node->getNOutput(); i++){
         OutputSlot* outSlot = m_node->getOutput(i);
@@ -64,13 +57,15 @@ void NF::VerticalNodeObject::createWidgets()
         m_outputObjects[i] = slotObj;
     }
 
-    //bind setters to update function
+    //create InputSlotObjects
     for (size_t i = 0; i < m_node->getNInput(); i++){
         InputSlot* inSlot = m_node->getInput(i);
-        if (inSlot->getSetter() != nullptr){
-            connect(inSlot->getSetter(), SIGNAL(updated()), this, SLOT(onInputChanged()));
-        }
+        AbstractSlotObject* slotObj = new SlotObject(inSlot, m_createParams, this);
+        m_inputObjects[i] = slotObj;
     }
+
+
+
 }
 
 

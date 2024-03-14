@@ -38,6 +38,7 @@ public:
     const std::vector<AbstractExtension*>& getExtensions() const {return m_extensions;}
 
 signals:
+    void reEvaled();
 
 public slots:
 

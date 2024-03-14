@@ -3,6 +3,7 @@
 #include "Global/globalitems.h"
 #include "Core/inputslot.h"
 #include "Core/outputslot.h"
+#include "Interface/abstractdatabridge.h"
 
 void NF::createTextLabel(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, const QString &text)
 {
@@ -64,6 +65,24 @@ void NF::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickIte
     if (((OutputSlot*)slot)->getGetter() != nullptr){
         ((OutputSlot*)slot)->getGetter()->setItem(target);
     }
+
+    component->completeCreate();
+}
+
+
+void NF::createDataBridge(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractDataBridge *dataBridge, int flow)
+{
+    QObject* obj = nullptr;
+    QQmlComponent* component = flow == 0 ? NF::dataBridgeSetterMap[fileName].data :
+                                           NF::dataBridgeGetterMap[fileName].data;
+
+    obj = component->beginCreate(NF::engine->rootContext());
+
+    target = qobject_cast<QQuickItem*>(obj);
+    target->setParentItem(parentItem);
+
+    dataBridge->setItem(target);
+    dataBridge->bind();
 
     component->completeCreate();
 }
@@ -148,6 +167,48 @@ void NF::getValidGetterFileName(QString &queryName, NF::OutputSlot *slot)
     slot->setGetter(nullptr);
 }
 
+void NF::getValidDataBridgeFileName(QString &queryName, NF::AbstractSlot *slot)
+{
+    if (queryName == NF::dummyFile){
+        return;
+    }
+
+    if (slot->getFlow() == 0 && NF::dataBridgeSetterMap.contains(queryName)){
+        QString cppType = NF::dataBridgeSetterMap[queryName].cppTypeName;
+        if (cppType == slot->getTypeName()){
+            //slot type problem here, fix this later
+            return;
+        }
+    }
+    else if (slot->getFlow() == 1 && NF::dataBridgeGetterMap.contains(queryName)){
+        QString cppType = NF::dataBridgeGetterMap[queryName].cppTypeName;
+        if (cppType == slot->getTypeName()){
+            return;
+        }
+    }
+
+    //check default list
+    if (slot->getFlow() == 0){
+        for (auto& filename : NF::dataBridgeSetterDefault){
+            if (NF::dataBridgeSetterMap[filename].cppTypeName == slot->getTypeName()){
+                queryName = filename;
+                return;
+            }
+        }
+    }
+    else if (slot->getFlow() == 1){
+        for (auto& filename : NF::dataBridgeGetterDefault){
+            if (NF::dataBridgeGetterMap[filename].cppTypeName == slot->getTypeName()){
+                queryName = filename;
+                return;
+            }
+        }
+    }
+
+
+    queryName = NF::dummyFile;
+}
+
 
 void NF::setLineHandle(QQuickItem *line, QQuickItem *handle)
 {
@@ -179,3 +240,6 @@ void NF::setAnchors(QQuickItem *target, QQuickItem *source, const char *pos1, co
     qvariant_cast<QObject*>(target->property("anchors"))->setProperty(pos1,
            source->property(pos2));
 }
+
+
+

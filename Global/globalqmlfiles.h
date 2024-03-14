@@ -37,6 +37,12 @@ extern QHash<QString, setGetInfo> slotGetterMap;
 extern QSet<QString> dataBridgeDefault;
 extern QHash<QString, DataBridgeInfo> dataBridgeMap;
 
+extern QSet<QString> dataBridgeGetterDefault;
+extern QHash<QString, DataBridgeInfo> dataBridgeGetterMap;
+
+extern QSet<QString> dataBridgeSetterDefault;
+extern QHash<QString, DataBridgeInfo> dataBridgeSetterMap;
+
 extern QString textLabelDefault;
 extern QHash<QString, QQmlComponent*> textLabelMap;
 

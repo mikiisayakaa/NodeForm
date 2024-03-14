@@ -106,12 +106,6 @@ protected:
 
         setOutValid(true);
 
-        for (size_t i = 0; i < getNOutput(); i++){
-            if (m_outputSlots[i]->getGetter()){
-                m_outputSlots[i]->getGetter()->sendValue();
-            }
-        }
-
     }
 
     template<typename FunctionType>

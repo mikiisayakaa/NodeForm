@@ -13,7 +13,9 @@ QStringList qmlSettersPaths = {qmlPath + "Setters/"};
 
 QStringList qmlGettersPaths = {qmlPath + "Getters/"};
 
-QStringList qmlDataBridgePaths = {};
+QStringList qmlDataBridgeGetterPaths = {qmlPath + "DataBridges/Getters/"};
+
+QStringList qmlDataBridgeSetterPaths = {qmlPath + "DataBridges/Setters/"};
 
 QStringList qmlTextLabelsPaths = {qmlPath + "TextLabels/"};
 

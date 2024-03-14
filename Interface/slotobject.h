@@ -18,7 +18,11 @@ public:
 
     void createWidgets();
 
+    void createWidgets2();
+
     void setWidgetsLayout();
+
+    void setWidgetsLayout2();
 
     void addExtensions();
 signals:

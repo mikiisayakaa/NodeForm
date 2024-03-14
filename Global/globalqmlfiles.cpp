@@ -17,6 +17,12 @@ QHash<QString, setGetInfo> slotGetterMap;
 QSet<QString> dataBridgeDefault;
 QHash<QString, DataBridgeInfo> dataBridgeMap;
 
+QSet<QString> dataBridgeGetterDefault;
+QHash<QString, DataBridgeInfo> dataBridgeGetterMap;
+
+QSet<QString> dataBridgeSetterDefault;
+QHash<QString, DataBridgeInfo> dataBridgeSetterMap;
+
 QString textLabelDefault;
 QHash<QString, QQmlComponent*> textLabelMap;
 

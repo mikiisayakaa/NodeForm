@@ -70,7 +70,9 @@ SOURCES += \
     Utils/debugutils.cpp \
     Core/abstractnodegraph.cpp \
     Interface/abstractdatabridge.cpp \
-    Core/basicnodemacro.cpp
+    Core/basicnodemacro.cpp \
+    Interface/databridgemacro.cpp \
+    Interface/dummydatabridge.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -126,7 +128,8 @@ HEADERS += \
     Utils/debugutils.h \
     Interface/abstractdatabridge.h \
     Interface/databridgemacro.h \
-    Core/basicnodemacro.h
+    Core/basicnodemacro.h \
+    Interface/dummydatabridge.h
 
 
 FORMS +=
@@ -172,4 +175,14 @@ DISTFILES += \
     UI/qmlWidgets/GlobalWidgets/Curve/NFBezierCurve2.qml \
     UI/qmlWidgets/GlobalWidgets/Curve/NFBezierCurveDashAnimate1.qml \
     UI/qmlWidgets/GlobalWidgets/Background/NFBackground1.qml \
-    UI/qmlWidgets/Setters/NFtIntSetTextInput1.qml
+    UI/qmlWidgets/Setters/NFtIntSetTextInput1.qml \
+    UI/qmlWidgets/DataBridges/NFDoubleSetSlider1.qml \
+    UI/qmlWidgets/DataBridges/NFIntGetLabel1.qml \
+    UI/qmlWidgets/DataBridges/NFIntSetSlider1.qml \
+    UI/qmlWidgets/DataBridges/NFIntSetSpinBox1.qml \
+    UI/qmlWidgets/DataBridges/NFtIntSetTextInput1.qml \
+    UI/qmlWidgets/DataBridges/Getters/NFIntGetLabel1.qml \
+    UI/qmlWidgets/DataBridges/Setters/NFDoubleSetSlider1.qml \
+    UI/qmlWidgets/DataBridges/Setters/NFIntSetSlider1.qml \
+    UI/qmlWidgets/DataBridges/Setters/NFIntSetSpinBox1.qml \
+    UI/qmlWidgets/DataBridges/Setters/NFtIntSetTextInput1.qml

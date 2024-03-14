@@ -91,6 +91,7 @@ public:
          \
         void eval(){ \
             evalImpl<FuncType>(m_func); \
+            m_nodeObject->reEvaled(); \
         } \
          \
         void setValue(int slotIndex, void* ptr){ \

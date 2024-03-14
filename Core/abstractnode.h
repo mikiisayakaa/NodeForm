@@ -31,13 +31,8 @@ public:
     int getNInput() const {return m_inputSlots.size();}
     int getNOutput() const {return m_outputSlots.size();}
 
-    bool isOutValid() const {return m_outValid;}
-    void setOutValid(bool tag) {m_outValid = tag; setGetterValidTag(tag);}
-
     QString getNameID() const {return m_nodeNameID;}
 
-    virtual void bindSetter(QQuickItem* item, int index) = 0;
-    void setGetterValidTag(bool tag);
 
     void addDepend(int num);
     void decDepend(int num);
@@ -62,10 +57,6 @@ protected:
     //how many unready nodes does this on depend on
     //(it's a graph-level attribute)
     int m_dependencyCount;
-
-    //whether output is valid
-    //sometimes even the node is evaled, the data in the outputslots maybe invalid
-    bool m_outValid;
 
     //used for some DFS/BFS traverse algorithms
     int m_tag;

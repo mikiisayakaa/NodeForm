@@ -77,7 +77,6 @@ public:
         nodeName(const nodeName& node) = delete; \
         nodeName() : EvalNodeImpl<nodeName>(), m_func(funcName){ \
             m_nodeNameID = QString(#nodeName); \
-            m_outValid = true; \
             constructImpl<FuncType>(); \
         } \
          \
@@ -96,9 +95,6 @@ public:
          \
         void setValue(int slotIndex, void* ptr){ \
             setValueImpl<FuncType>(slotIndex, ptr); \
-        } \
-        void bindSetter(QQuickItem* item, int index) { \
-            bindInputSettersImpl<FuncType>(item, index); \
         } \
          \
     private: \

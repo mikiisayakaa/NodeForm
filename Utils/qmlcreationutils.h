@@ -32,10 +32,6 @@ void createDataBridge(const QString& fileName, QQuickItem* parentItem,
 
 void createBase(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target);
 
-void getValidSetterFileName(QString& queryName, InputSlot* slot);
-
-void getValidGetterFileName(QString& queryName, OutputSlot* slot);
-
 void getValidDataBridgeFileName(QString& queryName, AbstractSlot* slot);
 
 void setAnchors(QQuickItem *target, QQuickItem *source, const char *pos1, const char *pos2);

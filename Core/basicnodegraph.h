@@ -43,7 +43,7 @@ private:
 
     void getDepth();
 
-    bool checkUpstreamOutValid(AbstractNode* node);
+    //bool checkUpstreamOutValid(AbstractNode* node);
 
     void addChildrenToQueue(AbstractNode* node);
 

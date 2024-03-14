@@ -34,42 +34,6 @@ void NF::createHandle(const QString &fileName, QQuickItem *parentItem, QQuickIte
     component->completeCreate();
 }
 
-void NF::createSetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, NF::AbstractSlot *slot)
-{
-    QObject* obj = nullptr;
-    QQmlComponent* component = nullptr;
-
-    component = NF::slotSetterMap[fileName].data;
-    obj = component->beginCreate(NF::engine->rootContext());
-
-    target = qobject_cast<QQuickItem*>(obj);
-    target->setParentItem(parentItem);
-
-    //we have to do binding before creation complete,
-    //or the init value of the slot will not be correctly set
-    slot->getParent()->bindSetter(target, slot->getIndex());
-
-    component->completeCreate();
-}
-
-void NF::createGetter(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractSlot *slot)
-{
-    QObject* obj = nullptr;
-    QQmlComponent* component = NF::slotGetterMap[fileName].data;
-
-    obj = component->beginCreate(NF::engine->rootContext());
-
-    target = qobject_cast<QQuickItem*>(obj);
-    target->setParentItem(parentItem);
-
-    if (((OutputSlot*)slot)->getGetter() != nullptr){
-        ((OutputSlot*)slot)->getGetter()->setItem(target);
-    }
-
-    component->completeCreate();
-}
-
-
 void NF::createDataBridge(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractDataBridge *dataBridge, int flow)
 {
     QObject* obj = nullptr;
@@ -101,70 +65,6 @@ void NF::createBase(const QString &fileName, QQuickItem *parentItem, QQuickItem 
     target->setProperty("y", parentItem->height() / 2 + NF::globalRootObject->height() / 2);    
     component->completeCreate();
 
-}
-
-void NF::getValidSetterFileName(QString &queryName, InputSlot *slot)
-{
-
-    if (slot->getSetter() == nullptr){
-        queryName = NF::dummyFile;
-        return;
-    }
-
-    if (queryName == NF::dummyFile){
-        delete slot->getSetter();
-        slot->setSetter(nullptr);
-        slot->getParent()->addDepend(1);
-        return;
-    }
-
-    if (NF::slotSetterMap.contains(queryName) &&
-            NF::slotSetterMap[queryName].typeName == slot->getSetter()->getTypeName()){
-        return;
-    }
-
-    for (auto& fileName: NF::slotSetterDefault){
-        if (NF::slotSetterMap[fileName].typeName == slot->getSetter()->getTypeName()){
-            queryName = fileName;
-            return;
-        }
-    }
-
-    queryName = NF::dummyFile;
-    delete slot->getSetter();
-    slot->setSetter(nullptr);
-    slot->getParent()->addDepend(1);
-
-}
-
-void NF::getValidGetterFileName(QString &queryName, NF::OutputSlot *slot)
-{
-    if (slot->getGetter() == nullptr){
-        queryName = NF::dummyFile;
-        return;
-    }
-
-    if (queryName == NF::dummyFile){
-        delete slot->getGetter();
-        slot->setGetter(nullptr);
-        return;
-    }
-
-    if (NF::slotGetterMap.contains(queryName) &&
-            NF::slotGetterMap[queryName].typeName == slot->getGetter()->getTypeName()){
-        return;
-    }
-
-    for (auto& fileName: NF::slotGetterDefault){
-        if (NF::slotGetterMap[fileName].typeName == slot->getGetter()->getTypeName()){
-            queryName = fileName;
-            return;
-        }
-    }
-
-    queryName = NF::dummyFile;
-    delete slot->getGetter();
-    slot->setGetter(nullptr);
 }
 
 void NF::getValidDataBridgeFileName(QString &queryName, NF::AbstractSlot *slot)

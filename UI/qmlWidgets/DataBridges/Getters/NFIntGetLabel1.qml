@@ -4,13 +4,12 @@ import "../../../BaseWidget"
 
 NFText1 {
     property int cppData: 0
-    property bool valid: false
 
     property string cppType: "int"
     property string qmlType: "int"
 
     text: cppData
-    color: valid ? "white" : "red"
+    color: "white"
 
     anchors.rightMargin: 0
 }

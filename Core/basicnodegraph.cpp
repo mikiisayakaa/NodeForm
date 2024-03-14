@@ -11,7 +11,7 @@ void NF::BasicNodeGraph::addNode(NF::AbstractNode *node)
     m_depthMap[node] = 0;
 
     if(node->independent()){
-        node->setGetterValidTag(true);
+        //node->setGetterValidTag(true);
         node->eval();
     }
 }
@@ -45,13 +45,8 @@ void NF::BasicNodeGraph::eval()
     }
 
     for (size_t i = 0; i < nodes.size(); i++){
-        if (checkUpstreamOutValid(nodes[i])){
-            nodes[i]->eval();
-            qDebug() << "Evaled:" << nodes[i]->getNameID();
-        }
-        else{
-            nodes[i]->setOutValid(false);
-        }
+        nodes[i]->eval();
+        qDebug() << "Evaled:" << nodes[i]->getNameID();
     }
 }
 
@@ -148,7 +143,7 @@ void NF::BasicNodeGraph::removeConnection(NF::Connection *connection)
     removeConnectionFromList(connection);
 
     int depCount = first->getParent()->getDependency();
-    if (second->getSetter() == nullptr){
+    if (second->getObj()->getDataBridge() == nullptr){
         //erase the dependency of the empty slot
         depCount -= 1;
     }
@@ -183,7 +178,7 @@ NF::Connection* NF::BasicNodeGraph::addConnection(NF::OutputSlot *first, NF::Inp
     second->setConnection(connection);
 
     int depCount = first->getParent()->getDependency();
-    if (second->getSetter() == nullptr){
+    if (second->getObj()->getDataBridge() == nullptr){
         //erase the dependency of the empty slot
         depCount -= 1;
     }
@@ -304,18 +299,18 @@ void NF::BasicNodeGraph::getDepth()
     }
 }
 
-bool NF::BasicNodeGraph::checkUpstreamOutValid(NF::AbstractNode *node)
-{
-    bool rst = true;
-    for (size_t i = 0; i < node->getNInput(); i++){
-        InputSlot* slot = node->getInput(i);
-        if (slot->getConnection() != nullptr){
-            rst &= slot->getConnection()->getFirst()->getParent()->isOutValid();
-        }
-    }
+//bool NF::BasicNodeGraph::checkUpstreamOutValid(NF::AbstractNode *node)
+//{
+//    bool rst = true;
+//    for (size_t i = 0; i < node->getNInput(); i++){
+//        InputSlot* slot = node->getInput(i);
+//        if (slot->getConnection() != nullptr){
+//            rst &= slot->getConnection()->getFirst()->getParent()->isOutValid();
+//        }
+//    }
 
-    return rst;
-}
+//    return rst;
+//}
 
 
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Core/abstractnode.h"
-#include "Wrapper/abstractslotsetter.h"
 #include "abstractslotobject.h"
 
 #include <QObject>

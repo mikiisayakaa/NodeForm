@@ -14,72 +14,13 @@ NF::SlotObject::SlotObject(NF::AbstractSlot *slot, NF::UIParameters* params, QOb
 {
     m_items.resize(3);
     slot->setObj(this);
-    createWidgets2();
+    createWidgets();
     //do not set widgets layout here, let nodeObject do it
     addExtensions();
 }
 
+
 void NF::SlotObject::createWidgets()
-{
-    int index = m_slot->getIndex();
-    int flow = m_slot->getFlow();
-    QString slotName;
-    QString handleFile;
-    QString nameLabelFile;
-    QString gsFile;
-
-    if (m_createParams == nullptr){
-        slotName = m_slot->getTypeName();
-        handleFile = NF::slotHandleDefault;
-        nameLabelFile = NF::textLabelDefault;
-
-        if (flow == 0){
-            getValidSetterFileName(gsFile, (InputSlot*)m_slot);
-        }
-        else{
-            getValidGetterFileName(gsFile, (OutputSlot*)m_slot);
-        }
-    }
-    else{
-        slotName = m_createParams->inputNames[index];
-
-        std::vector<std::vector<QString>>& files = flow == 0 ? m_createParams->inputFiles : m_createParams->outputFiles;
-
-        QString handleQuery = files[index][0];
-        handleFile = NF::slotHandleMap.contains(handleQuery) ? handleQuery :
-                                     NF::slotHandleDefault;
-        QString labelQuery = files[index][1];
-        nameLabelFile = NF::textLabelMap.contains(labelQuery) ? labelQuery :
-                                        NF::textLabelDefault;
-        QString gsQuery = files[index][2];
-
-        if (flow == 0){
-            getValidSetterFileName(gsQuery, (InputSlot*)m_slot);
-        }
-        else{
-            getValidGetterFileName(gsQuery, (OutputSlot*)m_slot);
-        }
-
-        gsFile = gsQuery;
-    }
-
-    QQuickItem* parentItem = qobject_cast<AbstractNodeObject*>(parent())->getNodeBase();
-    createHandle(handleFile, parentItem, m_items[0], m_slot);
-    createTextLabel(nameLabelFile, parentItem, m_items[1], slotName);
-
-    if (flow == 0){
-        createSetter(gsFile, parentItem, m_items[2], m_slot);
-    }
-    else{
-        createGetter(gsFile, parentItem, m_items[2], m_slot);
-    }
-
-    m_items[0]->setParent(this);
-    m_items[1]->setParent(this);
-    m_items[2]->setParent(this);
-}
-
-void NF::SlotObject::createWidgets2()
 {
     int index = m_slot->getIndex();
     int flow = m_slot->getFlow();
@@ -117,8 +58,12 @@ void NF::SlotObject::createWidgets2()
     createTextLabel(nameLabelFile, parentItem, m_items[1], slotName);
 
     if (dataBridgeFile == NF::dummyFile){
-        m_bridge = new DummyDataBridge(nullptr);
-
+        m_bridge = nullptr;
+        m_items[2] = nullptr;
+        if (m_slot->getFlow() == 0){
+            AbstractNodeObject* nodeObj = dynamic_cast<AbstractNodeObject*>(parent());
+            nodeObj->getNode()->addDepend(1);
+        }
     }
     else{
         if (m_slot->getFlow() == 0){
@@ -129,21 +74,16 @@ void NF::SlotObject::createWidgets2()
             m_bridge = NF::GlobalBridgeFactory::createBridge(NF::dataBridgeGetterMap[dataBridgeFile].cppTypeName,
                                                              NF::dataBridgeGetterMap[dataBridgeFile].qmlTypeName);
         }
-
+        m_bridge->setSlot(m_slot);
+        m_bridge->setParent(this);
+        QQuickItem* item;
+        NF::createDataBridge(dataBridgeFile, parentItem, item, m_bridge, m_slot->getFlow());
+        item->setParent(this);
+        m_items[2] = item;
     }
-
-    m_bridge->setSlot(m_slot);
-    m_bridge->setParent(this);
-
-    QQuickItem* item;
-    NF::createDataBridge(dataBridgeFile, parentItem, item, m_bridge, m_slot->getFlow());
-    item->setParent(this);
-
-
 
     m_items[0]->setParent(this);
     m_items[1]->setParent(this);
-    m_items[2] = item;
 
 }
 

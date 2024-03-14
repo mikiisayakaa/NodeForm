@@ -13,7 +13,6 @@
         nodeName(const nodeName& node) = delete; \
         explicit nodeName() : NF::AbstractBoolEvalNode(), m_func(funcName){ \
             m_nodeNameID = QString(#nodeName); \
-            m_outValid = false; \
             constructImpl<FuncType>(); \
         } \
          \

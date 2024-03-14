@@ -32,6 +32,8 @@ public:
 
     QQuickItem* getItem(int index) const {return m_items[index];}
 
+    AbstractDataBridge* getDataBridge() const {return m_bridge;}
+
 signals:
 
 public slots:

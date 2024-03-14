@@ -8,8 +8,6 @@
 #include "abstractslot.h"
 #include "Utils/tupleutils.h"
 #include "Utils/slottupleutils.h"
-#include "Utils/gstupleutils.h"
-#include "Wrapper/abstractslotsetter.h"
 #include "Interface/abstractnodeobject.h"
 
 namespace NF{
@@ -55,33 +53,6 @@ protected:
         }
 
         setSlotParent(this);
-
-        constructInputSettersImpl<FunctionType>();
-        constructOutputGettersImpl<FunctionType>();
-    }
-
-    template<typename FunctionType>
-    void constructInputSettersImpl(){
-        using TP = TupleTypes<FunctionType>;
-        using InArgsTypes = typename TP::InputArgumentTypes;
-        RecursiveSetterCreator<InArgsTypes, std::tuple_size_v<InArgsTypes> - 1>::instantiate(m_inputSlots);
-    }
-
-    template<typename FunctionType>
-    void constructOutputGettersImpl(){
-        using TP = TupleTypes<FunctionType>;
-        using OutArgsTypes = typename TP::OutputArgumentTypes;
-
-        RecursiveGetterCreator<OutArgsTypes, std::tuple_size_v<OutArgsTypes> - 1>::instantiate(m_outputSlots);
-    }
-
-    template<typename FunctionType>
-    void bindInputSettersImpl(QQuickItem* item, int index){
-        using TP = TupleTypes<FunctionType>;
-        using InArgsTypes = typename TP::InputArgumentTypes;
-
-        RecursiveSetterBinder<InArgsTypes, std::tuple_size_v<InArgsTypes> - 1>::
-                bindSetter(m_inputSlots, item, index);
     }
 
     //calculate the user provided function
@@ -103,8 +74,6 @@ protected:
 
         //dereference pointers
         std::apply([&](auto&&... args) { func(*(args)...); }, argsTuple);
-
-        setOutValid(true);
 
     }
 

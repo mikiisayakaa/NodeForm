@@ -6,7 +6,6 @@
 #include "connection.h"
 #include "inputslot.h"
 #include "abstractnode.h"
-#include "Wrapper/abstractslotgetter.h"
 #include "Interface/abstractslotobject.h"
 
 namespace NF{

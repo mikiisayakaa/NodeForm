@@ -32,7 +32,6 @@ SOURCES += \
     Core/inputslot.cpp \
     Core/outputslot.cpp \
     Core/abstractevalnode.cpp \
-    Wrapper/slotsetter.cpp \
     Global/globalqmlfiles.cpp \
     Global/globaluiparams.cpp \
     Global/globalpaths.cpp \
@@ -48,7 +47,6 @@ SOURCES += \
     Interface/basicgraphobject.cpp \
     Interface/abstractslotobject.cpp \
     Interface/slotobject.cpp \
-    Wrapper/abstractslotgetter.cpp \
     Interface/abstractgraphobject.cpp \
     Global/globalcleanup.cpp \
     Core/abstractboolevalnode.cpp \
@@ -83,8 +81,6 @@ HEADERS += \
     Utils/slottupleutils.h \
     Utils/variant.h \
     Core/abstractevalnode.h \
-    Wrapper/slotsettermacro.h \
-    Wrapper/abstractslotsetter.h \
     Global/globalqmlfiles.h \
     Global/globaluiparams.h \
     Global/globalpaths.h \
@@ -102,11 +98,8 @@ HEADERS += \
     Interface/abstractslotobject.h \
     Interface/slotobject.h \
     Interface/abstractgraphobject.h \
-    Wrapper/abstractslotgetter.h \
-    Wrapper/slotgettermacro.h \
     Global/globalcleanup.h \
     Global/globalinit.h \
-    Utils/gstupleutils.h \
     Core/abstractboolevalnode.h \
     Core/basicboolnodemacro.h \
     Extension/abstractextension.h \

@@ -7,7 +7,6 @@
 #include "abstractgraphobject.h"
 #include "Extension/extensionfactory.h"
 #include "databridgemacro.h"
-#include "dummydatabridge.h"
 
 NF::SlotObject::SlotObject(NF::AbstractSlot *slot, NF::UIParameters* params, QObject *parent)
     :AbstractSlotObject (slot, parent),m_createParams(params)
@@ -59,7 +58,7 @@ void NF::SlotObject::createWidgets()
 
     if (dataBridgeFile == NF::dummyFile){
         m_bridge = nullptr;
-        m_items[2] = nullptr;
+        createDummy(parentItem, m_items[2]);
         if (m_slot->getFlow() == 0){
             AbstractNodeObject* nodeObj = dynamic_cast<AbstractNodeObject*>(parent());
             nodeObj->getNode()->addDepend(1);
@@ -78,13 +77,12 @@ void NF::SlotObject::createWidgets()
         m_bridge->setParent(this);
         QQuickItem* item;
         NF::createDataBridge(dataBridgeFile, parentItem, item, m_bridge, m_slot->getFlow());
-        item->setParent(this);
         m_items[2] = item;
     }
 
     m_items[0]->setParent(this);
     m_items[1]->setParent(this);
-
+    m_items[2]->setParent(this);
 }
 
 
@@ -98,15 +96,15 @@ void NF::SlotObject::setWidgetsLayout()
         setAnchors(m_items[0], nodeBase, "horizontalCenter", "left");
         setAnchors(m_items[1], m_items[0], "left", "right");
         setAnchors(m_items[1], m_items[0], "verticalCenter", "verticalCenter");
-        setAnchors(m_bridge->getItem(), m_items[1], "left", "left");
-        setAnchors(m_bridge->getItem(), m_items[1], "top", "bottom");
+        setAnchors(m_items[2], m_items[1], "left", "left");
+        setAnchors(m_items[2], m_items[1], "top", "bottom");
     }
     else{
         setAnchors(m_items[0], nodeBase, "horizontalCenter", "right");
         setAnchors(m_items[1], m_items[0], "right", "left");
         setAnchors(m_items[1], m_items[0], "verticalCenter", "verticalCenter");
-        setAnchors(m_bridge->getItem(), m_items[1], "right", "right");
-        setAnchors(m_bridge->getItem(), m_items[1], "top", "bottom");
+        setAnchors(m_items[2], m_items[1], "right", "right");
+        setAnchors(m_items[2], m_items[1], "top", "bottom");
     }
 }
 

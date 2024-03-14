@@ -34,6 +34,18 @@ void NF::createHandle(const QString &fileName, QQuickItem *parentItem, QQuickIte
     component->completeCreate();
 }
 
+void NF::createDummy(QQuickItem *parentItem, QQuickItem *&target)
+{
+    QObject* obj;
+    QQmlComponent* component = NF::dummy;
+    obj = component->beginCreate(NF::engine->rootContext());
+
+    target = qobject_cast<QQuickItem*>(obj);
+    target->setParentItem(parentItem);
+
+    component->completeCreate();
+}
+
 void NF::createDataBridge(const QString &fileName, QQuickItem *parentItem, QQuickItem *&target, AbstractDataBridge *dataBridge, int flow)
 {
     QObject* obj = nullptr;
@@ -135,11 +147,15 @@ void NF::setLineHandle(QQuickItem *line, QQuickItem *handle)
 }
 
 
+
+
 void NF::setAnchors(QQuickItem *target, QQuickItem *source, const char *pos1, const char *pos2)
 {
     qvariant_cast<QObject*>(target->property("anchors"))->setProperty(pos1,
            source->property(pos2));
 }
+
+
 
 
 

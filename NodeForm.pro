@@ -69,8 +69,7 @@ SOURCES += \
     Core/abstractnodegraph.cpp \
     Interface/abstractdatabridge.cpp \
     Core/basicnodemacro.cpp \
-    Interface/databridgemacro.cpp \
-    Interface/dummydatabridge.cpp
+    Interface/databridgemacro.cpp
 
 HEADERS += \
     Core/connection.h \
@@ -121,8 +120,7 @@ HEADERS += \
     Utils/debugutils.h \
     Interface/abstractdatabridge.h \
     Interface/databridgemacro.h \
-    Core/basicnodemacro.h \
-    Interface/dummydatabridge.h
+    Core/basicnodemacro.h
 
 
 FORMS +=

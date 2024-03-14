@@ -19,6 +19,8 @@ void createTextLabel(const QString& fileName, QQuickItem* parentItem, QQuickItem
 void createHandle(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
                   AbstractSlot* slot);
 
+void createDummy(QQuickItem* parentItem, QQuickItem* &target);
+
 void setLineHandle(QQuickItem* line, QQuickItem* handle);
 
 void createDataBridge(const QString& fileName, QQuickItem* parentItem,

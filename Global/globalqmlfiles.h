@@ -27,13 +27,6 @@ extern QSet<QString> qmlFileNames;
 extern QString slotHandleDefault;
 extern QHash<QString, QQmlComponent*> slotHandleMap;
 
-//filename and setter id
-extern QSet<QString> slotSetterDefault;
-extern QHash<QString, setGetInfo> slotSetterMap;
-
-extern QSet<QString> slotGetterDefault;
-extern QHash<QString, setGetInfo> slotGetterMap;
-
 extern QSet<QString> dataBridgeDefault;
 extern QHash<QString, DataBridgeInfo> dataBridgeMap;
 

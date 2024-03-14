@@ -87,27 +87,6 @@ void NF::SlotObject::createWidgets()
 
 }
 
-void NF::SlotObject::setWidgetsLayout2()
-{
-    //0-handle, 1-text, 2-setter/getter
-    QQuickItem* nodeBase = qobject_cast<AbstractNodeObject*>(parent())->getNodeBase();
-    int flow = m_slot->getFlow();
-
-    if (flow == 0){
-        setAnchors(m_items[0], nodeBase, "horizontalCenter", "left");
-        setAnchors(m_items[1], m_items[0], "left", "right");
-        setAnchors(m_items[1], m_items[0], "verticalCenter", "verticalCenter");
-        setAnchors(m_items[2], m_items[1], "left", "left");
-        setAnchors(m_items[2], m_items[1], "top", "bottom");
-    }
-    else{
-        setAnchors(m_items[0], nodeBase, "horizontalCenter", "right");
-        setAnchors(m_items[1], m_items[0], "right", "left");
-        setAnchors(m_items[1], m_items[0], "verticalCenter", "verticalCenter");
-        setAnchors(m_items[2], m_items[1], "right", "right");
-        setAnchors(m_items[2], m_items[1], "top", "bottom");
-    }
-}
 
 void NF::SlotObject::setWidgetsLayout()
 {

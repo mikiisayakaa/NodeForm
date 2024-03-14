@@ -21,12 +21,6 @@ void createHandle(const QString& fileName, QQuickItem* parentItem, QQuickItem*& 
 
 void setLineHandle(QQuickItem* line, QQuickItem* handle);
 
-void createSetter(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
-                  AbstractSlot* slot);
-
-void createGetter(const QString& fileName, QQuickItem* parentItem, QQuickItem*& target,
-                  AbstractSlot* slot);
-
 void createDataBridge(const QString& fileName, QQuickItem* parentItem,
                       QQuickItem*& target, AbstractDataBridge* dataBridge, int flow);
 

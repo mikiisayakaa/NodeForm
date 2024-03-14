@@ -20,8 +20,6 @@ public:
 
     void setWidgetsLayout();
 
-    void setWidgetsLayout2();
-
     void addExtensions();
 signals:
 

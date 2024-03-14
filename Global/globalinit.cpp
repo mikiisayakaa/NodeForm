@@ -193,8 +193,6 @@ void NF::fillDummy(QQmlEngine* engine)
     dummy->setData(bytearray, QUrl("file:///" + path));
 
     //put it in all map lists
-    slotSetterMap[dummyFile] = setGetInfo{dummy, ""};
-    slotGetterMap[dummyFile] = setGetInfo{dummy, ""};
     slotHandleMap[dummyFile] = dummy;
     textLabelMap[dummyFile] = dummy;
 
@@ -239,16 +237,6 @@ void NF::prepareUIWidgets(QQmlEngine *engine)
     for (auto& nodeBasePath : NF::qmlNodeBasePaths){
         setQmlDefault(nodeBasePath, nodeBaseDefault);
         fillQmlData(nodeBasePath, engine, nodeBaseMap);
-    }
-
-    for (auto& setterPath : NF::qmlSettersPaths){
-        setQmlGSDefault(setterPath, slotSetterDefault);
-        fillQmlGSData(setterPath, engine, slotSetterMap);
-    }
-
-    for (auto& getterPath : NF::qmlGettersPaths){
-        setQmlGSDefault(getterPath, slotGetterDefault);
-        fillQmlGSData(getterPath, engine, slotGetterMap);
     }
 
     for (auto& getterPath : NF::qmlDataBridgeGetterPaths){

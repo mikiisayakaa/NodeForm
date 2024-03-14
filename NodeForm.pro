@@ -134,17 +134,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     UI/main.qml \
-    UI/SetterWidget/IntSetter/IntSlider_0.qml \
-    UI/qmlWidgets/Setters/IntSlider1_0.qml \
-    UI/DummyGS.qml \
-    UI/qmlWidgets/Setters/DoubleSlider1_2.qml \
-    UI/qmlWidgets/Lines/Line1.qml \
     UI/dummy.qml \
-    UI/qmlWidgets/Getters/IntLabel1_0.qml \
-    UI/qmlWidgets/Setters/TextInput1_int.qml \
-    UI/qmlWidgets/Setters/IntSlider1_int.qml \
-    UI/qmlWidgets/Setters/SpinBox1_int.qml \
-    UI/qmlWidgets/Getters/IntLabel1_int.qml \
     UI/BaseWidget/NFCircle1.qml \
     UI/BaseWidget/NFSlider2.qml \
     UI/BaseWidget/NFSlider1.qml \
@@ -156,24 +146,13 @@ DISTFILES += \
     UI/NFBezierCurve2.qml \
     UI/NFBezierCurve1.qml \
     UI/NFBackground1.qml \
-    UI/qmlWidgets/Getters/NFIntGetLabel1.qml \
     UI/qmlWidgets/Handles/NFCircleHandle1.qml \
     UI/qmlWidgets/Handles/NFTriangleHandle1.qml \
     UI/qmlWidgets/NodeBase/NFVerticalBase1.qml \
-    UI/qmlWidgets/Setters/NFDoubleSetSlider1.qml \
-    UI/qmlWidgets/Setters/NFIntSetSlider1.qml \
-    UI/qmlWidgets/Setters/NFIntSetTextInput1.qml \
-    UI/qmlWidgets/Setters/NFIntSetSpinBox1.qml \
     UI/qmlWidgets/TextLabels/NFTextLabel1.qml \
     UI/qmlWidgets/GlobalWidgets/Curve/NFBezierCurve2.qml \
     UI/qmlWidgets/GlobalWidgets/Curve/NFBezierCurveDashAnimate1.qml \
     UI/qmlWidgets/GlobalWidgets/Background/NFBackground1.qml \
-    UI/qmlWidgets/Setters/NFtIntSetTextInput1.qml \
-    UI/qmlWidgets/DataBridges/NFDoubleSetSlider1.qml \
-    UI/qmlWidgets/DataBridges/NFIntGetLabel1.qml \
-    UI/qmlWidgets/DataBridges/NFIntSetSlider1.qml \
-    UI/qmlWidgets/DataBridges/NFIntSetSpinBox1.qml \
-    UI/qmlWidgets/DataBridges/NFtIntSetTextInput1.qml \
     UI/qmlWidgets/DataBridges/Getters/NFIntGetLabel1.qml \
     UI/qmlWidgets/DataBridges/Setters/NFDoubleSetSlider1.qml \
     UI/qmlWidgets/DataBridges/Setters/NFIntSetSlider1.qml \

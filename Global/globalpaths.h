@@ -19,10 +19,6 @@ extern QStringList globalJsonPaths;
 
 extern QStringList qmlHandlesPaths;
 
-extern QStringList qmlSettersPaths;
-
-extern QStringList qmlGettersPaths;
-
 extern QStringList qmlDataBridgeGetterPaths;
 
 extern QStringList qmlDataBridgeSetterPaths;

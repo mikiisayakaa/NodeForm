@@ -12,8 +12,6 @@
 
 namespace NF{
 
-class AbstractSlotSetter;
-
 class AbstractEvalNode : public AbstractNode
 {
 

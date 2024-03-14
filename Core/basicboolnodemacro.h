@@ -31,9 +31,6 @@
         void setValue(int slotIndex, void* ptr){ \
             setValueImpl<FuncType>(slotIndex, ptr); \
         } \
-        void bindSetter(QQuickItem* item, int index) { \
-            bindInputSettersImpl<FuncType>(item, index); \
-        } \
          \
     private: \
         FuncType m_func; \

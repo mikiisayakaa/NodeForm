@@ -11,16 +11,12 @@ void NF::AbstractNode::addDepend(int num)
 {
     bool preDependency = independent();
     m_dependencyCount += num;
-//    if (independent() != preDependency){
-//        setGetterValidTag(independent());
-//    }
+
 }
 
 void NF::AbstractNode::decDepend(int num)
 {
     bool preDependency = independent();
     m_dependencyCount -= num;
-//    if (independent() != preDependency){
-//        setGetterValidTag(independent());
-//    }
+
 }

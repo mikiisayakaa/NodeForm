@@ -11,14 +11,13 @@
 namespace NF{
 
 class Connection;
-class AbstractSlotGetter;
 class AbstractSlotObject;
 
 class OutputSlot : public AbstractSlot
 {
 public:
     template<typename T>
-    OutputSlot(const T& value) :AbstractSlot(value), m_getter(nullptr) {m_flow = 1;}
+    OutputSlot(const T& value) :AbstractSlot(value) {m_flow = 1;}
 
     template<typename T>
     T* getPointer(){
@@ -32,13 +31,6 @@ public:
     void removeConnection(Connection* connection);
 
     template<typename T>
-    void verbose(){
-        qDebug() << "From Node:" << m_parent->getNameID();
-        qDebug() << "OutputSlot type: [" << TYPENAME<T>::getName() << "], OutputSlot value: "
-                 << get<T>();
-    }
-
-    template<typename T>
     static OutputSlot* createSlot(const T& value){
         OutputSlot* out = new OutputSlot(value);
         return out;
@@ -49,17 +41,12 @@ public:
     template<typename T>
     void destruct(){
         m_var->destruct<T>();
-        delete m_getter;
         delete m_slotObject;
     }
 
-    void setGetter(AbstractSlotGetter* getter){m_getter = getter;}
-    AbstractSlotGetter* getGetter() const {return m_getter;}
 
 private:
     std::vector<Connection*> m_connections;
-
-    AbstractSlotGetter* m_getter;
 };
 
 

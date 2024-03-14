@@ -9,10 +9,6 @@ QStringList globalJsonPaths = {qmlPath + "GlobalWidgets/"};
 
 QStringList qmlHandlesPaths = {qmlPath + "Handles/"};
 
-QStringList qmlSettersPaths = {qmlPath + "Setters/"};
-
-QStringList qmlGettersPaths = {qmlPath + "Getters/"};
-
 QStringList qmlDataBridgeGetterPaths = {qmlPath + "DataBridges/Getters/"};
 
 QStringList qmlDataBridgeSetterPaths = {qmlPath + "DataBridges/Setters/"};

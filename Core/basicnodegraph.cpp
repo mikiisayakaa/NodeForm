@@ -11,7 +11,6 @@ void NF::BasicNodeGraph::addNode(NF::AbstractNode *node)
     m_depthMap[node] = 0;
 
     if(node->independent()){
-        //node->setGetterValidTag(true);
         node->eval();
     }
 }

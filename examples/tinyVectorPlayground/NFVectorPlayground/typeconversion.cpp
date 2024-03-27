@@ -1,6 +1,6 @@
 #include "typeconversion.h"
 
-QVariantList NF::IntVectorTOQVariantList(const std::vector<int> &vec)
+QVariantList NF::IntVectorToQVariantList(const std::vector<int> &vec)
 {
     QVariantList list;
     list.reserve(vec.size());
@@ -12,3 +12,8 @@ QVariantList NF::IntVectorTOQVariantList(const std::vector<int> &vec)
     return list;
 }
 
+//not used
+std::vector<int> NF::QVariantListToIntVector(const QVariantList &varlist)
+{
+    return std::vector<int>();
+}

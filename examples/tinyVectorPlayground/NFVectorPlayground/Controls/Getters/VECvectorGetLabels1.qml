@@ -6,9 +6,9 @@ Rectangle {
     id: labels
     color: "transparent"
 
-    property var dataValue: []
-    property bool valid: false
-    property string typeName: "std::vector<int>"
+    property var cppData: []
+    property string cppType: "std::vector<int>"
+    property string qmlType: "QVariantList"
 
     property real blockHeight: 32
 
@@ -27,14 +27,14 @@ Rectangle {
         Repeater {
             id: repeater
 
-            model: dataValue
+            model: cppData
 
             delegate: ItemDelegate {
 
                 contentItem: Text{
                     id: itemText
                     text: modelData
-                    color: valid ? "white" : "red"
+                    color: "white"
                     font.family: "Calibri"
                     anchors.horizontalCenter: itemBgd.horizontalCenter
                     anchors.verticalCenter: itemBgd.verticalCenter

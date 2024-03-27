@@ -59,7 +59,8 @@ DISTFILES += \
     UI/VectorDisplayNode.json \
     UI/VectorReverseNode.json \
     UI/VectorSortNode.json \
-    UI/VectorSplitNode.json
+    UI/VectorSplitNode.json \
+    Controls/Getters/VECvectorGetLabels1.qml
 
 unix|win32: LIBS += -L$$PWD/../../../build/debug/ -lNodeForm
 

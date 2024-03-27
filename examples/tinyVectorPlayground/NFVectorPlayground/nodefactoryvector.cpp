@@ -16,33 +16,7 @@ void NodeFactoryVector::createNode(int index)
 {
     NF::AbstractNode* node = nullptr;
 
-    switch(index){
-
-    case 0:
-        node = new NF::VectorDisplayNode();
-        break;
-    case 1:
-        node = new NF::IntVector4DNode();
-        break;
-    case 2:
-        node = new NF::VectorConcatNode();
-        break;
-    case 3:
-        node = new NF::VectorSortNode();
-        break;
-    case 4:
-        node = new NF::VectorReverseNode();
-        break;
-    case 5:
-        node = new NF::VectorSplitNode();
-        break;
-    case 6:
-        node = new NF::VectorPopbackNode();
-        break;
-
-    default:
-        break;
-    }
+    node = NF::GlobalNodeFactory::createNode(index);
 
     if (node == nullptr){
         return;

@@ -4,6 +4,8 @@
 
 namespace NF{
 
-QVariantList IntVectorTOQVariantList(const std::vector<int>& vec);
+QVariantList IntVectorToQVariantList(const std::vector<int>& vec);
+
+std::vector<int> QVariantListToIntVector(const QVariantList& varlist);
 
 }

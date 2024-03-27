@@ -4,7 +4,7 @@
 
 namespace NF{
 
-QString convertImageToSourceString(QImage &image)
+QString convertImageToSourceString(const QImage &image)
 {
     if (image.width() == 0){
         return "";
@@ -21,6 +21,12 @@ QString convertImageToSourceString(QImage &image)
     imageBytes.append(QString::fromLatin1(bArray.toBase64().data()));
 
     return imageBytes;
+}
+
+//no need here
+QImage convertSourceStringToImage(const QString &str)
+{
+    return QImage();
 }
 
 

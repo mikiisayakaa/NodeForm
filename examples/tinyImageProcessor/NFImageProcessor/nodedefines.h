@@ -5,8 +5,8 @@
 
 namespace NF{
 
-BASICNODE(LoadImageNode, loadImage)
 BASICNODE(DisplayImageNode, imageDisplay)
+BASICNODE(LoadImageNode, loadImage)
 BASICNODE(InverseImageNode, inverseImage)
 BASICNODE(BrightnessNode, brightness)
 BASICNODE(GrayScaleNode, grayScale)

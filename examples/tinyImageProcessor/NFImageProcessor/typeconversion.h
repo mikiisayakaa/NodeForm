@@ -7,6 +7,8 @@ namespace NF{
 
 static int idGenerator = 0;
 
-QString convertImageToSourceString(QImage& image);
+QString convertImageToSourceString(const QImage& image);
+
+QImage convertSourceStringToImage(const QString& str);
 
 }

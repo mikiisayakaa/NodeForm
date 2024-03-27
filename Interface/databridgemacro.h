@@ -165,8 +165,8 @@ public:
         } \
     public slots: \
         qinvoke void receiveValue(const qmlType& value){ \
-            m_slot->set<typeName>(qmlToCpp(value)); \
-            if (((InputSlot*)m_slot->getConnection()) == nullptr){ \
+            m_slot->set<cppType>(QmlToCpp(value)); \
+            if (((InputSlot*)m_slot)->getConnection() == nullptr){ \
                 AbstractNodeObject* nodeObj = dynamic_cast<AbstractNodeObject*>(parent()->parent()); \
                 AbstractGraphObject* graphObj = dynamic_cast<AbstractGraphObject*>(nodeObj->parent()); \
                 graphObj->reEvalSingle(nodeObj); \

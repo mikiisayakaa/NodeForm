@@ -16,26 +16,7 @@ void NodeFactoryImage::createNode(int index)
 {
     NF::AbstractNode* node = nullptr;
 
-    switch(index){
-
-    case 0:
-        node = new NF::DisplayImageNode();
-        break;
-    case 1:
-        node = new NF::LoadImageNode();
-        break;
-    case 2:
-        node = new NF::InverseImageNode();
-        break;
-    case 3:
-        node = new NF::BrightnessNode();
-        break;
-    case 4:
-        node = new NF::GrayScaleNode();
-        break;
-    default:
-        break;
-    }
+    node = NF::GlobalNodeFactory::createNode(index);
 
     if (node == nullptr){
         return;

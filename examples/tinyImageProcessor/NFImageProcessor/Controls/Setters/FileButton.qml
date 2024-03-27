@@ -12,9 +12,10 @@ Item {
     anchors.margins: 5
 
     property string imagePath: null
-    property string typeName: "QString"
+    property string cppType: "QString"
+    property string qmlType: "QString"
 
-    signal dataSignal(string value);
+    signal qmlData(string value);
 
     Button{
         id: button
@@ -52,7 +53,7 @@ Item {
 
         onAccepted:{
             if (fileUrl != ""){
-                dataSignal(fileUrl);
+                qmlData(fileUrl);
             }
         }
 

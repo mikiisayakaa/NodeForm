@@ -11,21 +11,22 @@ Rectangle {
 
     anchors.margins: 5
 
-    property string dataValue: null
-    property string preValue: null
+    property string cppData: null
+    property string cppType: "QImage"
+    property string qmlType: "QString"
 
-    property bool valid: false
-    property string typeName: "QImage"
+    property string preData: null
+
 
     Image{
         id: img1
         anchors.fill: parent
-        source: dataValue
+        source: cppData
         fillMode: Image.PreserveAspectFit
 
         onStatusChanged: {
             if (status === Image.Ready){
-                preValue = dataValue;
+                preData = cppData;
             }
         }
     }
@@ -33,7 +34,7 @@ Rectangle {
     Image{
         id: img2
         anchors.fill: parent
-        source: preValue
+        source: preData
         fillMode: Image.PreserveAspectFit
 
 

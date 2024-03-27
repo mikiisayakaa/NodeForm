@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("NoOrganization");
 
     NF::setPath(NF::nodeJsonPaths, QDir::currentPath() + "/../NFImageProcessor/UI/");
-    NF::setPath(NF::qmlGettersPaths, QDir::currentPath() + "/../NFImageProcessor/Controls/Getters/");
-    NF::setPath(NF::qmlSettersPaths, QDir::currentPath() + "/../NFImageProcessor/Controls/Setters/");
+    NF::setPath(NF::qmlDataBridgeGetterPaths, QDir::currentPath() + "/../NFImageProcessor/Controls/Getters/");
+    NF::setPath(NF::qmlDataBridgeSetterPaths, QDir::currentPath() + "/../NFImageProcessor/Controls/Setters/");
     NF::setQmlMain(QDir::currentPath() + "/../NFImageProcessor/Controls/main.qml");
     qmlRegisterType<NodeFactoryImage>("CppObjects", 1, 0, "NodeFactory");
     NF::globalInit(&a);

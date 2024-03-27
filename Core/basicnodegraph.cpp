@@ -241,7 +241,7 @@ void NF::BasicNodeGraph::removeNode(NF::AbstractNode *node)
             AbstractNode* node = connection->getSecond()->getParent();
             removeConnection(connection);
             m_depthMap[node] = 1;
-            m_NFack.push(node);
+            m_nodeStack.push(node);
         }
     }
 
@@ -264,7 +264,7 @@ void NF::BasicNodeGraph::reEvalSingle(NF::AbstractNode *node)
     if (node->independent()){
         clearDepth();
         m_depthMap[node] = 1;
-        m_NFack.push(node);
+        m_nodeStack.push(node);
         getDepth();
         eval();
     }
@@ -280,9 +280,9 @@ void NF::BasicNodeGraph::clearDepth()
 void NF::BasicNodeGraph::getDepth()
 {
     //DFS, maybe slower than topological sort, but easy to implement at local graph
-    while(!m_NFack.empty()){
-        AbstractNode* curNode = m_NFack.top();
-        m_NFack.pop();
+    while(!m_nodeStack.empty()){
+        AbstractNode* curNode = m_nodeStack.top();
+        m_nodeStack.pop();
 
         for (size_t i = 0; i < curNode->getNOutput(); i++){
             OutputSlot* out = curNode->getOutput(i);
@@ -291,7 +291,7 @@ void NF::BasicNodeGraph::getDepth()
 
                 if (child->independent() && m_depthMap[child] < m_depthMap[curNode] + 1){
                     m_depthMap[child] = m_depthMap[curNode] + 1;
-                    m_NFack.push(child);
+                    m_nodeStack.push(child);
                 }
             }
         }

@@ -61,7 +61,7 @@ private:
 
     //assistant data structure for traverse
     std::queue<AbstractNode*> m_nodeQueue;
-    std::stack<AbstractNode*> m_NFack;
+    std::stack<AbstractNode*> m_nodeStack;
 
 };
 
